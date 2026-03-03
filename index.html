@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASA Exam Engine v11.0 (Dark Mode)</title>
+    <style>
+        /* COLOR PALETTES */
+        :root {
+            --primary: #003366;
+            --secondary: #f8f9fa;
+            --bg-body: #e9ecef;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --border: #dee2e6;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --highlight: #e7f1ff;
+            --shadow: rgba(0,0,0,0.05);
+            --pacer-strip: #ffffff;
+            --pacer-hover: #f8f9fa;
+        }
+
+        [data-theme="dark"] {
+            --primary: #4da3ff; /* Lighter blue for dark mode contrast */
+            --secondary: #2d2d2d;
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #aaaaaa;
+            --border: #333333;
+            --success: #4cd964;
+            --danger: #ff5252;
+            --warning: #ffca28;
+            --highlight: #2a3a50;
+            --shadow: rgba(0,0,0,0.5);
+            --pacer-strip: #252525;
+            --pacer-hover: #2d2d2d;
+        }
+
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg-body); color: var(--text-main); margin: 0; padding: 0; transition: background 0.3s, color 0.3s; }
+        
+        /* HEADER */
+        header { background: #003366; /* Keep header strictly blue brand color */ color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .header-title { font-weight: bold; font-size: 1.2rem; }
+        .header-controls { display: flex; gap: 15px; align-items: center; }
+        .timer-box { font-size: 1.5rem; font-weight: bold; background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 4px; }
+        .btn-pause { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-pause:hover { background: rgba(255,255,255,0.3); }
+        
+        /* THEME TOGGLE */
+        .theme-toggle { background: none; border: 1px solid rgba(255,255,255,0.3); color: white; cursor: pointer; font-size: 1.2rem; padding: 2px 8px; border-radius: 4px; }
+        .theme-toggle:hover { background: rgba(255,255,255,0.1); }
+
+        /* AI STATUS BADGE */
+        .status-badge { 
+            font-size: 0.85rem; font-weight: bold; padding: 5px 12px; border-radius: 20px; 
+            display: flex; align-items: center; gap: 6px; 
+            background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); 
+            cursor: pointer; transition: background 0.2s; user-select: none;
+        }
+        .status-badge:hover { background: rgba(255,255,255,0.1); }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; box-shadow: 0 0 5px rgba(0,0,0,0.2); }
+        .status-ready .status-dot { background: #0f0; box-shadow: 0 0 8px #0f0; }
+
+        /* DEBUG CONSOLE */
+        #debug-box {
+            position: absolute; top: 60px; right: 0; width: 400px; max-height: 300px; 
+            background: #1e1e1e; color: #0f0; font-family: 'Consolas', monospace; 
+            padding: 15px; border-radius: 8px; font-size: 0.85rem; line-height: 1.4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333;
+            overflow-y: auto; z-index: 2000; display: none;
+        }
+        #debug-box.visible { display: block; }
+
+        /* MAIN LAYOUT */
+        .container { max-width: 900px; margin: 2rem auto; background: var(--bg-card); padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 6px var(--shadow); transition: background 0.3s; }
+        
+        /* RESUME BANNER */
+        #resume-banner {
+            background: #fff3cd; color: #856404; padding: 15px; text-align: center;
+            border-bottom: 1px solid #ffeeba; cursor: pointer; font-weight: bold;
+            display: none;
+        }
+        #resume-banner:hover { background: #ffeeba; }
+
+        /* SUBJECT CARDS */
+        .subject-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .subject-card { 
+            background: var(--bg-card); border: 2px solid var(--border); border-radius: 8px; 
+            overflow: hidden; transition: 0.2s; display: flex; flex-direction: column;
+        }
+        .subject-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 4px 8px var(--shadow); }
+        
+        .card-main { padding: 20px; text-align: center; cursor: pointer; flex-grow: 1; }
+        .card-main h3 { margin: 0 0 5px 0; color: var(--primary); font-size: 1.1rem; }
+        .card-meta { margin:10px 0; border-top:1px solid var(--border); padding-top:5px; font-size:0.85rem; color: var(--text-muted); line-height: 1.4; }
+        .scenario-count { font-weight: bold; color: var(--text-main); }
+
+        /* PACER STRIP */
+        .pacer-strip {
+            background: var(--pacer-strip); border-top: 1px solid var(--border); padding: 8px 15px; 
+            font-size: 0.8rem; display: flex; justify-content: space-between; 
+            align-items: center; cursor: pointer; color: var(--text-muted); border-bottom: 1px solid var(--border);
+        }
+        .pacer-strip:hover { background: var(--pacer-hover); }
+        .gap-bad { color: var(--danger); font-weight: bold; background: rgba(220, 53, 69, 0.1); padding: 2px 6px; border-radius: 4px; }
+        .gap-ok { color: var(--warning); font-weight: bold; }
+        .gap-good { color: var(--success); font-weight: bold; }
+        .gap-neutral { color: var(--text-muted); font-style: italic; }
+
+        /* GOAL PANEL */
+        .goal-panel { 
+            display: none; padding: 15px; background: var(--secondary); border-bottom: 1px solid var(--border); 
+            animation: slideDown 0.2s ease-out; 
+        }
+        .goal-panel.visible { display: block; }
+        .goal-input { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid var(--border); border-radius: 4px; font-size: 0.9rem; background: var(--bg-card); color: var(--text-main); }
+        .goal-label { font-size: 0.8rem; color: var(--text-muted); font-weight: bold; display: block; margin-bottom: 2px; }
+
+        /* FOOTER (Buttons) */
+        .card-footer {
+            background: var(--secondary); display:flex; justify-content: space-between;
+        }
+        .footer-btn { 
+            flex:1; padding:12px; border:none; background:none; cursor:pointer; 
+            font-weight:600; color: var(--text-muted); transition:0.2s; font-size: 0.85rem;
+        }
+        .footer-btn:hover { background: rgba(0,0,0,0.05); color:var(--primary); }
+        .footer-btn.weakness { border-left:1px solid var(--border); color:#d63384; }
+        .footer-btn.weakness:hover { background: rgba(214, 51, 132, 0.1); color:#d63384; }
+
+        /* QUESTIONS */
+        .question-card { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); position: relative; }
+        .topic-header { 
+            background: var(--secondary); color: var(--text-muted); padding: 4px 10px; border-radius: 4px; 
+            font-size: 0.85rem; font-weight: bold; display: inline-block; margin-bottom: 10px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        
+        .q-image {
+            max-width: 100%; height: auto; display: block; margin: 15px auto;
+            border: 1px solid var(--border); border-radius: 4px; box-shadow: 0 2px 5px var(--shadow);
+            background: white; /* Always white so diagrams are readable */
+        }
+
+        .option-label { display: flex; align-items: center; padding: 15px; background: var(--secondary); border-radius: 6px; cursor: pointer; margin-top: 10px; transition: 0.2s; border: 1px solid transparent; }
+        .option-label:hover { background: var(--highlight); }
+        input[type="radio"] { margin-right: 12px; transform: scale(1.2); }
+        
+        /* REVEAL STYLES */
+        .reveal-correct { background: rgba(40, 167, 69, 0.2) !important; border: 1px solid var(--success) !important; }
+        .reveal-wrong { background: rgba(220, 53, 69, 0.2) !important; border: 1px solid var(--danger) !important; }
+        
+        /* PAUSE STATE */
+        .exam-paused #question-container { filter: blur(8px); pointer-events: none; user-select: none; }
+        .paused-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; justify-content: center; align-items: center; z-index: 1500;
+            pointer-events: none; 
+        }
+        .paused-msg { 
+            background: rgba(0,0,0,0.8); color: white; padding: 20px 40px; border-radius: 8px; 
+            font-size: 2rem; font-weight: bold; display: none; 
+        }
+        .exam-paused .paused-msg { display: block; }
+
+        /* UTILS */
+        .hidden { display: none !important; }
+        #loading-msg { text-align: center; padding: 20px; color: var(--text-muted); }
+        #ai-feedback { margin: 20px 0; padding: 20px; border-left: 5px solid #6610f2; background: rgba(102, 16, 242, 0.1); border-radius: 4px; white-space: pre-wrap; line-height: 1.6; }
+
+        /* MODALS */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; display: flex; justify-content: center; align-items: center; }
+        .modal-box { background: var(--bg-card); padding: 2rem; border-radius: 8px; width: 400px; max-height: 80vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5); position: relative; color: var(--text-main); }
+        .modal-box h2 { margin-top: 0; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-muted); }
+        
+        /* COMPETENCY ACCORDION */
+        .comp-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .comp-controls button { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; margin-left: 5px; transition: 0.2s; }
+        .comp-controls button:hover { background: var(--secondary); }
+        .comp-subject-block { margin-bottom: 10px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all 0.3s ease; }
+        .comp-subject-header { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: var(--secondary); cursor: pointer; transition: background 0.2s ease; user-select: none; }
+        .comp-subject-header:hover { background: var(--highlight); }
+        .comp-subject-title { font-weight: bold; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; }
+        .comp-header-right { display: flex; align-items: center; gap: 10px; }
+        .comp-toggle-icon { font-size: 0.8rem; color: var(--text-muted); transition: transform 0.3s ease; }
+        .btn-reset-subject { background: var(--bg-card); border: 1px solid var(--border); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); font-size: 12px; transition: all 0.2s; padding: 0; }
+        .btn-reset-subject:hover { background: #fee; color: #d33; border-color: #d33; transform: rotate(-180deg); }
+        .comp-subject-block.collapsed .comp-toggle-icon { transform: rotate(-90deg); }
+        .comp-subject-block.collapsed .comp-subject-content { display: none; }
+        .comp-subject-content { padding: 15px; background: var(--bg-card); border-top: 1px solid var(--border); animation: slideDown 0.3s ease-out; }
+        .topic-row { display: flex; align-items: center; margin-bottom: 10px; font-size: 0.9rem; }
+        .topic-name { width: 150px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .progress-track { flex-grow: 1; height: 8px; background: var(--secondary); border-radius: 4px; overflow: hidden; margin: 0 15px; border: 1px solid var(--border); }
+        .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.5s ease; }
+        .topic-score { width: 45px; text-align: right; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* GRAPHS */
+        /* IMPORTANT: Canvas background is forced white so charts are readable in dark mode */
+        canvas { width: 100%; height: 250px; border: 1px solid var(--border); border-radius: 4px; background: white; margin-top: 15px; }
+        
+        .graph-section { margin-top: 40px; padding-top: 20px; border-top: 2px solid var(--border); }
+        .official-controls { display: flex; gap: 10px; margin-bottom: 10px; align-items: center; background: var(--secondary); padding: 15px; border-radius: 6px; }
+        .official-controls input, .official-controls select { padding: 8px; border: 1px solid var(--border); border-radius: 4px; background: var(--bg-card); color: var(--text-main); }
+        .toggle-item { display: inline-flex; align-items: center; margin-right: 15px; background: var(--bg-card); padding: 5px 10px; border-radius: 15px; border: 1px solid var(--border); font-size: 0.9rem; cursor: pointer; }
+        
+        /* SHOW ANSWER BTN */
+        .btn-reveal {
+            margin-top:10px; padding:6px 12px; background: var(--bg-card); border:1px solid var(--border); border-radius:4px;
+            cursor:pointer; font-size:0.85rem; color: var(--text-main);
+        }
+        .btn-reveal:hover { background: var(--secondary); }
+        
+        /* RECORD MANAGER */
+        .record-group-title { background: var(--secondary); color: var(--text-main); }
+        .record-item { border-bottom: 1px solid var(--border); }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-title">CASA Exam Engine</div>
+    <div class="header-controls">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">☀/☾</button>
+        <button id="pause-btn" class="btn-pause hidden" onclick="togglePause()">II PAUSE</button>
+        <div id="ai-status" class="status-badge" onclick="openAiSettings()" title="Click to configure AI">
+            <div class="status-dot"></div> <span id="status-text">Checking...</span>
+        </div>
+        <div id="debug-box"><strong>System Diagnostics:</strong><br></div>
+        <div class="timer-box hidden" id="timer">00:00</div>
+    </div>
+</header>
+
+<div id="resume-banner" onclick="resumeActiveExam()">
+    ⚠ Unfinished Exam Found. Click here to RESUME.
+</div>
+
+<div id="weakness-modal" class="modal-overlay hidden" onclick="if(event.target===this) document.getElementById('weakness-modal').classList.add('hidden')">
+    <div class="modal-box" style="width:350px;">
+        <button class="modal-close" onclick="document.getElementById('weakness-modal').classList.add('hidden')">×</button>
+        <h2 id="weakness-title">Target Weakness</h2>
+        <p style="color: var(--text-muted); margin-bottom:20px;">Generate a custom quiz focusing on your weakest topics (< 80%).</p>
+        
+        <label style="display:block; font-weight:bold; margin-bottom:5px;">Questions:</label>
+        <select id="weak-count" style="width:100%; padding:10px; margin-bottom:20px; border:1px solid var(--border); border-radius:4px; background:var(--bg-card); color:var(--text-main);">
+            <option value="5">5 Questions (Micro)</option>
+            <option value="10">10 Questions (Quick)</option>
+            <option value="20" selected>20 Questions (Standard)</option>
+            <option value="50">50 Questions (Intense)</option>
+        </select>
+        
+        <button onclick="launchWeaknessExam()" style="width:100%; padding:12px; background:var(--primary); color:white; border:none; border-radius:4px; cursor:pointer; font-weight:bold;">Start Attack</button>
+    </div>
+</div>
+
+<div id="ai-settings-modal" class="overlay hidden" onclick="if(event.target===this) this.classList.add('hidden')">
+    <div class="modal" style="text-align: center;">
+        <button class="modal-close" onclick="document.getElementById('ai-settings-modal').classList.add('hidden')">×</button>
+        
+        <h2 style="margin-top: 0; color: var(--primary); display: flex; align-items: center; justify-content: center; gap: 10px; border-bottom: none; padding-bottom: 0;">
+            <span style="font-size: 1.5rem;">✨</span> AI Tutor Settings
+        </h2>
+        
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px;">
+            Enter your <strong>Gemini API Key</strong> to enable the automated tutor.<br>
+            <span style="font-size: 0.8rem; opacity: 0.8;">Keys are stored securely in your browser's local storage and never sent to our servers.</span>
+        </p>
+
+        <div style="text-align: left; margin-bottom: 25px;">
+            <label style="font-size: 0.85rem; font-weight: bold; color: var(--text-main); margin-bottom: 5px; display: block;">API Key</label>
+            <input type="password" id="api-key-input" placeholder="AIzaSy..." 
+                   style="width: 100%; padding: 12px; border: 2px solid var(--border); background: var(--bg-body); color: var(--text-main); border-radius: 6px; font-family: monospace; font-size: 1rem; box-sizing: border-box; transition: border-color 0.2s outline 0.2s; outline: none;"
+                   onfocus="this.style.borderColor='var(--primary)'; this.style.boxShadow='0 0 0 3px rgba(0, 123, 255, 0.25)'" 
+                   onblur="this.style.borderColor='var(--border)'; this.style.boxShadow='none'">
+            <div style="text-align: right; margin-top: 8px;">
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" style="font-size: 0.8rem; color: var(--primary); text-decoration: none; font-weight: bold;">Get a free key here ↗</a>
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 12px;">
+            <button onclick="clearApiKey()" style="flex: 1; padding: 12px; background: transparent; color: var(--danger); border: 2px solid rgba(220, 53, 69, 0.3); border-radius: 6px; cursor: pointer; font-weight: bold; transition: all 0.2s;" onmouseover="this.style.background='rgba(220, 53, 69, 0.1)'" onmouseout="this.style.background='transparent'">Remove</button>
+            <button onclick="saveApiKey()" style="flex: 2; padding: 12px; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: opacity 0.2s; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Save & Enable</button>
+        </div>
+    </div>
+</div>
+    
+<div id="records-modal" class="modal-overlay hidden">
+    <div class="modal-box">
+        <button class="modal-close" onclick="closeRecordManager()">×</button>
+        <h2 id="modal-title">Manage Records</h2>
+        <div id="records-list"></div>
+        <div style="margin-top:20px; text-align:right; font-size:0.8rem; color:var(--text-muted);">Changes are saved immediately.</div>
+    </div>
+</div>
+
+<div class="container" id="home-screen">
+    <h1>Select Module</h1>
+    <p>CASA Standard: 75 seconds per question.</p>
+    
+    <div id="loading-msg">Loading Question Banks...</div>
+    <div class="subject-grid" id="subject-list"></div>
+
+    <div class="graph-section">
+        <div class="comp-header-row">
+            <h3>Subject Competency</h3>
+            <div class="comp-controls">
+                <button onclick="expandAll()">▼ Expand All</button>
+                <button onclick="collapseAll()">▲ Collapse All</button>
+            </div>
+        </div>
+        <div id="competency-container"></div>
+        <div style="text-align:right; margin-top:10px;">
+            <button onclick="clearData('casa_mastery_v2')" style="font-size:0.8rem; color:var(--danger); background:none; border:none; cursor:pointer;">Reset All Competency</button>
+        </div>
+    </div>
+
+    <div class="graph-section">
+        <h3>Practice History</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted);">Solid Line = Practice Exams (Trend). Hollow Squares = Weakness Attacks (Isolated).</p>
+        <div id="graph-toggles" style="margin-bottom:10px;"></div>
+        <canvas id="scoreGraph"></canvas>
+        <div style="margin-top: 10px; text-align: right;">
+            <button onclick="openRecordManager('practice')" style="padding:5px 15px; margin-right:5px; cursor:pointer; border:1px solid var(--border); background:var(--bg-card); color: var(--text-main); border-radius:4px;">Manage</button>
+            <button onclick="exportCSV()" style="padding:5px 10px; cursor:pointer; background:none; border:none; color:var(--primary);">Download Logs</button>
+            <button onclick="clearData('casa_logs')" style="padding:5px 10px; color:var(--danger); cursor:pointer; background:none; border:none;">Clear All</button>
+        </div>
+    </div>
+
+    <div class="graph-section">
+        <h3>Official Exam Record</h3>
+        <div class="official-controls">
+            <select id="off-subject"><option>Select Module...</option></select>
+            <input type="number" id="off-score" placeholder="Score %" min="0" max="100" style="width:80px">
+            <input type="date" id="off-date">
+            <button onclick="addOfficialResult()" style="background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Add Result</button>
+        </div>
+        <canvas id="officialGraph" style="height: 250px;"></canvas>
+        
+        <div style="margin-top: 10px; text-align: right;">
+            <button onclick="openRecordManager('official')" style="padding:5px 15px; margin-right:5px; cursor:pointer; border:1px solid var(--border); background:var(--bg-card); color:var(--text-main); border-radius:4px;">Manage</button>
+            <button onclick="clearData('casa_official')" style="padding:5px 10px; color:var(--danger); cursor:pointer; background:none; border:none;">Clear All</button>
+        </div>
+    </div>
+</div>
+
+<div class="container hidden" id="exam-screen">
+    <div id="paused-overlay" class="paused-overlay hidden">
+        <div class="paused-msg">PAUSED</div>
+    </div>
+    <div id="result-area" class="hidden" style="text-align: center; padding: 2rem; margin-bottom: 20px; border-radius: 8px;"></div>
+    <div id="ai-feedback" class="hidden"></div>
+    <div id="question-container"></div>
+    <button id="submit-btn" onclick="finishExam()" style="width: 100%; padding:15px; background:var(--primary); color:white; font-size:1.1rem; border:none; border-radius:5px; cursor:pointer;">Submit & Mark</button>
+    <button onclick="if(confirm('Exit exam? Progress will be lost.')){ cancelExam(); }" style="width: 100%; margin-top: 10px; padding:10px; cursor:pointer; background:transparent; border:1px solid var(--border); color:var(--text-main); border-radius:5px;">Exit</button>
+</div>
+
+<script>
+    function logDebug(msg, color="#0f0") {
+        const box = document.getElementById('debug-box');
+        const time = new Date().toLocaleTimeString();
+        box.innerHTML += `<div style="color:${color}; border-bottom:1px solid #333; padding:2px 0;">[${time}] ${msg}</div>`;
+        box.scrollTop = box.scrollHeight;
+    }
+    function toggleDebugConsole() { document.getElementById('debug-box').classList.toggle('visible'); }
+    
+    // --- THEME LOGIC ---
+    function toggleTheme() {
+        const root = document.documentElement;
+        if (root.getAttribute('data-theme') === 'dark') {
+            root.removeAttribute('data-theme');
+            localStorage.setItem('casa_theme', 'light');
+        } else {
+            root.setAttribute('data-theme', 'dark');
+            localStorage.setItem('casa_theme', 'dark');
+        }
+    }
+    // Load theme on startup
+    if (localStorage.getItem('casa_theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+</script>
+
+<script src="question_bank.js" onerror="logDebug('ERROR: question_bank.js missing', '#f00')"></script>
+<script src="mod1_maths.js" onerror="logDebug('ERROR: mod1_maths.js missing', '#f00')"></script>
+<script src="mod2_physics.js" onerror="logDebug('ERROR: mod2_physics.js missing', '#f00')"></script>
+<script src="mod3_electrical.js" onerror="logDebug('ERROR: mod3_electrical.js missing', '#f00')"></script>
+
+<script>
+    let currentExam = null;
+    let timerInterval;
+    let aiConfig = null;
+    let SYLLABUS_MAP = {}; 
+    let isPaused = false;
+    let pendingWeaknessSubject = '';
+
+    // --- 1. INITIALIZATION ---
+    const checkLoop = setInterval(() => {
+        if (typeof SUBJECT_DB !== 'undefined' && Object.keys(SUBJECT_DB).length > 0) {
+            clearInterval(checkLoop);
+            document.getElementById('loading-msg').classList.add('hidden');
+            logDebug("Modules Loaded.");
+            
+            if (localStorage.getItem('casa_active_session')) {
+                document.getElementById('resume-banner').style.display = 'block';
+            }
+
+            const statusEl = document.getElementById('ai-status');
+            const statusText = document.getElementById('status-text');
+
+            // Route the click to our new settings menu
+            statusEl.onclick = openAiSettings;
+            statusEl.title = "Click to configure AI";
+
+            // Check local storage instead of env.js
+            if (localStorage.getItem('gemini_api_key')) {
+                statusEl.className = "status-badge status-ready";
+                statusText.innerText = "AI Ready";
+                logDebug("AI Key loaded from LocalStorage.");
+            } else {
+                statusEl.className = "status-badge status-error";
+                statusText.innerText = "Set AI Key";
+                logDebug("No AI Key found. User needs to configure.");
+            }
+
+            scanSyllabus();
+            renderSubjects();
+            renderPracticeGraph();
+            renderOfficialGraph();
+            populateOfficialDropdown();
+            renderCompetencyMatrix(); 
+        }
+    }, 500);
+
+    function scanSyllabus() {
+        Object.keys(SUBJECT_DB).forEach(subject => {
+            const mod = SUBJECT_DB[subject];
+            if (mod.generator) {
+                const samples = mod.generator(500); 
+                const topics = new Set();
+                samples.forEach(q => {
+                    const t = q.topic || q.category || "General Knowledge";
+                    if (t) topics.add(t);
+                });
+                SYLLABUS_MAP[subject] = Array.from(topics).sort();
+                logDebug(`[${subject}] Found ${topics.size} topics.`);
+            }
+        });
+    }
+
+    // --- 2. STUDY PACER (Restored) ---
+    function toggleGoalPanel(safeKey) {
+        event.stopPropagation();
+        const panel = document.getElementById(`goal-panel-${safeKey}`);
+        if(panel) panel.classList.toggle('visible');
+    }
+
+    function saveGoalDate(subject, date) {
+        const goals = JSON.parse(localStorage.getItem('casa_goals') || '{}');
+        goals[subject] = date;
+        localStorage.setItem('casa_goals', JSON.stringify(goals));
+        renderSubjects();
+    }
+
+    // --- AI KEY MANAGEMENT ---
+    function openAiSettings() {
+        const key = localStorage.getItem('gemini_api_key');
+        if (key) document.getElementById('api-key-input').value = key;
+        document.getElementById('ai-settings-modal').classList.remove('hidden');
+    }
+
+    function saveApiKey() {
+        const key = document.getElementById('api-key-input').value.trim();
+        if (key) {
+            localStorage.setItem('gemini_api_key', key);
+            updateAiStatus();
+        }
+        document.getElementById('ai-settings-modal').classList.add('hidden');
+    }
+
+    function clearApiKey() {
+        localStorage.removeItem('gemini_api_key');
+        document.getElementById('api-key-input').value = '';
+        updateAiStatus();
+        document.getElementById('ai-settings-modal').classList.add('hidden');
+    }
+
+    function updateAiStatus() {
+        const statusEl = document.getElementById('ai-status');
+        if (localStorage.getItem('gemini_api_key')) {
+            statusEl.style.borderColor = "rgba(40, 167, 69, 0.5)"; // Green border
+            statusEl.innerHTML = "<div class='status-dot' style='background:#0f0; box-shadow:0 0 5px #0f0;'></div> AI Ready";
+        } else {
+            statusEl.style.borderColor = "rgba(220, 53, 69, 0.5)"; // Red border
+            statusEl.innerHTML = "<div class='status-dot' style='background:#f00; box-shadow:0 0 5px #f00;'></div> Set AI Key";
+        }
+    }
+
+    function getStudyPace(subject, dateStr) {
+        const logs = getHistory('casa_logs')[subject];
+        if (!logs || logs.length === 0) return { text: "Start Practicing", class: "gap-neutral" };
+        if (!dateStr) return { text: "Set Goal Date", class: "gap-neutral" };
+
+        const latest = logs[logs.length - 1].pct;
+        const target = 75;
+        const gap = target - latest;
+
+        if (gap <= 0) return { text: "✅ Ready to Exam", class: "gap-good" };
+
+        const due = new Date(dateStr);
+        const today = new Date();
+        const diffTime = due - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays <= 0) return { text: "🚨 Overdue!", class: "gap-bad" };
+
+        // Calculate pace per DAY
+        const pace = (gap / diffDays).toFixed(1);
+
+        // Thresholds adjusted for Daily:
+        // > 1.5% per day (approx 10% / week) is Hard
+        // > 0.7% per day (approx 5% / week) is Moderate
+        if (pace > 1.5) return { text: `🔥 Need +${pace}% / day`, class: "gap-bad" };
+        if (pace > 0.7) return { text: `⚠ Need +${pace}% / day`, class: "gap-ok" };
+        
+        return { text: `📉 Need +${pace}% / day`, class: "gap-good" };
+    }
+
+    // --- 3. EXAM RENDER (Combined Pacer + Actions) ---
+    function renderSubjects() {
+        const grid = document.getElementById('subject-list');
+        grid.innerHTML = '';
+        const goals = JSON.parse(localStorage.getItem('casa_goals') || '{}');
+        
+        Object.keys(SUBJECT_DB).forEach(key => {
+            const mod = SUBJECT_DB[key];
+            const safeKey = key.replace(/\s/g, ''); 
+            const dateVal = goals[key] || "";
+            const displayDate = dateVal ? new Date(dateVal).toLocaleDateString(undefined, {month:'short', day:'numeric'}) : "Set Goal";
+            const metric = getStudyPace(key, dateVal);
+
+            const div = document.createElement('div');
+            div.className = 'subject-card';
+            div.innerHTML = `
+                <div class="card-main" onclick="startExam('${key}')">
+                    <h3>${key}</h3>
+                    <div class="card-meta">
+                        ${mod.qCount} Questions • ${mod.time} Mins<br>
+                        <span class="scenario-count">${mod.poolSize}</span>
+                    </div>
+                </div>
+                
+                <div class="pacer-strip" onclick="toggleGoalPanel('${safeKey}')">
+                    <span>📅 ${displayDate}</span>
+                    <span class="${metric.class}">${metric.text}</span>
+                </div>
+                <div class="goal-panel" id="goal-panel-${safeKey}" onclick="event.stopPropagation()">
+                    <label class="goal-label">Target Exam Date:</label>
+                    <input type="date" class="goal-input" value="${dateVal}" onchange="saveGoalDate('${key}', this.value)">
+                </div>
+
+                <div class="card-footer">
+                    <button class="footer-btn" onclick="startExam('${key}')">▶ Start Exam</button>
+                    <button class="footer-btn weakness" onclick="openWeaknessModal('${key}')">🎯 Target Weakness</button>
+                </div>
+            `;
+            grid.appendChild(div);
+        });
+    }
+
+    // --- 4. WEAKNESS LOGIC ---
+    function openWeaknessModal(subject) {
+        pendingWeaknessSubject = subject;
+        document.getElementById('weakness-title').innerText = `Target Weakness: ${subject}`;
+        document.getElementById('weakness-modal').classList.remove('hidden');
+    }
+
+    function launchWeaknessExam() {
+        const count = parseInt(document.getElementById('weak-count').value);
+        document.getElementById('weakness-modal').classList.add('hidden');
+        startExam(pendingWeaknessSubject, true, count);
+    }
+
+    // --- 5. EXAM EXECUTION ---
+    function startExam(key, isWeakness = false, countOverride = null) {
+        const mod = SUBJECT_DB[key];
+        let questions = [];
+
+        if (isWeakness) {
+            // WEAKNESS MODE GENERATOR (FIXED: NO BACKFILL)
+            const mastery = JSON.parse(localStorage.getItem('casa_mastery_v2') || '{}');
+            const userStats = mastery[key] || {};
+            
+            // Find topics with score < 8
+            const weakTopics = Object.keys(userStats).filter(t => userStats[t] < 8);
+            
+            // Generate a massive pool to filter from
+            const pool = mod.generator(1000);
+            
+            if (weakTopics.length > 0) {
+                // Get questions matching weak topics
+                questions = pool.filter(q => weakTopics.includes(q.topic || "General")).slice(0, countOverride);
+                
+                // FIX: Alert user if we found fewer questions than requested, do NOT fill with randoms.
+                if (questions.length < countOverride) {
+                    alert(`Note: Only found ${questions.length} questions matching your weak topics. Exam shortened to avoid random topics.`);
+                }
+            } else {
+                // If no data, just give randoms
+                alert("No weakness data found! Generating random questions.");
+                questions = mod.generator(countOverride);
+            }
+        } else {
+            // STANDARD MODE
+            questions = mod.generator(mod.qCount);
+        }
+
+        currentExam = { 
+            subject: key, 
+            questions: questions, 
+            totalTime: (countOverride ? Math.ceil(countOverride * 1.5) : mod.time) * 60, 
+            remainingTime: (countOverride ? Math.ceil(countOverride * 1.5) : mod.time) * 60,
+            answers: {},
+            isWeakness: isWeakness // FLAG THIS EXAM AS WEAKNESS TYPE
+        };
+        saveSession();
+        renderExamInterface();
+    }
+
+    function resumeActiveExam() {
+        const saved = localStorage.getItem('casa_active_session');
+        if (saved) {
+            currentExam = JSON.parse(saved);
+            renderExamInterface();
+            
+            // Safe Restore Selections
+            Object.keys(currentExam.answers).forEach(idx => {
+                const i = parseInt(idx);
+                const val = currentExam.answers[i];
+                
+                if(val === "___SKIPPED___") {
+                    revealAnswer(i, currentExam.questions[i].correct, true);
+                } else {
+                    // Find input safely without using querySelector with strings
+                    const inputs = document.getElementsByName(`q_${i}`);
+                    for (let inp of inputs) {
+                        if (inp.value === val) {
+                            inp.checked = true;
+                            break;
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    function saveSession() {
+        if(currentExam) localStorage.setItem('casa_active_session', JSON.stringify(currentExam));
+    }
+
+    function renderExamInterface() {
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('resume-banner').style.display = 'none';
+        document.getElementById('exam-screen').classList.remove('hidden');
+        document.getElementById('timer').classList.remove('hidden');
+        document.getElementById('pause-btn').classList.remove('hidden');
+        
+        const box = document.getElementById('question-container');
+        box.innerHTML = '';
+        currentExam.questions.forEach((q, i) => {
+            let imgHTML = q.img ? `<img src="images/${q.img}" class="q-image" onerror="this.style.display='none'">` : '';
+            
+            box.innerHTML += `
+                <div class="question-card" id="card_${i}">
+                    <div class="topic-header">${q.topic || 'General'}</div>
+                    <div style="font-weight:500; margin-bottom:10px">Q${i+1}. ${q.question}</div>
+                    ${imgHTML}
+                    <div id="opts_${i}">
+                        ${q.options.map(opt => {
+                            // FIX: Escape double quotes so they don't break the HTML attribute
+                            const safeValue = opt.replace(/"/g, '&quot;');
+                            return `<label class="option-label">
+                                <input type="radio" name="q_${i}" value="${safeValue}" onchange="recordAnswer(${i}, this.value)"> 
+                                ${opt}
+                            </label>`;
+                        }).join('')}
+                    </div>
+                    <button class="btn-reveal" onclick="revealAnswer(${i}, '${q.correct.replace(/'/g, "\\'")}')">👁 Show Answer</button>
+                </div>`;
+        });
+        
+        // Restore specific selections safely
+        Object.keys(currentExam.answers).forEach(idx => {
+             const savedVal = currentExam.answers[idx];
+             const i = parseInt(idx);
+             
+             // Restore Radio Button check
+             if (savedVal && savedVal !== "___SKIPPED___") {
+                 const inputs = document.querySelectorAll(`input[name="q_${i}"]`);
+                 // Safe loop finding (CSS selectors break on quotes)
+                 Array.from(inputs).forEach(inp => {
+                     if (inp.value === savedVal) inp.checked = true;
+                 });
+             }
+             
+             // Restore visual state if needed (e.g. if we want to show already marked answers on resume)
+             // For now we just restore the selection state.
+        });
+        
+        startTimer();
+    }
+
+    // --- NEW: REVEAL ANSWER ---
+    function revealAnswer(index, correctVal, restoring=false) {
+        // Lock inputs
+        const inputs = document.querySelectorAll(`input[name="q_${index}"]`);
+        let selectedVal = null;
+        
+        inputs.forEach(inp => {
+            if (inp.checked) selectedVal = inp.value;
+            inp.disabled = true;
+        });
+
+        // Apply visual classes safely
+        const labels = document.querySelectorAll(`#opts_${index} .option-label`);
+        labels.forEach(lbl => {
+            const radio = lbl.querySelector('input');
+            const val = radio.value;
+            
+            // FIX: Robust string comparison
+            if (val == correctVal) {
+                lbl.classList.add('reveal-correct');
+            }
+            if (radio.checked && val != correctVal) {
+                lbl.classList.add('reveal-wrong');
+            }
+        });
+
+        if(!restoring) {
+            if (!selectedVal) {
+                currentExam.answers[index] = "___SKIPPED___";
+            }
+            saveSession();
+        }
+        
+        const btn = document.querySelector(`#card_${index} .btn-reveal`);
+        if(btn) btn.style.display = 'none';
+    }
+
+    function recordAnswer(index, value) {
+        currentExam.answers[index] = value;
+        saveSession();
+    }
+
+    function togglePause() {
+        isPaused = !isPaused;
+        const btn = document.getElementById('pause-btn');
+        const screen = document.getElementById('exam-screen');
+        const overlay = document.getElementById('paused-overlay');
+        
+        if (isPaused) {
+            btn.innerText = "▶ RESUME";
+            btn.style.background = "#dc3545";
+            screen.classList.add('exam-paused');
+            overlay.classList.remove('hidden');
+        } else {
+            btn.innerText = "II PAUSE";
+            btn.style.background = "rgba(255,255,255,0.2)";
+            screen.classList.remove('exam-paused');
+            overlay.classList.add('hidden');
+        }
+    }
+
+    function startTimer() {
+        const d = document.getElementById('timer');
+        clearInterval(timerInterval);
+        
+        const updateDisplay = () => {
+            const min = Math.floor(currentExam.remainingTime / 60).toString().padStart(2,'0');
+            const sec = (currentExam.remainingTime % 60).toString().padStart(2,'0');
+            d.innerText = `${min}:${sec}`;
+        };
+        
+        updateDisplay();
+        
+        timerInterval = setInterval(() => {
+            if (!isPaused) {
+                currentExam.remainingTime--;
+                updateDisplay();
+                if (currentExam.remainingTime % 2 === 0) saveSession();
+                if(currentExam.remainingTime <= 0) finishExam(); 
+            }
+        }, 1000);
+    }
+
+    function finishExam() {
+        if(!confirm("Submit Exam?")) return;
+        clearInterval(timerInterval);
+        localStorage.removeItem('casa_active_session');
+        
+        // Hide controls safely
+        const pauseBtn = document.getElementById('pause-btn');
+        if(pauseBtn) pauseBtn.classList.add('hidden');
+        
+        // FIX: Check for both possible ID names to prevent crash
+        const submitBtn = document.getElementById('submit-btn') || document.getElementById('submit-all-btn');
+        if(submitBtn) submitBtn.classList.add('hidden');
+
+        let score = 0;
+        let wrongList = [];
+
+        currentExam.questions.forEach((q, i) => {
+            const userAns = currentExam.answers[i]; 
+            const corr = q.correct;
+            
+            // FIX: Robust string comparison
+            // Converts numbers (50) and strings ("50") to same type before comparing
+            const isCorrect = (String(userAns) === String(corr));
+            
+            if(isCorrect) score++;
+            else if(userAns && userAns !== "___SKIPPED___") wrongList.push(`[${q.topic}] ${q.question}`);
+            
+            revealAnswer(i, corr, true);
+            
+            // Competency Update
+            const db = JSON.parse(localStorage.getItem('casa_mastery_v2') || '{}');
+            const sub = currentExam.subject;
+            const topic = q.topic || "General";
+            if(!db[sub]) db[sub] = {};
+            if(!db[sub][topic]) db[sub][topic] = 0;
+            if(isCorrect) db[sub][topic] = Math.min(10, db[sub][topic] + 1);
+            else db[sub][topic] = Math.max(0, db[sub][topic] - 2);
+            localStorage.setItem('casa_mastery_v2', JSON.stringify(db));
+        });
+
+        // Save Logs
+        const logs = JSON.parse(localStorage.getItem('casa_logs') || '{}');
+        if(!logs[currentExam.subject]) logs[currentExam.subject] = [];
+        const pct = Math.round((score / currentExam.questions.length) * 100);
+        logs[currentExam.subject].push({ 
+            date: new Date().toLocaleDateString(), 
+            pct: pct, 
+            mode: currentExam.isWeakness ? 'weakness' : 'practice' 
+        });
+        localStorage.setItem('casa_logs', JSON.stringify(logs));
+
+        // Show Results
+        const res = document.getElementById('result-area');
+        let color = pct >= 75 ? "var(--success)" : (pct >= 50 ? "var(--warning)" : "var(--danger)");
+        res.innerHTML = `<h1 style="color:${color}">${pct}%</h1><p>${score}/${currentExam.questions.length}</p>`;
+        res.classList.remove('hidden');
+        window.scrollTo(0,0);
+
+        if(wrongList.length > 0) getAIAdvice(currentExam.subject, wrongList);
+    }
+
+    function cancelExam() {
+        clearInterval(timerInterval);
+        localStorage.removeItem('casa_active_session');
+        location.reload();
+    }
+
+    // --- 6. GEMINI AI ---
+    async function getAIAdvice(subject, wrongList) {
+        const feedbackBox = document.getElementById('ai-feedback');
+        const apiKey = localStorage.getItem('gemini_api_key');
+        
+        if (!apiKey) {
+            logDebug("AI Call Aborted: Missing Config");
+            feedbackBox.innerHTML = "<strong>AI Tutor:</strong> Not configured. Click the 'Set AI Key' button at the top right to enable AI feedback.";
+            feedbackBox.classList.remove('hidden');
+            return;
+        }
+
+        feedbackBox.innerHTML = "<div class='ai-loading' style='color:var(--text-muted); font-style:italic;'>Analyzing mistakes...</div>";
+        feedbackBox.classList.remove('hidden');
+        logDebug("Sending request to Gemini...");
+
+        const finalPrompt = `You are a CASA Flight Instructor.
+The student has just failed specific questions in: ${subject}.
+Mistakes:
+${wrongList.join('\n')}
+
+Your Goal:
+1. Identify the 3 weakest concepts based on these errors.
+2. Provide a 1-sentence "rule of thumb" for each concept.
+3. End with an encouraging remark.
+
+Format: HTML (Bold, Bullet points). Keep it under 150 words.`;
+        const modelName = "gemini-2.5-flash-lite"; 
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contents: [{ parts: [{ text: finalPrompt }] }] })
+            });
+
+            if(!response.ok) {
+                const err = await response.json();
+                throw new Error(err.error.message);
+            }
+
+            const data = await response.json();
+            const rawText = data.candidates[0].content.parts[0].text;
+            const formattedText = rawText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*/g, '•').replace(/\n/g, '<br>');
+
+            feedbackBox.innerHTML = `<h3 style="color:var(--primary); margin-top:0;">AI Study Plan</h3>${formattedText}`;
+            logDebug("AI Success: Study plan generated.");
+
+        } catch (error) {
+            feedbackBox.innerHTML = `<strong>AI Error:</strong> ${error.message}`;
+            logDebug(`AI Failure: ${error.message}`, "#f00");
+        }
+    }
+
+    // --- 7. UTILS & DATA MGMT ---
+    let currentManagerMode = 'practice'; 
+    function openRecordManager(mode) {
+        currentManagerMode = mode;
+        const dbKey = mode === 'practice' ? 'casa_logs' : 'casa_official';
+        const db = getHistory(dbKey);
+        const list = document.getElementById('records-list');
+        document.getElementById('modal-title').innerText = mode === 'practice' ? "Manage Practice" : "Manage Official";
+        list.innerHTML = '';
+
+        if(Object.keys(db).length === 0) list.innerHTML = '<p style="text-align:center; color:#999; margin-top:20px;">No records found.</p>';
+        else {
+            Object.keys(db).forEach(subject => {
+                let html = `<div class="record-group"><div class="record-group-title">${subject}</div>`;
+                db[subject].forEach((entry, index) => {
+                    let color = entry.pct >= 75 ? '#28a745' : (entry.pct >= 50 ? '#ffc107' : '#dc3545');
+                    let tag = entry.mode === 'weakness' ? ' (Weakness)' : '';
+                    html += `
+                        <div class="record-item">
+                            <span>${entry.date}${tag}</span><span class="record-score" style="color:${color}">${entry.pct}%</span>
+                            <button class="btn-delete" onclick="deleteRecord('${subject}', ${index})">✕</button>
+                        </div>`;
+                });
+                html += `</div>`;
+                list.innerHTML += html;
+            });
+        }
+        document.getElementById('records-modal').classList.remove('hidden');
+    }
+    function closeRecordManager() { document.getElementById('records-modal').classList.add('hidden'); }
+    function deleteRecord(subject, index) {
+        const dbKey = currentManagerMode === 'practice' ? 'casa_logs' : 'casa_official';
+        const db = getHistory(dbKey);
+        if (db[subject]) {
+            db[subject].splice(index, 1);
+            if (db[subject].length === 0) delete db[subject];
+            localStorage.setItem(dbKey, JSON.stringify(db));
+            openRecordManager(currentManagerMode); 
+            if(currentManagerMode === 'practice') { renderPracticeGraph(); renderSubjects(); }
+            else renderOfficialGraph();
+        }
+    }
+
+    function resetSubjectCompetency(event, subject) {
+        event.stopPropagation();
+        if(confirm(`Reset all progress for ${subject}?`)) {
+            const db = JSON.parse(localStorage.getItem('casa_mastery_v2') || '{}');
+            delete db[subject];
+            localStorage.setItem('casa_mastery_v2', JSON.stringify(db));
+            renderCompetencyMatrix();
+        }
+    }
+
+    function updateCompetency(subjectName, topic, isCorrect) {
+        if(!topic) topic = "General Knowledge"; 
+        const db = JSON.parse(localStorage.getItem('casa_mastery_v2') || '{}');
+        if (!db[subjectName]) db[subjectName] = {};
+        if (!db[subjectName][topic]) db[subjectName][topic] = 0;
+        if (isCorrect) db[subjectName][topic] = Math.min(10, db[subjectName][topic] + 1);
+        else db[subjectName][topic] = Math.max(0, db[subjectName][topic] - 2);
+        localStorage.setItem('casa_mastery_v2', JSON.stringify(db));
+    }
+
+    function expandAll() { document.querySelectorAll('.comp-subject-block').forEach(el => el.classList.remove('collapsed')); }
+    function collapseAll() { document.querySelectorAll('.comp-subject-block').forEach(el => el.classList.add('collapsed')); }
+    function toggleSubject(header) { header.parentElement.classList.toggle('collapsed'); }
+    
+    function renderCompetencyMatrix() {
+        const db = JSON.parse(localStorage.getItem('casa_mastery_v2') || '{}');
+        const container = document.getElementById('competency-container');
+        container.innerHTML = '';
+        
+        const subjects = Object.keys(SYLLABUS_MAP).length > 0 ? Object.keys(SYLLABUS_MAP) : Object.keys(db);
+
+        if (subjects.length === 0) { 
+            container.innerHTML = '<p style="font-style:italic; color:#999; text-align:center;">No competency data yet.</p>'; return; 
+        }
+
+        subjects.sort().forEach(subject => {
+            const userTopics = db[subject] || {};
+            const knownTopics = SYLLABUS_MAP[subject] || [];
+            const allTopics = Array.from(new Set([...knownTopics, ...Object.keys(userTopics)])).sort();
+
+            let rowsHtml = '';
+            
+            if(allTopics.length === 0) {
+                rowsHtml = '<div class="topic-row" style="color:#999;font-style:italic;font-size:0.8rem;">No topics detected in module.</div>';
+            } else {
+                allTopics.forEach(topic => {
+                    const score = userTopics[topic] || 0;
+                    const pct = (score / 10) * 100;
+                    
+                    let barColor = "#eee";
+                    if (score > 0) {
+                        barColor = score >= 8 ? "#28a745" : (score >= 5 ? "#ffc107" : "#dc3545");
+                    }
+                    
+                    rowsHtml += `
+                        <div class="topic-row">
+                            <div class="topic-name">${topic}</div>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: ${score > 0 ? pct : 100}%; background: ${barColor};"></div>
+                            </div>
+                            <div class="topic-score">${score}/10</div>
+                        </div>`;
+                });
+            }
+
+            container.innerHTML += `
+                <div class="comp-subject-block collapsed">
+                    <div class="comp-subject-header" onclick="toggleSubject(this)">
+                        <div class="comp-subject-title">${subject}</div>
+                        <div class="comp-header-right">
+                            <button class="btn-reset-subject" onclick="resetSubjectCompetency(event, '${subject}')" title="Reset Subject">↺</button>
+                            <div class="comp-toggle-icon">▼</div>
+                        </div>
+                    </div>
+                    <div class="comp-subject-content">${rowsHtml}</div>
+                </div>`;
+        });
+    }
+
+    function getHistory(key) { return JSON.parse(localStorage.getItem(key) || '{}'); }
+    
+    // --- UPDATED SAVE FUNCTION ---
+    function savePracticeScore(sub, s, t, mode = 'practice') {
+        const db = getHistory('casa_logs');
+        if(!db[sub]) db[sub] = [];
+        db[sub].push({ date: new Date().toLocaleDateString(), pct: Math.round((s/t)*100), mode: mode });
+        localStorage.setItem('casa_logs', JSON.stringify(db));
+    }
+    
+    function clearData(key) { if(confirm("Clear this data?")) { localStorage.removeItem(key); location.reload(); } }
+    
+    function populateOfficialDropdown() {
+        const sel = document.getElementById('off-subject');
+        Object.keys(SUBJECT_DB).forEach(k => {
+            const opt = document.createElement('option');
+            opt.value = k; opt.innerText = k;
+            sel.appendChild(opt);
+        });
+    }
+    function addOfficialResult() {
+        const sub = document.getElementById('off-subject').value;
+        const score = document.getElementById('off-score').value;
+        const date = document.getElementById('off-date').value || new Date().toLocaleDateString();
+        if(sub === "Select Module..." || score === "") { alert("Please select module and score"); return; }
+        const db = getHistory('casa_official');
+        if(!db[sub]) db[sub] = [];
+        db[sub].push({ date: date, pct: parseInt(score) });
+        localStorage.setItem('casa_official', JSON.stringify(db));
+        document.getElementById('off-score').value = '';
+        renderOfficialGraph();
+    }
+
+    // --- GRAPH MEMORY LOGIC ---
+    function toggleGraphLine(subject, isChecked) {
+        const db = JSON.parse(localStorage.getItem('casa_graph_toggles') || '{}');
+        db[subject] = isChecked;
+        localStorage.setItem('casa_graph_toggles', JSON.stringify(db));
+        renderPracticeGraph();
+    }
+
+    // --- UPDATED GRAPH RENDERER (OPTION 2: Separate Points) ---
+    function renderPracticeGraph() {
+        const db = getHistory('casa_logs');
+        const togglesDB = JSON.parse(localStorage.getItem('casa_graph_toggles') || '{}');
+        
+        const canvas = document.getElementById('scoreGraph');
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr; canvas.height = 300 * dpr;
+        ctx.scale(dpr, dpr);
+        const W = rect.width; const H = 300; const pad = 40;
+        ctx.clearRect(0,0,W,H);
+        
+        ctx.strokeStyle = '#eee'; ctx.fillStyle = '#888'; ctx.textAlign = 'right';
+        for(let p=0; p<=100; p+=25) {
+            const y = H - pad - ((p/100) * (H - 2*pad));
+            ctx.beginPath(); ctx.moveTo(pad, y); ctx.lineTo(W - pad, y); ctx.stroke(); ctx.fillText(p + "%", pad - 5, y + 4);
+        }
+        
+        const y50 = H - pad - (0.5 * (H - 2*pad));
+        const y75 = H - pad - (0.75 * (H - 2*pad));
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.strokeStyle = '#dc3545'; ctx.moveTo(pad, y50); ctx.lineTo(W - pad, y50); ctx.stroke();
+        ctx.beginPath(); ctx.strokeStyle = '#28a745'; ctx.moveTo(pad, y75); ctx.lineTo(W - pad, y75); ctx.stroke();
+        ctx.setLineDash([]);
+        
+        const colors=['#007bff','#dc3545','#6610f2','#fd7e14','#17a2b8'];
+        const controls = document.getElementById('graph-toggles');
+        
+        if(controls && controls.innerHTML === '') {
+            Object.keys(db).forEach((k,i) => {
+                const isChecked = togglesDB[k] !== false; 
+                controls.innerHTML += `
+                    <label class="toggle-item">
+                        <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleGraphLine('${k}', this.checked)"> 
+                        <span style="color:${colors[i%5]}; font-size:1.2rem; margin:0 5px;">●</span> ${k}
+                    </label>`;
+            });
+        }
+
+        Object.keys(db).forEach((sub, i) => {
+            if (togglesDB[sub] !== false) { 
+                const data = db[sub];
+                const col = colors[i%5];
+                
+                // 1. Draw Lines (Practice Only)
+                // Filter first, but keep indexes aligned if possible? No, simply filter.
+                // We map original index to keep x-axis consistency if we wanted, 
+                // but Option 2 usually implies independent timelines or shared.
+                // Let's assume shared timeline: x-axis is just sequential attempt #.
+                
+                ctx.beginPath(); ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 2;
+                const step = (W - 2*pad) / (data.length > 1 ? data.length-1 : 1);
+                
+                let firstLinePoint = true;
+                
+                data.forEach((pt,j)=>{
+                    const x = data.length > 1 ? pad + (j*step) : W/2;
+                    const y = H - pad - ((pt.pct/100)*(H - 2*pad));
+
+                    if (pt.mode === 'weakness') {
+                        // Draw Hollow Square for Weakness (No Line Connection)
+                        // Do not moveTo/lineTo here. Just draw the shape later.
+                    } else {
+                        // Practice Mode: Connect lines
+                        if (firstLinePoint) {
+                            ctx.moveTo(x,y);
+                            firstLinePoint = false;
+                        } else {
+                            ctx.lineTo(x,y);
+                        }
+                    }
+                });
+                ctx.stroke();
+
+                // 2. Draw Points
+                data.forEach((pt,j)=>{
+                    const x = data.length > 1 ? pad + (j*step) : W/2;
+                    const y = H - pad - ((pt.pct/100)*(H - 2*pad));
+                    
+                    ctx.beginPath();
+                    if (pt.mode === 'weakness') {
+                         ctx.strokeStyle = col; ctx.lineWidth = 2;
+                         ctx.rect(x-4, y-4, 8, 8); // Hollow Square
+                         ctx.stroke();
+                    } else {
+                         ctx.fillStyle = col; 
+                         ctx.arc(x, y, 4, 0, Math.PI*2); // Filled Circle
+                         ctx.fill();
+                    }
+                });
+            }
+        });
+    }
+
+    function renderOfficialGraph() {
+        const db = getHistory('casa_official');
+        const canvas = document.getElementById('officialGraph');
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr; canvas.height = 250 * dpr;
+        ctx.scale(dpr, dpr);
+        const W = rect.width; const H = 250;
+        ctx.clearRect(0,0,W,H);
+
+        const zoneH = H - 30;
+        ctx.fillStyle = "rgba(220, 53, 69, 0.1)"; ctx.fillRect(0, 0, W * 0.5, zoneH);
+        ctx.fillStyle = "rgba(255, 193, 7, 0.15)"; ctx.fillRect(W * 0.5, 0, W * 0.25, zoneH);
+        ctx.fillStyle = "rgba(40, 167, 69, 0.1)"; ctx.fillRect(W * 0.75, 0, W * 0.25, zoneH);
+
+        ctx.fillStyle = "#666"; ctx.font = "bold 12px sans-serif"; ctx.textAlign = "center";
+        ctx.fillText("FAIL (Retake)", W * 0.25, zoneH - 10);
+        ctx.fillText("BASIC (Retake)", W * 0.625, zoneH - 10);
+        ctx.fillText("COMPLETE", W * 0.875, zoneH - 10);
+
+        const subjects = Object.keys(db);
+        if(subjects.length === 0) { ctx.fillStyle = "#999"; ctx.fillText("No official results recorded yet.", W/2, H/2); return; }
+
+        const barHeight = 40; const gap = 15; let yPos = 20;
+        subjects.forEach(sub => {
+            const attempts = db[sub];
+            const latest = attempts[attempts.length - 1];
+            const pct = latest.pct;
+            const barW = (pct / 100) * W;
+            let fill = "#dc3545"; if(pct >= 75) fill = "#28a745"; else if(pct >= 50) fill = "#ffc107";
+
+            ctx.fillStyle = fill; ctx.fillRect(0, yPos, barW, barHeight);
+            ctx.fillStyle = "#000"; ctx.textAlign = "left"; ctx.font = "14px sans-serif";
+            ctx.fillText(`${sub}: ${pct}%`, 10, yPos + 25);
+            ctx.textAlign = "right";
+            let status = "FAIL"; if(pct >= 75) status = "COMPLETE"; else if(pct >= 50) status = "RETAKE";
+            ctx.fillStyle = "rgba(0,0,0,0.6)"; ctx.fillText(status, barW - 10, yPos + 25);
+            yPos += barHeight + gap;
+        });
+    }
+
+    function exportCSV() {
+        const db = getHistory('casa_logs');
+        let csv = "Subject,Date,Percent\n";
+        for(let s in db) db[s].forEach(r => csv += `"${s}","${r.date}",${r.pct}%\n`);
+        const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'})); a.download = 'casa_logs.csv'; a.click();
+    }
+</script>
+</body>
+</html>

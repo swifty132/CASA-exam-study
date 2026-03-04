@@ -507,28 +507,42 @@
         if (!dateStr) return { text: "Set Goal Date", class: "gap-neutral" };
 
         const latest = logs[logs.length - 1].pct;
-        const target = 75;
+        const target = 75; // Target pass mark
         const gap = target - latest;
 
-        if (gap <= 0) return { text: "✅ Ready to Exam", class: "gap-good" };
-
+        // Normalize dates to midnight to ensure accurate day counting
         const due = new Date(dateStr);
+        due.setHours(0, 0, 0, 0);
+        
         const today = new Date();
-        const diffTime = due - today;
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        today.setHours(0, 0, 0, 0);
 
-        if (diffDays <= 0) return { text: "🚨 Overdue!", class: "gap-bad" };
+        const diffTime = due.getTime() - today.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 3600 * 24));
+
+        // STATE 1: Exam Date has passed (Hide the % pace, show completion)
+        if (diffDays < 0) {
+            return { text: "✨ Exam Complete!", class: "gap-good" };
+        }
+        
+        // STATE 2: Exam is today
+        if (diffDays === 0) {
+            return { text: "⚠️ Exam is TODAY!", class: "gap-bad" };
+        }
+
+        // STATE 3: Future Date (Calculate standard improvement % or maintain status)
+        if (gap <= 0) {
+            return { text: `✅ Target Reached! (Maintain for ${diffDays}d)`, class: "gap-good" };
+        }
 
         // Calculate pace per DAY
         const pace = (gap / diffDays).toFixed(1);
 
         // Thresholds adjusted for Daily:
-        // > 1.5% per day (approx 10% / week) is Hard
-        // > 0.7% per day (approx 5% / week) is Moderate
         if (pace > 1.5) return { text: `🔥 Need +${pace}% / day`, class: "gap-bad" };
-        if (pace > 0.7) return { text: `⚠ Need +${pace}% / day`, class: "gap-ok" };
+        if (pace > 0.7) return { text: `⚠️ Need +${pace}% / day`, class: "gap-ok" };
         
-        return { text: `📉 Need +${pace}% / day`, class: "gap-good" };
+        return { text: `📈 Need +${pace}% / day`, class: "gap-good" };
     }
 
     // --- 3. EXAM RENDER (Combined Pacer + Actions) ---

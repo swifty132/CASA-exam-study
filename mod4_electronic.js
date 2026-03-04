@@ -2119,7 +2119,7 @@ const electronicGenerators = [
 if (typeof registerModule !== 'undefined') {
     registerModule(
         "Module 4: Electronic Fundamentals",
-        50, // Standard exam length
+        40, // Standard exam length
         function(count) {
             // Shuffle the pool
             const pool = [...electronicGenerators];

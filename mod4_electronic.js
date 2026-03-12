@@ -3081,6 +3081,829 @@ const electronicGenerators = [
             options: ["It pushes the amplifier into saturation faster", "It makes the circuit act as an oscillator", "It narrows the frequency bandwidth"],
             correct: "It significantly improves stability, widens the bandwidth, and reduces signal distortion"
             };
+        },
+            // --- BATCH GENERATED FROM CSV ---
+
+    () => {
+        return {
+            topic: "Printed Circuit Boards",
+            question: "In multi-layer Printed Circuit Board (PCB) construction, what is the specific definition of a 'buried via'?",
+            options: ["A hole connecting an outer layer to an inner layer", "A hole that passes completely through the board but is filled with solder", "An unplated hole used only for mechanical mounting"],
+            correct: "A conductive connection completely enclosed between inner layers, invisible from the outside"
+            };
+        },
+            () => {
+        return {
+            topic: "Printed Circuit Boards",
+            question: "What is the primary function of the green 'solder mask' applied to the surface of a PCB?",
+            options: ["To increase the thermal dissipation of the copper tracks", "To label component locations and polarity", "To act as a dielectric for built-in capacitors"],
+            correct: "To protect the tracks from oxidation and prevent solder bridging during assembly"
+            };
+        },
+            () => {
+        return {
+            topic: "Printed Circuit Boards",
+            question: "Why is a clear conformal coating commonly applied to finished aircraft avionics PCBs?",
+            options: ["To improve the aesthetic appearance of the board", "To shield the sensitive logic gates from Electromagnetic Interference (EMI)", "To increase the physical strength and rigidity of the board"],
+            correct: "To prevent moisture, dust, and chemical contamination from causing short circuits"
+            };
+        },
+            () => {
+        return {
+            topic: "Printed Circuit Boards",
+            question: "Compared to traditional Through-Hole Technology (THT), what is a major manufacturing advantage of Surface Mount Technology (SMT)?",
+            options: ["Components are highly resistant to extreme mechanical shock", "The components use significantly higher operating voltages", "They require less specialized equipment to solder manually"],
+            correct: "It drastically increases component density and reduces the board's physical footprint"
+            };
+        },
+            () => {
+        return {
+            topic: "Printed Circuit Boards",
+            question: "When inspecting an avionics PCB, what does a 'blind via' do?",
+            options: ["Connects two inner layers only", "Passes entirely through the board", "Acts as a test point for maintenance"],
+            correct: "Connects an outer surface layer to one or more inner layers without passing completely through the board"
+            };
+        },
+            () => {
+        return {
+            topic: "Integrated Circuits",
+            question: "What does the acronym 'VLSI' stand for in the context of Integrated Circuits?",
+            options: ["Very Low Signal Interference", "Variable Logic System Interface", "Voltage Limited Silicon Insulator"],
+            correct: "Very Large Scale Integration"
+            };
+        },
+            () => {
+        return {
+            topic: "Integrated Circuits",
+            question: "Which logic family is known for its extremely low power consumption, making it ideal for modern battery-powered avionics?",
+            options: ["TTL (Transistor-Transistor Logic)", "ECL (Emitter-Coupled Logic)", "RTL (Resistor-Transistor Logic)"],
+            correct: "CMOS (Complementary Metal-Oxide-Semiconductor)"
+            };
+        },
+            () => {
+        return {
+            topic: "Integrated Circuits",
+            question: "What is the fundamental difference between a linear (analog) IC and a digital IC?",
+            options: ["Linear ICs operate only on 5V, digital ICs operate on 28V", "Linear ICs use only resistors, digital ICs use only transistors", "Linear ICs process discrete binary states, digital ICs process continuous ranges"],
+            correct: "Linear ICs process continuous varying signals, digital ICs operate on discrete ON/OFF states"
+            };
+        },
+            () => {
+        return {
+            topic: "Integrated Circuits",
+            question: "Which of the following is considered a primary advantage of using Integrated Circuits over discrete component circuits in aircraft systems?",
+            options: ["Ability to handle massive current loads", "Easier to repair individual transistors", "Immunity to all heat damage"],
+            correct: "Massive improvements in reliability due to the reduction of external interconnects"
+            };
+        },
+            () => {
+        return {
+            topic: "Integrated Circuits",
+            question: "A typical operational amplifier (Op-Amp) packaged in a standard 8-pin DIP is classified as what type of Integrated Circuit?",
+            options: ["Digital IC", "Hybrid IC", "Microprocessor IC"],
+            correct: "Linear IC"
+            };
+        },
+            () => {
+        return {
+            topic: "Operational Amplifiers",
+            question: "An ideal operational amplifier possesses which of the following characteristics?",
+            options: ["Zero input impedance, zero output impedance", "Infinite input impedance, infinite output impedance", "Zero input impedance, infinite bandwidth"],
+            correct: "Infinite input impedance, zero output impedance, and infinite open-loop gain"
+            };
+        },
+            () => {
+        return {
+            topic: "Operational Amplifiers",
+            question: "Refer to the provided schematic. Based on the presence of the capacitor in the feedback loop, what specific mathematical operation does this circuit perform on the input signal?",
+            img: "opamp_integrator.png",
+            options: ["Differentiation", "Addition", "Multiplication"],
+            correct: "Integration"
+            };
+        },
+            () => {
+        return {
+            topic: "Operational Amplifiers",
+            question: "Refer to the provided schematic. A capacitor is placed at the input, with a resistor in the feedback loop. What is this circuit called?",
+            img: "opamp_differentiator.png",
+            options: ["Integrator", "Voltage Follower", "Comparator"],
+            correct: "Differentiator"
+            };
+        },
+            () => {
+        return {
+            topic: "Operational Amplifiers",
+            question: "What is the primary reason negative feedback is applied to an operational amplifier circuit?",
+            options: ["To force the amplifier into saturation", "To increase the overall open-loop gain to infinity", "To cause the amplifier to oscillate and generate a sine wave"],
+            correct: "To drastically reduce distortion and stabilize the precise voltage gain"
+            };
+        },
+            () => {
+        return {
+            topic: "Operational Amplifiers",
+            question: "If an operational amplifier is configured as a Voltage Follower (Buffer), the output is connected directly to the inverting input. What is the voltage gain?",
+            options: ["Infinite", "Zero", "Dependent on the load resistor"],
+            correct: "Exactly 1 (Unity Gain)"
+            };
+        },
+            () => {
+        return {
+            topic: "Operational Amplifiers",
+            question: "The term 'Common-Mode Rejection Ratio' (CMRR) refers to an Op-Amp's ability to do what?",
+            options: ["Amplify differences in frequency", "Reject input signals that exceed the supply voltage", "Amplify common DC bias voltages"],
+            correct: "Reject identical noise signals that appear simultaneously on both the inverting and non-inverting inputs"
+            };
+        },
+            () => {
+        return {
+            topic: "Filters",
+            question: "Refer to the provided schematic. In this Active High-Pass Filter, what blocks the low-frequency signals from reaching the non-inverting input of the Op-Amp?",
+            img: "mod4/active_highpass.png",
+            options: ["The feedback loop", "The load resistor", "The ground connection"],
+            correct: "The series input capacitor"
+            };
+        },
+            () => {
+        return {
+            topic: "Filters",
+            question: "What distinguishes an 'Active' filter from a 'Passive' filter?",
+            options: ["Active filters only use inductors", "Active filters can only block high frequencies", "Active filters do not require a power supply"],
+            correct: "Active filters utilize amplifying components (like Op-Amps) which can provide voltage gain"
+            };
+        },
+            () => {
+        return {
+            topic: "Amplifiers",
+            question: "Refer to the provided schematic. This push-pull amplifier setup uses an NPN and a PNP transistor. What class of amplifier operation does this typically represent if not specially biased?",
+            img: "push_pull.png",
+            options: ["Class A", "Class C", "Class D"],
+            correct: "Class B"
+            };
+        },
+            () => {
+        return {
+            topic: "Amplifiers",
+            question: "In a pure Class B push-pull amplifier, what causes 'crossover distortion'?",
+            options: ["The coupling capacitor blocking low frequencies", "The power supply voltage being too high", "The input frequency exceeding the transistor's bandwidth"],
+            correct: "The brief period where the input signal is too low to forward-bias either transistor's base-emitter junction"
+            };
+        },
+            () => {
+        return {
+            topic: "Amplifiers",
+            question: "To eliminate crossover distortion, push-pull amplifiers are often biased into 'Class AB'. How does this fix the problem?",
+            options: ["By applying a massive reverse-bias to both bases", "By replacing the transistors with Op-Amps", "By lowering the supply voltage"],
+            correct: "By applying a slight forward DC bias so both transistors are lightly conducting at the crossover point"
+            };
+        },
+            () => {
+        return {
+            topic: "Amplifiers",
+            question: "Which class of amplifier achieves the highest theoretical efficiency but suffers from the worst fidelity, making it suitable only for tuned RF circuits?",
+            options: ["Class A", "Class B", "Class AB"],
+            correct: "Class C"
+            };
+        },
+            () => {
+        return {
+            topic: "Amplifiers",
+            question: "An amplifier biased fully into Class A operation conducts for what portion of the input signal cycle?",
+            options: ["90 degrees", "180 degrees", "270 degrees"],
+            correct: "360 degrees (the entire cycle)"
+            };
+        },
+            () => {
+        return {
+            topic: "Amplifier Coupling",
+            question: "Refer to the provided schematic. In this direct-coupled configuration, what is the major operational risk?",
+            img: "mod4/direct_coupling.png",
+            options: ["It cannot amplify DC signals", "It introduces severe phase shifts", "It causes high-frequency attenuation"],
+            correct: "Any DC drift or thermal instability in Q1 is immediately amplified by Q2"
+            };
+        },
+            () => {
+        return {
+            topic: "Amplifier Coupling",
+            question: "Which method of interstage amplifier coupling provides excellent impedance matching and electrical isolation, but is heavy, bulky, and has poor high-frequency response?",
+            options: ["RC coupling", "Direct coupling", "Optical coupling"],
+            correct: "Transformer coupling"
+            };
+        },
+            () => {
+        return {
+            topic: "Amplifier Coupling",
+            question: "In an RC-coupled amplifier, what causes the voltage gain to drop off significantly at very low frequencies?",
+            options: ["The resistance of the load decreasing", "The transistors overheating", "The supply voltage fluctuating"],
+            correct: "The capacitive reactance of the coupling capacitor becoming excessively high"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "Refer to the provided schematic. A Darlington Pair connects the emitter of Q1 directly to the base of Q2. What is the primary advantage of this configuration?",
+            img: "mod4/darlington_pair.png",
+            options: ["It acts as a high-frequency oscillator", "It provides a massive voltage gain", "It perfectly regulates the supply voltage"],
+            correct: "It acts as a single transistor with an extremely high current gain (Beta 1 x Beta 2)"
+            };
+        },
+            () => {
+        return {
+            topic: "Servomechanisms",
+            question: "In an aircraft's automatic flight control system, what is the defining feature of a 'closed-loop' servomechanism?",
+            options: ["It operates strictly on mechanical linkages", "It has no power supply", "It requires a pilot to manually close the control loop"],
+            correct: "It utilizes a feedback signal to continuously correct errors between the desired and actual positions"
+            };
+        },
+            () => {
+        return {
+            topic: "Servomechanisms",
+            question: "In a servomechanism, the 'null' position is defined as the point where:",
+            options: ["The motor spins at maximum RPM", "The system blows a fuse", "The feedback signal is totally lost"],
+            correct: "The error signal is zero, meaning the output has perfectly matched the input command"
+            };
+        },
+            () => {
+        return {
+            topic: "Servomechanisms",
+            question: "What phenomenon occurs if a servo system's gain is set too high, causing the control surface to repeatedly overshoot the commanded position in both directions?",
+            options: ["Deadbanding", "Damping", "Stalling"],
+            correct: "Hunting (Oscillation)"
+            };
+        },
+            () => {
+        return {
+            topic: "Servomechanisms",
+            question: "To counteract hunting, 'velocity feedback' is introduced into the servo loop. What component is typically attached to the servomotor shaft to generate this damping signal?",
+            options: ["A synchro receiver", "An LVDT", "A control transformer"],
+            correct: "A tachogenerator"
+            };
+        },
+            () => {
+        return {
+            topic: "Servomechanisms",
+            question: "What is viscous damping in a servomechanism?",
+            options: ["Using electrical feedback to slow the motor", "Using a capacitor to smooth the error signal", "Using a step-down transformer"],
+            correct: "Using physical friction (like an oil dashpot or eddy currents) to absorb excess energy and prevent overshooting"
+            };
+        },
+            () => {
+        return {
+            topic: "Servomechanisms",
+            question: "The 'deadband' of an actuator or servo system refers to:",
+            options: ["The absolute limit of physical travel", "The complete loss of electrical power", "A catastrophic failure of the servomotor"],
+            correct: "A small range of error signals around the null point that are insufficient to overcome system friction and cause movement"
+            };
+        },
+            () => {
+        return {
+            topic: "Sensors & Transducers",
+            question: "An E-I bar transducer is often used to measure small physical displacements. How does it work?",
+            options: ["By varying the resistance of the E-core", "By varying the capacitance between the bar and the core", "By measuring the heat generated by the movement"],
+            correct: "By moving the I-bar to vary the magnetic reluctance, changing the inductance of the coils on the E-core"
+            };
+        },
+            () => {
+        return {
+            topic: "Sensors & Transducers",
+            question: "A Linear Variable Differential Transformer (LVDT) contains one primary winding and two secondary windings. How are the two secondary windings electrically connected?",
+            options: ["In parallel", "In series-aiding", "To completely separate circuits"],
+            correct: "In series-opposition"
+            };
+        },
+            () => {
+        return {
+            topic: "Synchros",
+            question: "What is the primary function of a basic Torque Synchro system in an aircraft?",
+            options: ["To act as an autopilot actuator", "To step up AC voltages", "To convert DC to AC"],
+            correct: "To transmit angular position information mechanically over electrical wires to a remote indicator"
+            };
+        },
+            () => {
+        return {
+            topic: "Synchros",
+            question: "In a standard Synchro Transmitter (TX), the 400Hz AC excitation voltage is applied directly to the:",
+            options: ["Stator S1", "Stator S2", "Stator S3"],
+            correct: "Rotor (R1 and R2)"
+            };
+        },
+            () => {
+        return {
+            topic: "Synchros",
+            question: "What happens in a basic Synchro Transmitter/Receiver system when both rotors are at the exact same physical angle (the null position)?",
+            options: ["Maximum current flows through the stators", "The receiver motor spins continuously", "The transmitter fuse blows"],
+            correct: "The induced voltages in the stators are equal and opposite, resulting in zero stator current"
+            };
+        },
+            () => {
+        return {
+            topic: "Synchros",
+            question: "During maintenance, a technician accidentally swaps the S1 and S3 stator wires between a Synchro Transmitter and Receiver. What will be the operational result?",
+            options: ["The receiver will lock at the 180-degree position", "The receiver will not move at all", "The receiver will oscillate continuously"],
+            correct: "The receiver will rotate in the opposite direction to the transmitter"
+            };
+        },
+            () => {
+        return {
+            topic: "Synchros",
+            question: "If the R1 and R2 rotor excitation leads on a Synchro Receiver are accidentally reversed, what will the indicator do?",
+            options: ["Rotate in the opposite direction", "Hunt back and forth", "Blow the AC circuit breaker"],
+            correct: "Track in the correct direction, but with a constant 180-degree error"
+            };
+        },
+            () => {
+        return {
+            topic: "Synchros",
+            question: "A Synchro Control Transformer (CT) is used to output an electrical error signal rather than physical torque. When the CT is at the 'null' position, what is the physical angle between its rotor and the stator's magnetic field?",
+            options: ["0 degrees (Parallel)", "45 degrees", "180 degrees"],
+            correct: "90 degrees (Perpendicular)"
+            };
+        },
+            () => {
+        return {
+            topic: "Synchros",
+            question: "Which specific synchro component allows you to feed in two distinct mechanical inputs (one via the rotor, one via the stator) and outputs the sum or difference electrically?",
+            options: ["Control Transformer (CT)", "Resolver", "Tachogenerator"],
+            correct: "Torque Differential Transmitter (TDX)"
+            };
+        },
+            () => {
+        return {
+            topic: "Resolvers",
+            question: "How does the physical stator arrangement of a Resolver differ from a standard Synchro?",
+            options: ["Resolvers have three stators spaced 120 degrees apart", "Resolvers use solid permanent magnets for stators", "Resolvers only have one single stator winding"],
+            correct: "Resolvers have two stator windings positioned precisely 90 degrees apart"
+            };
+        },
+            () => {
+        return {
+            topic: "Resolvers",
+            question: "Because of their 90-degree internal geometry, the two electrical outputs of a resolver represent which trigonometric functions of the rotor angle?",
+            options: ["Tangent and Cotangent", "Secant and Cosecant", "Positive and Negative"],
+            correct: "Sine and Cosine"
+            };
+        },
+            () => {
+        return {
+            topic: "Resolvers",
+            question: "Many modern aircraft utilize 'brushless' resolvers to increase reliability and reduce maintenance. How is the AC excitation voltage transferred to the spinning rotor?",
+            options: ["Via optical infrared links", "Via physical slip rings", "Via a direct, highly flexible wire harness"],
+            correct: "Via a rotary transformer (inductive coupling)"
+            };
+        },
+            () => {
+        return {
+            topic: "Resolvers",
+            question: "The analog sine and cosine signals output by a resolver are typically fed into what specific avionics component to be processed by the aircraft's digital computers?",
+            options: ["A Tachogenerator", "A Push-Pull Amplifier", "An Op-Amp Integrator"],
+            correct: "A Resolver-to-Digital (R/D) Converter"
+            };
+        },
+            () => {
+        return {
+            topic: "Servomechanisms",
+            question: "In an Automatic Direction Finder (ADF) system, what drives the indicator pointer to null out the error signal and point towards the transmitting antenna?",
+            options: ["A tachogenerator", "A stepper motor", "A synchro differential"],
+            correct: "A servo motor"
+            };
+        },
+            () => {
+        return {
+            topic: "Integrated Circuits",
+            question: "What packaging term describes an IC where the connection pins extend straight down in two parallel rows?",
+            options: ["Surface Mount Package (SMP)", "Quad Flat Package (QFP)", "Pin Grid Array (PGA)"],
+            correct: "Dual In-Line Package (DIP)"
+            };
+        },
+            () => {
+        return {
+            topic: "Digital Logic",
+            question: "If an AND gate has three inputs (A, B, and C), what condition must be met for the output to be HIGH (1)?",
+            options: ["Any one input must be HIGH", "Any two inputs must be HIGH", "All inputs must be LOW"],
+            correct: "All three inputs must be HIGH simultaneously"
+            };
+        },
+            () => {
+        return {
+            topic: "Digital Logic",
+            question: "An inverter (NOT gate) is commonly used to reverse the state of a digital signal. According to Boolean algebra, an AND gate followed by an inverter is functionally identical to a:",
+            options: ["NOR gate", "XOR gate", "OR gate"],
+            correct: "NAND gate"
+            };
+        },
+            // --- BATCH GENERATED FROM CSV ---
+
+    () => {
+        return {
+            topic: "Semiconductors",
+            question: "What term is used to describe a pure semiconductor material with no added impurities?",
+            options: ["Extrinsic", "Compound", "Isotopic"],
+            correct: "Intrinsic"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "At absolute zero (-273°C), how does a pure silicon crystal behave electrically?",
+            options: ["As a perfect superconductor", "As a typical semiconductor", "As a low-value resistor"],
+            correct: "As a perfect insulator"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "In a pure silicon crystal, each atom shares its valence electrons with neighboring atoms to form a stable lattice. What are these bonds called?",
+            options: ["Ionic bonds", "Metallic bonds", "Nuclear bonds"],
+            correct: "Covalent bonds"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "What is the process of intentionally adding specific impurities to a pure semiconductor to increase its conductivity?",
+            options: ["Ionization", "Saturation", "Rectification"],
+            correct: "Doping"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "To create an N-type semiconductor, pure silicon must be doped with a pentavalent element. Which of the following is a pentavalent element?",
+            options: ["Boron", "Indium", "Gallium"],
+            correct: "Arsenic"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "To create a P-type semiconductor, pure silicon must be doped with a trivalent element. Which of the following is a trivalent element?",
+            options: ["Phosphorus", "Antimony", "Bismuth"],
+            correct: "Indium"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "In an N-type semiconductor material, what are the majority charge carriers?",
+            options: ["Holes", "Positive ions", "Protons"],
+            correct: "Electrons"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "In a P-type semiconductor material, what are the minority charge carriers?",
+            options: ["Holes", "Positive ions", "Protons"],
+            correct: "Electrons"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "When a P-N junction is formed, electrons and holes combine at the boundary, leaving behind charged ions. What is this region called?",
+            options: ["The saturation zone", "The active channel", "The avalanche zone"],
+            correct: "The depletion region"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "What happens to the width of the depletion region in a P-N junction when it is forward-biased?",
+            options: ["It widens significantly", "It remains completely unchanged", "It reverses its polarity"],
+            correct: "It narrows and allows current to flow"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "What is the approximate internal barrier potential (voltage drop) of a standard Silicon P-N junction at room temperature?",
+            options: ["0.3V", "1.2V", "0.1V"],
+            correct: "0.7V"
+            };
+        },
+            () => {
+        return {
+            topic: "Semiconductors",
+            question: "When a diode is reverse-biased, a tiny amount of current still flows across the junction. This 'leakage current' is highly dependent on:",
+            options: ["The physical size of the diode casing", "The frequency of the power supply", "The brightness of ambient light"],
+            correct: "The ambient temperature"
+            };
+        },
+            () => {
+        return {
+            topic: "Power Supplies",
+            question: "In a basic half-wave rectifier circuit supplied with 50Hz AC, what is the ripple frequency of the output?",
+            options: ["100Hz", "25Hz", "200Hz"],
+            correct: "50Hz"
+            };
+        },
+            () => {
+        return {
+            topic: "Power Supplies",
+            question: "A full-wave bridge rectifier requires a minimum of how many diodes to operate?",
+            options: ["One", "Two", "Six"],
+            correct: "Four"
+            };
+        },
+            () => {
+        return {
+            topic: "Power Supplies",
+            question: "In a full-wave rectifier supplied with 400Hz aircraft AC power, what is the fundamental ripple frequency of the DC output?",
+            options: ["400Hz", "200Hz", "100Hz"],
+            correct: "800Hz"
+            };
+        },
+            () => {
+        return {
+            topic: "Diodes",
+            question: "Which diode is specifically designed to operate safely in its reverse-bias breakdown region to provide voltage regulation?",
+            img: "mod4/diode_zener.png",
+            options: ["Tunnel Diode", "Varactor Diode", "Schottky Diode"],
+            correct: "Zener Diode"
+            };
+        },
+            () => {
+        return {
+            topic: "Diodes",
+            question: "What is the primary operational difference between Zener breakdown and Avalanche breakdown?",
+            options: ["Zener breakdown occurs in forward bias, Avalanche in reverse bias", "Zener breakdown emits light, Avalanche does not", "Zener breakdown destroys the diode, Avalanche is safely reversible"],
+            correct: "Zener occurs at lower voltages in heavily doped diodes; Avalanche occurs at higher voltages in lightly doped diodes"
+            };
+        },
+            () => {
+        return {
+            topic: "Diodes",
+            question: "Which type of diode acts as a voltage-controlled variable capacitor when reverse-biased?",
+            img: "mod4/diode_varactor.png",
+            options: ["Schottky Diode", "Photodiode", "Tunnel Diode"],
+            correct: "Varactor (Varicap) Diode"
+            };
+        },
+            () => {
+        return {
+            topic: "Diodes",
+            question: "The Schottky diode utilizes a metal-to-semiconductor junction. What is its primary advantage in electronic circuits?",
+            img: "mod4/diode_schottky.png",
+            options: ["It regulates high-voltage AC perfectly", "It emits high-intensity visible light", "It can operate at extreme temperatures without thermal runaway"],
+            correct: "It has a very low forward voltage drop and extremely fast switching speeds"
+            };
+        },
+            () => {
+        return {
+            topic: "Diodes",
+            question: "The color of light emitted by a Light Emitting Diode (LED) is determined entirely by:",
+            img: "mod4/diode_led.png",
+            options: ["The amount of forward current applied", "The ambient temperature", "The size of the plastic lens"],
+            correct: "The specific semiconductor materials used (e.g., Gallium Arsenide Phosphide)"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "What are the three physical regions of a Bipolar Junction Transistor (BJT)?",
+            img: "mod4/transistor_npn.png",
+            options: ["Gate, Source, Drain", "Anode, Cathode, Gate", "Input, Output, Ground"],
+            correct: "Base, Emitter, Collector"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "In an NPN transistor, how are the three regions doped?",
+            img: "mod4/transistor_npn.png",
+            options: ["Heavy base, light emitter, heavy collector", "Equal doping across all three regions", "Light emitter, heavy base, light collector"],
+            correct: "Heavily doped emitter, very thin and lightly doped base, moderately doped collector"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "In a BJT, which mathematical formula correctly describes the relationship between the three terminal currents?",
+            options: ["Ib = Ic + Ie", "Ic = Ie + Ib", "Ie = Ic - Ib"],
+            correct: "Ie = Ib + Ic"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "In transistor terminology, the ratio of DC Collector Current (Ic) to DC Base Current (Ib) is known as:",
+            options: ["Alpha", "Theta", "Gamma"],
+            correct: "Beta (hFE)"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "In transistor terminology, 'Alpha' represents the current gain between which two terminals?",
+            options: ["Collector and Base", "Emitter and Base", "Base and Ground"],
+            correct: "Collector and Emitter"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "For a BJT to operate in the 'Active' region (acting as a linear amplifier), how must its junctions be biased?",
+            options: ["Both junctions reverse-biased", "Both junctions forward-biased", "Base-Emitter reverse-biased, Base-Collector forward-biased"],
+            correct: "Base-Emitter forward-biased, Base-Collector reverse-biased"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "When a transistor is used as a closed switch, it is driven into the 'Saturation' region. How are the junctions biased in this state?",
+            options: ["Both junctions reverse-biased", "Base-Emitter forward-biased, Base-Collector reverse-biased", "Base-Emitter reverse-biased, Base-Collector forward-biased"],
+            correct: "Both the Base-Emitter and Base-Collector junctions are forward-biased"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "What is the phenomenon where a rise in transistor temperature increases leakage current, which in turn further increases the temperature until the device is destroyed?",
+            options: ["Avalanche Breakdown", "Zener Breakdown", "Thermal Inversion"],
+            correct: "Thermal Runaway"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "In a Common-Emitter amplifier circuit, what is the phase relationship between the input signal at the base and the output signal at the collector?",
+            options: ["0 degrees (In-phase)", "90 degrees leading", "90 degrees lagging"],
+            correct: "180 degrees (Out-of-phase / Inverted)"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "Which BJT amplifier configuration is characterized by a very high input impedance, a low output impedance, and a voltage gain of approximately 1?",
+            options: ["Common-Emitter", "Common-Base", "Differential"],
+            correct: "Common-Collector (Emitter Follower)"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "How does a Junction Field Effect Transistor (JFET) fundamentally differ from a Bipolar Junction Transistor (BJT)?",
+            img: "mod4/transistor_jfet.png",
+            options: ["A JFET uses light to control current", "A JFET has a very low input impedance", "A JFET is a current-controlled device"],
+            correct: "A JFET is a voltage-controlled device"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "In a normally operating N-Channel JFET, how must the Gate-to-Source junction be biased?",
+            img: "mod4/transistor_jfet.png",
+            options: ["It must be forward-biased", "It must be connected to an AC source", "It must be shorted together"],
+            correct: "It must always be reverse-biased"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "What does the term 'Pinch-off Voltage' (Vp) refer to in a JFET?",
+            options: ["The maximum voltage the JFET can withstand before breaking down", "The forward voltage required to turn the JFET on", "The voltage at which the gate insulation breaks down"],
+            correct: "The reverse-bias Gate voltage required to completely close the channel and stop Drain current"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "What physical feature gives a MOSFET its extremely high input impedance compared to a JFET or BJT?",
+            img: "mod4/transistor_mosfet.png",
+            options: ["The gate is made of pure gold", "The channel is heavily doped with pentavalent impurities", "The device is encased in a vacuum envelope"],
+            correct: "The gate is electrically isolated from the channel by a microscopic layer of silicon dioxide (glass)"
+            };
+        },
+            () => {
+        return {
+            topic: "Transistors",
+            question: "An 'Enhancement-Mode' MOSFET is considered 'normally off'. What must occur for current to flow between the Drain and Source?",
+            img: "mod4/transistor_mosfet.png",
+            options: ["The temperature must exceed a certain threshold", "A reverse-bias voltage must be applied to the gate", "The gate must be grounded"],
+            correct: "A sufficient forward-bias voltage must be applied to the gate to induce a conductive channel"
+            };
+        },
+            () => {
+        return {
+            topic: "Thyristors",
+            question: "A Silicon Controlled Rectifier (SCR) is a four-layer (PNPN) thyristor. What are its three terminals named?",
+            img: "mod4/thyristor_scr.png",
+            options: ["Base, Emitter, Collector", "Gate, Source, Drain", "Input, Output, Control"],
+            correct: "Anode, Cathode, Gate"
+            };
+        },
+            () => {
+        return {
+            topic: "Thyristors",
+            question: "Once a Silicon Controlled Rectifier (SCR) is triggered into conduction by a gate pulse, how is it typically turned off?",
+            img: "mod4/thyristor_scr.png",
+            options: ["By applying a negative pulse to the gate", "By increasing the forward voltage across it", "By removing the gate signal"],
+            correct: "By reducing the Anode-to-Cathode current below its specific 'holding current' level"
+            };
+        },
+            () => {
+        return {
+            topic: "Thyristors",
+            question: "Which component is essentially two SCRs connected in inverse-parallel, allowing it to control and conduct AC current in both directions?",
+            img: "mod4/thyristor_triac.png",
+            options: ["Diac", "Unijunction Transistor (UJT)", "Bridge Rectifier"],
+            correct: "Triac"
+            };
+        },
+            () => {
+        return {
+            topic: "Thyristors",
+            question: "A Diac is a two-terminal bidirectional thyristor. What is its most common application in electronic circuits?",
+            options: ["To rectify high-frequency AC to DC", "To regulate DC voltage perfectly", "To act as a light sensor"],
+            correct: "To provide a sharp trigger pulse for a Triac"
+            };
+        },
+            () => {
+        return {
+            topic: "Thyristors",
+            question: "The Unijunction Transistor (UJT) exhibits a unique electrical characteristic that makes it highly useful in oscillator circuits. What is this characteristic?",
+            options: ["Infinite input impedance", "Perfect voltage regulation", "Zero resistance when cold"],
+            correct: "A 'negative resistance' region where voltage drops as current increases"
+            };
+        },
+            () => {
+        return {
+            topic: "Optoelectronics",
+            question: "An opto-isolator (optocoupler) typically consists of which two components packaged together in a single light-tight IC?",
+            options: ["A heating element and a thermistor", "A laser and a mirror", "A transformer primary and secondary coil"],
+            correct: "A Light Emitting Diode (LED) and a phototransistor"
+            };
+        },
+            () => {
+        return {
+            topic: "Optoelectronics",
+            question: "What is the primary purpose of using an opto-isolator in an aircraft electronic circuit?",
+            options: ["To convert digital signals into audible sound", "To generate high-voltage pulses", "To step down the main AC bus voltage"],
+            correct: "To pass electrical signals between two circuits while maintaining complete electrical (galvanic) isolation between them"
+            };
+        },
+            () => {
+        return {
+            topic: "Numbering Systems",
+            question: "What is the base (or radix) of the binary numbering system?",
+            options: ["8", "10", "16"],
+            correct: "2"
+            };
+        },
+            () => {
+        return {
+            topic: "Numbering Systems",
+            question: "In the octal numbering system, what is the highest single digit that can be used?",
+            options: ["8", "9", "F"],
+            correct: "7"
+            };
+        },
+            () => {
+        return {
+            topic: "Numbering Systems",
+            question: "Which numbering system uses the digits 0 through 9 and the letters A through F?",
+            options: ["Binary", "Decimal", "Octal"],
+            correct: "Hexadecimal"
+            };
+        },
+            () => {
+        return {
+            topic: "Numbering Systems",
+            question: "Convert the binary number 1011 into its decimal equivalent.",
+            options: ["9", "10", "13"],
+            correct: "11"
+            };
+        },
+            () => {
+        return {
+            topic: "Numbering Systems",
+            question: "Convert the decimal number 14 into its binary equivalent.",
+            options: ["1010", "1100", "1111"],
+            correct: "1110"
+            };
+        },
+            () => {
+        return {
+            topic: "Numbering Systems",
+            question: "Convert the hexadecimal number 'C' into its decimal equivalent.",
+            options: ["10", "11", "13"],
+            correct: "12"
+            };
+        },
+            () => {
+        return {
+            topic: "Numbering Systems",
+            question: "In digital computing, how is the 'One's Complement' of a binary number obtained?",
+            options: ["By adding 1 to the binary number", "By moving the decimal point one place to the left", "By converting the number to hexadecimal"],
+            correct: "By simply inverting every bit (changing all 1s to 0s and all 0s to 1s)"
+            };
+        },
+            () => {
+        return {
+            topic: "Numbering Systems",
+            question: "What is the primary reason the 'Two's Complement' method is utilized in microprocessor arithmetic?",
+            options: ["To double the speed of data transmission", "To compress data for storage", "To check for parity errors during RAM operations"],
+            correct: "To represent negative binary numbers, allowing the computer to perform subtraction using adder circuits"
+            };
         }
 ];
 

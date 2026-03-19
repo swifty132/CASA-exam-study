@@ -365,6 +365,11 @@
             color: #ffffff !important;
             border-color: var(--primary) !important;
         }
+
+        /* Custom Exam Modal Styling */
+        input[type="radio"][name="exam_mode"]:checked + strong { color: var(--primary); }
+        #custom-topic-container label { display: block; margin-bottom: 8px; font-size: 0.85rem; cursor: pointer; }
+        #custom-topic-container input[type="checkbox"] { margin-right: 8px; }
     </style>
 </head>
 <body>
@@ -387,10 +392,23 @@
 </div>
 
 <div id="weakness-modal" class="modal-overlay hidden" onclick="if(event.target===this) document.getElementById('weakness-modal').classList.add('hidden')">
-    <div class="modal-box" style="width:350px;">
+    <div class="modal-box" style="width:400px;">
         <button class="modal-close" onclick="document.getElementById('weakness-modal').classList.add('hidden')">×</button>
-        <h2 id="weakness-title">Target Weakness</h2>
-        <p style="color: var(--text-muted); margin-bottom:20px;">Generate a custom quiz focusing on your weakest topics (< 80%).</p>
+        <h2 id="weakness-title">Custom Exam Builder</h2>
+        
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <label style="flex: 1; padding: 10px; border: 1px solid var(--primary); border-radius: 4px; text-align: center; cursor: pointer; background: var(--highlight);">
+                <input type="radio" name="exam_mode" value="auto" checked onchange="toggleCustomTopics(false)" style="display: none;">
+                <strong>Auto-Weakness</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">Targets scores < 80%</span>
+            </label>
+            <label style="flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: 4px; text-align: center; cursor: pointer; background: var(--bg-card);">
+                <input type="radio" name="exam_mode" value="manual" onchange="toggleCustomTopics(true)" style="display: none;">
+                <strong>Custom Select</strong><br><span style="font-size: 0.75rem; color: var(--text-muted);">Pick specific topics</span>
+            </label>
+        </div>
+
+        <div id="custom-topic-container" class="hidden" style="margin-bottom: 15px; max-height: 200px; overflow-y: auto; border: 1px solid var(--border); border-radius: 4px; padding: 10px; background: var(--secondary);">
+            </div>
         
         <label style="display:block; font-weight:bold; margin-bottom:5px;">Questions:</label>
         <select id="weak-count" style="width:100%; padding:10px; margin-bottom:20px; border:1px solid var(--border); border-radius:4px; background:var(--bg-card); color:var(--text-main);">
@@ -786,49 +804,108 @@
         }
     }
 
-    // --- 4. WEAKNESS LOGIC ---
+    // UI Toggle for the Modal Radio Buttons
+    function toggleCustomTopics(show) {
+        const container = document.getElementById('custom-topic-container');
+        const labels = document.querySelectorAll('input[name="exam_mode"]');
+        
+        // Update visual styles of the toggle buttons
+        labels[0].parentElement.style.background = !show ? 'var(--highlight)' : 'var(--bg-card)';
+        labels[0].parentElement.style.borderColor = !show ? 'var(--primary)' : 'var(--border)';
+        labels[1].parentElement.style.background = show ? 'var(--highlight)' : 'var(--bg-card)';
+        labels[1].parentElement.style.borderColor = show ? 'var(--primary)' : 'var(--border)';
+
+        if (show) {
+            container.classList.remove('hidden');
+        } else {
+            container.classList.add('hidden');
+        }
+    }
+
+    // 1. Upgraded Open Modal Function
     function openWeaknessModal(subject) {
         pendingWeaknessSubject = subject;
-        document.getElementById('weakness-title').innerText = `Target Weakness: ${subject}`;
+        document.getElementById('weakness-title').innerText = `Configure: ${subject}`;
+        
+        // Reset modal to default Auto state
+        document.querySelector('input[value="auto"]').checked = true;
+        toggleCustomTopics(false);
+
+        // Populate the custom topic list
+        const container = document.getElementById('custom-topic-container');
+        container.innerHTML = '';
+        const topics = SYLLABUS_MAP[subject] || [];
+        
+        if (topics.length === 0) {
+            container.innerHTML = '<div style="color: var(--text-muted); font-size: 0.8rem; text-align:center;">No specific topics mapped yet.</div>';
+        } else {
+            topics.forEach(t => {
+                container.innerHTML += `
+                    <label>
+                        <input type="checkbox" class="custom-topic-cb" value="${t}"> 
+                        ${t}
+                    </label>
+                `;
+            });
+        }
+
         document.getElementById('weakness-modal').classList.remove('hidden');
     }
 
+    // 2. Upgraded Launch Function
     function launchWeaknessExam() {
         const count = parseInt(document.getElementById('weak-count').value);
+        const mode = document.querySelector('input[name="exam_mode"]:checked').value;
+        let selectedTopics = [];
+
+        if (mode === 'manual') {
+            const checkboxes = document.querySelectorAll('.custom-topic-cb:checked');
+            checkboxes.forEach(cb => selectedTopics.push(cb.value));
+            
+            if (selectedTopics.length === 0) {
+                alert("Please select at least one topic, or switch to Auto-Weakness.");
+                return; // Stop execution
+            }
+        }
+
         document.getElementById('weakness-modal').classList.add('hidden');
-        startExam(pendingWeaknessSubject, true, count);
+        
+        // Pass mode and topics to startExam
+        startExam(pendingWeaknessSubject, mode, count, selectedTopics);
     }
 
-    // --- 5. EXAM EXECUTION ---
-    function startExam(key, isWeakness = false, countOverride = null) {
+    // 3. Upgraded Start Exam Function
+    function startExam(key, mode = 'standard', countOverride = null, customTopics = []) {
         const mod = SUBJECT_DB[key];
         let questions = [];
 
-        if (isWeakness) {
-            // WEAKNESS MODE GENERATOR (FIXED: NO BACKFILL)
+        if (mode === 'auto') {
+            // AUTO WEAKNESS MODE
             const mastery = JSON.parse(localStorage.getItem('casa_mastery_v2') || '{}');
             const userStats = mastery[key] || {};
-            
-            // Find topics with score < 8
             const weakTopics = Object.keys(userStats).filter(t => userStats[t] < 8);
-            
-            // Generate a massive pool to filter from
             const pool = mod.generator(1000);
             
             if (weakTopics.length > 0) {
-                // Get questions matching weak topics
                 questions = pool.filter(q => weakTopics.includes(q.topic || "General")).slice(0, countOverride);
-                
-                // FIX: Alert user if we found fewer questions than requested, do NOT fill with randoms.
                 if (questions.length < countOverride) {
-                    alert(`Note: Only found ${questions.length} questions matching your weak topics. Exam shortened to avoid random topics.`);
+                    alert(`Note: Only found ${questions.length} questions matching your weak topics.`);
                 }
             } else {
-                // If no data, just give randoms
                 alert("No weakness data found! Generating random questions.");
                 questions = mod.generator(countOverride);
             }
-        } else {
+        } 
+        else if (mode === 'manual') {
+            // CUSTOM TOPIC MODE
+            const pool = mod.generator(1000);
+            questions = pool.filter(q => customTopics.includes(q.topic || "General")).slice(0, countOverride);
+            
+            if (questions.length < countOverride) {
+                alert(`Note: Only found ${questions.length} questions for the selected topics.`);
+            }
+        } 
+        else {
             // STANDARD MODE
             questions = mod.generator(mod.qCount);
         }
@@ -839,12 +916,12 @@
             totalTime: (countOverride ? Math.ceil(countOverride * 1.5) : mod.time) * 60, 
             remainingTime: (countOverride ? Math.ceil(countOverride * 1.5) : mod.time) * 60,
             answers: {},
-            isWeakness: isWeakness // FLAG THIS EXAM AS WEAKNESS TYPE
+            isWeakness: (mode === 'auto' || mode === 'manual') // Flag for history logs
         };
         saveSession();
         renderExamInterface();
     }
-
+    
     function resumeActiveExam() {
         const saved = localStorage.getItem('casa_active_session');
         if (saved) {

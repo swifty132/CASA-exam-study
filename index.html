@@ -219,6 +219,152 @@
         /* RECORD MANAGER */
         .record-group-title { background: var(--secondary); color: var(--text-main); }
         .record-item { border-bottom: 1px solid var(--border); }
+        /* ========================================= */
+        /* MODULE COLLAPSE & UNIFICATION (UPDATED)   */
+        /* ========================================= */
+
+        /* 1. ENSURE FULL UNIFIED HEIGHT FOR ACTIVE CARDS */
+        .subject-grid {
+            align-items: stretch; /* Default grid behavior: stretches items to match tallest */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .subject-card {
+            position: relative !important; /* This locks the minus button inside the card! */
+            display: flex;
+            flex-direction: column; 
+            min-height: 280px; 
+            background: var(--bg-card); /* Ensures background matches theme */
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            transition: 0.2s;
+            overflow: hidden;
+        }
+
+        /* Ensure the main content area grows to push the footer down */
+        .subject-card .card-main {
+            flex-grow: 1; 
+        }
+
+        /* Ensure footer buttons always stick to the bottom edge uniformly */
+        .subject-card .card-footer {
+            margin-top: auto;
+            width: 100%;
+            border-top: 1px solid var(--border);
+        }
+
+
+        /* 2. NEW: VIBRANT MODULE LIBRARY TILE STYLE (REPLACED) */
+
+        /* Create a distinct section for collapsed modules at the bottom */
+        #collapsed-modules-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border);
+        }
+
+        .library-title {
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+
+        .collapsed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Smaller tile size */
+            gap: 15px;
+        }
+
+        .subject-tile-minimized {
+            background: var(--primary); /* Uses module's color for vibrancy */
+            color: white;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .subject-tile-minimized:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .tile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .tile-header h3 {
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .tile-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .tile-action-btn {
+            background: rgba(255, 255, 255, 0.15); /* Sleek white button overlay */
+            border: none;
+            color: white;
+            padding: 3px 7px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .tile-action-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tile-meta {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        /* ========================================= */
+        /* FORCED VISIBILITY FOR COLLAPSE BUTTON     */
+        /* ========================================= */
+        .card-header-actions {
+            position: absolute !important;
+            top: 10px !important;
+            right: 10px !important;
+            z-index: 999 !important;
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .btn-toggle-mod {
+            display: inline-block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            background-color: var(--secondary) !important; 
+            border: 1px solid var(--border) !important;
+            color: var(--text-main) !important;
+            border-radius: 4px !important;
+            cursor: pointer !important;
+            font-size: 0.85rem !important;
+            padding: 4px 8px !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15) !important; /* Forces a drop shadow so it pops off the background */
+            transition: all 0.2s ease !important;
+        }
+
+        .btn-toggle-mod:hover {
+            background-color: var(--primary) !important;
+            color: #ffffff !important;
+            border-color: var(--primary) !important;
+        }
     </style>
 </head>
 <body>
@@ -303,7 +449,12 @@
     <p>CASA Standard: 75 seconds per question.</p>
     
     <div id="loading-msg">Loading Question Banks...</div>
-    <div class="subject-grid" id="subject-list"></div>
+    <div class="subject-grid" id="active-subject-list"></div>
+
+    <div id="collapsed-modules-section" class="hidden">
+        <h3 class="library-title">Module Library</h3>
+        <div class="collapsed-grid" id="collapsed-subject-list"></div>
+    </div>
 
     <div class="graph-section">
         <div class="comp-header-row">
@@ -547,44 +698,92 @@
 
     // --- 3. EXAM RENDER (Combined Pacer + Actions) ---
     function renderSubjects() {
-        const grid = document.getElementById('subject-list');
-        grid.innerHTML = '';
-        const goals = JSON.parse(localStorage.getItem('casa_goals') || '{}');
+        const activeGrid = document.getElementById('active-subject-list');
+        const collapsedGrid = document.getElementById('collapsed-subject-list');
+        const collapsedSection = document.getElementById('collapsed-modules-section');
         
+        activeGrid.innerHTML = '';
+        collapsedGrid.innerHTML = '';
+        
+        const goals = JSON.parse(localStorage.getItem('casa_goals') || '{}');
+        const collapseStates = JSON.parse(localStorage.getItem('casa_module_states') || '{}');
+        
+        let activeCount = 0;
+        let collapsedCount = 0;
+
         Object.keys(SUBJECT_DB).forEach(key => {
             const mod = SUBJECT_DB[key];
             const safeKey = key.replace(/\s/g, ''); 
             const dateVal = goals[key] || "";
-            const displayDate = dateVal ? new Date(dateVal).toLocaleDateString(undefined, {month:'short', day:'numeric'}) : "Set Goal";
-            const metric = getStudyPace(key, dateVal);
+            const isCollapsed = collapseStates[key] === true;
 
-            const div = document.createElement('div');
-            div.className = 'subject-card';
-            div.innerHTML = `
-                <div class="card-main" onclick="startExam('${key}')">
-                    <h3>${key}</h3>
-                    <div class="card-meta">
-                        ${mod.qCount} Questions • ${mod.time} Mins<br>
-                        <span class="scenario-count">${mod.poolSize}</span>
-                    </div>
-                </div>
+            if (isCollapsed) {
+                // RENDER: New Collapsed 'Tool Tile' Style
+                collapsedCount++;
+                const div = document.createElement('div');
+                div.className = 'subject-tile-minimized';
                 
-                <div class="pacer-strip" onclick="toggleGoalPanel('${safeKey}')">
-                    <span>📅 ${displayDate}</span>
-                    <span class="${metric.class}">${metric.text}</span>
-                </div>
-                <div class="goal-panel" id="goal-panel-${safeKey}" onclick="event.stopPropagation()">
-                    <label class="goal-label">Target Exam Date:</label>
-                    <input type="date" class="goal-input" value="${dateVal}" onchange="saveGoalDate('${key}', this.value)">
-                </div>
+                // Allow the entire tile to be clicked to expand
+                div.onclick = (e) => toggleModuleCollapse(key, e);
+                
+                div.innerHTML = `
+                    <div class="tile-header">
+                        <h3>${key}</h3>
+                        <div class="tile-controls">
+                            <button class="tile-action-btn" onclick="event.stopPropagation(); startExam('${key}')" title="Quick Start Exam">▶</button>
+                            <button class="tile-action-btn" onclick="toggleModuleCollapse('${key}', event)" title="Expand Module">➕</button>
+                        </div>
+                    </div>
+                    <div class="tile-meta">
+                        Q: ${mod.qCount} | T: ${mod.poolSize} Scenarios
+                    </div>
+                `;
+                collapsedGrid.appendChild(div);
+            } else {
+                // RENDER: Active Expanded Card (with fixed unified grid height)
+                activeCount++;
+                const displayDate = dateVal ? new Date(dateVal).toLocaleDateString(undefined, {month:'short', day:'numeric'}) : "Set Goal";
+                const metric = getStudyPace(key, dateVal);
 
-                <div class="card-footer">
-                    <button class="footer-btn" onclick="startExam('${key}')">▶ Start Exam</button>
-                    <button class="footer-btn weakness" onclick="openWeaknessModal('${key}')">🎯 Target Weakness</button>
-                </div>
-            `;
-            grid.appendChild(div);
+                const div = document.createElement('div');
+                div.className = 'subject-card';
+
+                div.innerHTML = `
+                    <div class="card-header-actions">
+                        <button class="btn-toggle-mod" onclick="toggleModuleCollapse('${key}', event)" title="Hide Module">➖</button>
+                    </div>
+                    <div class="card-main" onclick="startExam('${key}')">
+                        <h3>${key}</h3>
+                        <div class="card-meta">
+                            ${mod.qCount} Questions • ${mod.time} Mins<br>
+                            <span class="scenario-count">${mod.poolSize}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pacer-strip" onclick="toggleGoalPanel('${safeKey}')">
+                        <span>📅 ${displayDate}</span>
+                        <span class="${metric.class}">${metric.text}</span>
+                    </div>
+                    <div class="goal-panel" id="goal-panel-${safeKey}" onclick="event.stopPropagation()">
+                        <label class="goal-label">Target Exam Date:</label>
+                        <input type="date" class="goal-input" value="${dateVal}" onchange="saveGoalDate('${key}', this.value)">
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="footer-btn" onclick="startExam('${key}')">▶ Start Exam</button>
+                        <button class="footer-btn weakness" onclick="openWeaknessModal('${key}')">🎯 Target Weakness</button>
+                    </div>
+                `;
+                activeGrid.appendChild(div);
+            }
         });
+        
+        // Toggle the display of the entire collapsed section only if modules exist inside
+        if (collapsedCount > 0) {
+            collapsedSection.classList.remove('hidden');
+        } else {
+            collapsedSection.classList.add('hidden');
+        }
     }
 
     // --- 4. WEAKNESS LOGIC ---
@@ -1003,16 +1202,24 @@ Format: HTML (Bold, Bullet points). Keep it under 150 words.`;
     
     function renderCompetencyMatrix() {
         const db = JSON.parse(localStorage.getItem('casa_mastery_v2') || '{}');
+        const collapseStates = JSON.parse(localStorage.getItem('casa_module_states') || '{}');
         const container = document.getElementById('competency-container');
         container.innerHTML = '';
         
+        // Get all available subjects
         const subjects = Object.keys(SYLLABUS_MAP).length > 0 ? Object.keys(SYLLABUS_MAP) : Object.keys(db);
 
-        if (subjects.length === 0) { 
-            container.innerHTML = '<p style="font-style:italic; color:#999; text-align:center;">No competency data yet.</p>'; return; 
+        // Filter out any subjects that the user has currently collapsed/hidden
+        const activeSubjects = subjects.filter(subject => collapseStates[subject] !== true);
+
+        // Check if there are no active subjects left to show
+        if (activeSubjects.length === 0) { 
+            container.innerHTML = '<p style="font-style:italic; color:#999; text-align:center;">All modules are hidden or no competency data yet. Expand a module above to view competency data.</p>'; 
+            return; 
         }
 
-        subjects.sort().forEach(subject => {
+        // Render the active subjects
+        activeSubjects.sort().forEach(subject => {
             const userTopics = db[subject] || {};
             const knownTopics = SYLLABUS_MAP[subject] || [];
             const allTopics = Array.from(new Set([...knownTopics, ...Object.keys(userTopics)])).sort();
@@ -1047,7 +1254,7 @@ Format: HTML (Bold, Bullet points). Keep it under 150 words.`;
                     <div class="comp-subject-header" onclick="toggleSubject(this)">
                         <div class="comp-subject-title">${subject}</div>
                         <div class="comp-header-right">
-                            <button class="btn-reset-subject" onclick="resetSubjectCompetency(event, '${subject}')" title="Reset Subject">↺</button>
+                            <button class="btn-reset-subject" onclick="resetSubjectCompetency(event, '${subject}')" title="Reset Subject">↻</button>
                             <div class="comp-toggle-icon">▼</div>
                         </div>
                     </div>
@@ -1241,6 +1448,17 @@ Format: HTML (Bold, Bullet points). Keep it under 150 words.`;
         for(let s in db) db[s].forEach(r => csv += `"${s}","${r.date}",${r.pct}%\n`);
         const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv'})); a.download = 'casa_logs.csv'; a.click();
     }
+
+    function toggleModuleCollapse(subject, event) {
+        if (event) event.stopPropagation(); // Prevents triggering the card's main click event
+        
+        const states = JSON.parse(localStorage.getItem('casa_module_states') || '{}');
+        states[subject] = !states[subject]; 
+        
+        localStorage.setItem('casa_module_states', JSON.stringify(states));
+        renderSubjects();
+        renderCompetencyMatrix(); 
+    }   
 </script>
 </body>
 </html>

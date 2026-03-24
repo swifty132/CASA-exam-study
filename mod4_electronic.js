@@ -4756,6 +4756,6 @@ if (typeof registerModule !== 'undefined') {
                 };
             });
         },
-        `${electronicGenerators.length} Scenarios (CASA B2-04a)`
+        `${electronicGenerators.length} Scenarios (CASA B2-04)`
     );
 }

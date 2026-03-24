@@ -1,4 +1,5 @@
-    // --- BATCH GENERATED FROM CSV ---
+const digitalInstrumentGenerators = [
+        // --- BATCH GENERATED FROM CSV ---
 
     () => {
         return {
@@ -799,5 +800,44 @@
             options: ["The software is for passenger entertainment only", "The software is in the beta testing phase", "The software has no safety impact"],
             correct: "A software failure would cause or contribute to a catastrophic failure condition for the aircraft"
             };
+        }
+    ];
+
+// REGISTER MODULE 5: Digital Techniques / Electronic Instrument Systems
+if (typeof registerModule !== 'undefined') {
+    registerModule(
+        "Module 5: Digital Techniques / Electronic Instrument Systems",
+        72, // Standard exam length
+        function(count) {
+            // Shuffle the pool
+            const pool = [...digitalInstrumentGenerators];
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            
+            // Generate Questions
+            return pool.slice(0, count).map(gen => {
+                const data = gen();
+                
+                // Compatibility for standard format
+                let finalOptions = [...data.options, data.correct];
+                
+                // Shuffle Options safely
+                for (let i = finalOptions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [finalOptions[i], finalOptions[j]] = [finalOptions[j], finalOptions[i]];
+                }
+                
+                return {
+                    topic: data.topic || "Digital Techniques / Electronic Instrument Systems",
+                    question: data.question,
+                    img: data.img || null,
+                    options: finalOptions,
+                    correct: data.correct
+                };
+            });
         },
-        
+        `${digitalInstrumentGenerators.length} Scenarios (CASA B2-05)`
+    );
+}

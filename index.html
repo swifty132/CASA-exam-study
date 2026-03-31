@@ -366,6 +366,25 @@
             border-color: var(--primary) !important;
         }
 
+        /* ========================================= */
+        /* MATH FORMATTING ENHANCEMENTS              */
+        /* ========================================= */
+        sup, sub {
+            font-size: 75%; /* Shrinks them more than the browser default */
+            line-height: 0; /* Prevents them from messing up the line spacing of your paragraphs */
+            position: relative;
+            vertical-align: baseline;
+            font-weight: 600; /* Makes the tiny numbers slightly bolder so they are easy to read */
+        }
+
+        sup {
+            top: -0.5em; /* Pushes superscripts definitively higher */
+        }
+
+        sub {
+            bottom: -0.25em; /* Pushes subscripts definitively lower */
+        }
+
         /* Custom Exam Modal Styling */
         input[type="radio"][name="exam_mode"]:checked + strong { color: var(--primary); }
         #custom-topic-container label { display: block; margin-bottom: 8px; font-size: 0.85rem; cursor: pointer; }
@@ -805,6 +824,39 @@
         }
     }
 
+    function formatMath(text) {
+    if (!text) return "";
+    return text
+        // 1. Superscripts: e.g., N^2 becomes N²
+        .replace(/\^([a-zA-Z0-9]+)/g, '<sup>$1</sup>')
+        
+        // 2. Subscripts: e.g., H_2O becomes H₂O or V_in becomes Vᵢₙ
+        .replace(/_([a-zA-Z0-9]+)/g, '<sub>$1</sub>')
+        
+        // 3. Plus/Minus: e.g., +/- 5V becomes ± 5V
+        .replace(/\+\/-/g, '&plusmn;')
+        
+        // 4. Ohms: e.g., 50 ohms or 50 Ohm becomes 50 Ω
+        .replace(/\bohm[s]?\b/gi, '&Omega;')
+        
+        // 5. Micro Prefix: e.g., uF, uA, uV, us becomes µF, µA, µV, µs
+        // (Using word boundaries so it doesn't accidentally change words starting with u)
+        .replace(/\bu([FVAs])\b/g, '&micro;$1')
+        
+        // 6. Degrees: e.g., 180(deg) or 180 deg becomes 180°
+        .replace(/\(deg\)/g, '&deg;')
+        
+        // 7. Multiplication: e.g., 5 * 5 becomes 5 × 5 (only applies to * with spaces around it)
+        .replace(/ \* /g, ' &times; ')
+        
+        // 8. Square Root: e.g., sqrt(144) becomes √(144)
+        .replace(/\bsqrt\(/gi, '&radic;(')
+        
+        // 9. Greek Letters (Common in avionics)
+        .replace(/\bpi\b/gi, '&pi;')
+        .replace(/\btheta\b/gi, '&theta;');
+    }   
+
     // UI Toggle for the Modal Radio Buttons
     function toggleCustomTopics(show) {
         const container = document.getElementById('custom-topic-container');
@@ -969,15 +1021,15 @@
             box.innerHTML += `
                 <div class="question-card" id="card_${i}">
                     <div class="topic-header">${q.topic || 'General'}</div>
-                    <div style="font-weight:500; margin-bottom:10px">Q${i+1}. ${q.question}</div>
+                    <div style="font-weight:500; margin-bottom:10px">Q${i+1}. ${formatMath(q.question)}</div>
                     ${imgHTML}
                     <div id="opts_${i}">
                         ${q.options.map(opt => {
-                            // FIX: Escape double quotes so they don't break the HTML attribute
+                            // Escape double quotes so they don't break the HTML attribute
                             const safeValue = opt.replace(/"/g, '&quot;');
                             return `<label class="option-label">
                                 <input type="radio" name="q_${i}" value="${safeValue}" onchange="recordAnswer(${i}, this.value)"> 
-                                ${opt}
+                                ${formatMath(opt)}
                             </label>`;
                         }).join('')}
                     </div>
@@ -998,9 +1050,6 @@
                      if (inp.value === savedVal) inp.checked = true;
                  });
              }
-             
-             // Restore visual state if needed (e.g. if we want to show already marked answers on resume)
-             // For now we just restore the selection state.
         });
         
         startTimer();

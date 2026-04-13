@@ -2,474 +2,722 @@
 
     () => {
         return {
-            topic: "Microprocessors",
-            question: "What is the primary function of the instruction decoder within the microprocessor's control unit?",
-            options: ["It generates master clock signals to synchronize the ALU.", "It stores the next memory address to be fetched by the CPU.", "It handles mathematical calculations like addition and subtraction."],
-            correct: "It examines the binary code to determine the operation to be performed."
+            topic: "Multiplexing",
+            question: "What is the primary operational advantage of implementing time division multiplexing (TDM) within an aircraft's digital data transfer network?",
+            options: ["It eliminates the requirement for analog-to-digital converters in the system architecture.", "It increases the physical gauge of the wiring to handle higher signal current levels.", "It allows multiple signals to be transmitted simultaneously over different carrier frequencies."],
+            correct: "It significantly reduces the total weight of wire bundles and improves overall circuit reliability."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "What differentiates a microprocessor (MPU) from a standard Central Processing Unit (CPU) based on the material?",
-            options: ["A microprocessor cannot perform logic operations like AND or OR.", "A microprocessor uses a separate chip for its internal registers.", "A microprocessor does not require an internal clock for timing."],
-            correct: "A microprocessor is a single-chip implementation of a CPU."
+            topic: "Multiplexing",
+            question: "In a basic logic gate multiplexer circuit, what is the specific role of the clock pulse signals relative to the sequencing control?",
+            options: ["They provide the power source necessary to drive the output signal through the highway.", "They determine the voltage amplitude representing binary 1 and 0 on the transmission line.", "They act as a filter to remove distorted AC sine wave characteristics from the data bus."],
+            correct: "They trigger the logic gates in a precise sequence to sample and pass input signals to the line."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "Why is the microprocessor address bus described as being unidirectional rather than bidirectional?",
-            options: ["Because it handles both read and write data transfers simultaneously.", "Because it only allows data to flow from memory elements to the CPU.", "Because it provides timing pulses to synchronize the internal ALU logic."],
-            correct: "Because information flows only from the CPU to the memory or I/O elements."
+            topic: "Multiplexing",
+            question: "What characterizes the 'transparent' state of a D latch within a digital data distribution system?",
+            options: ["The output is held at its current level regardless of any changes occurring at the D input.", "The enable input is held LOW, preventing any data from reaching the internal NAND latch.", "The output is switched to a high-impedance (Hi-Z) state to isolate it from the data bus."],
+            correct: "The enable input is HIGH, causing the Q output to follow the changes of the D input exactly."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "On the Intel 8051 microprocessor, how many clock cycles typically make up a single machine cycle at a frequency of 12 MHz?",
-            options: ["1 clock cycle", "4 clock cycles", "8 clock cycles"],
-            correct: "12 clock cycles"
+            topic: "Multiplexing",
+            question: "In Time Division Multiplexing, if four channels operate at 300 bits/s each, what is the resulting bit rate on the common data highway?",
+            options: ["300 bits/s", "600 bits/s", "900 bits/s"],
+            correct: "1200 bits/s"
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "In 8051 microprocessor applications, what is the role of the ALE (Address Latch Enable) signal?",
-            options: ["It triggers the CPU to stop execution and save all registers to the stack.", "It signals the program memory to put an instruction on the data bus.", "It notifies the CPU that an external device is requesting an interrupt."],
-            correct: "It enables the address latch to grab the low address byte from the bus."
+            topic: "Multiplexing",
+            question: "What is the primary difference between a passive and an active fibre optic coupler in an aircraft network?",
+            options: ["Active couplers use mechanical splices while passive couplers use fusion splicing techniques.", "Passive couplers increase signal strength while active couplers introduce higher attenuation.", "Active couplers only use Y-type splitters whereas passive couplers use star and tree layouts."],
+            correct: "Active couplers convert signals to electrical form while passive couplers redistribute light."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "In a typical microprocessor, what is the effect of applying a low-level signal to the Halt input?",
-            options: ["The CPU resets and clears all data stored in the user-accessible registers.", "The CPU ignores the current instruction and jumps to a new memory address.", "The CPU increases the clock frequency to finish the program faster."],
-            correct: "The machine stops activity at the end of the current instruction being executed."
+            topic: "Multiplexing",
+            question: "Which type of multiplexing uses several carrier waves of different frequencies, each separately modulated with an input signal?",
+            options: ["Time Division Multiplexing (TDM)", "Gray Encoding Multiplexing", "Binary Coded Decimal Multiplexing"],
+            correct: "Frequency Division Multiplexing (FDM)"
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "Which external output control line indicates to peripheral devices whether the CPU is in a read or write state?",
-            options: ["VMA (Valid Memory Address)", "BA (Bus Available)", "ALE (Address Latch Enable)"],
-            correct: "R/W (Read/Write)"
+            topic: "Multiplexing",
+            question: "Why are address inputs in a multiplexer often referred to as SELECT inputs?",
+            options: ["Because they determine the specific memory address where the output data is stored.", "Because they provide the timing pulse needed to synchronize the transmitter and receiver.", "Because they set the priority for the encoder when multiple inputs are activated."],
+            correct: "Because they control the digital code that switches a specific data input to the output."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "What is the difference between an IRQ (Interrupt Request) and an NMI (Non-maskable Interrupt)?",
-            options: ["IRQ is higher priority and cannot be ignored by the condition code register.", "NMI only occurs when the CPU is in a power-down or reset condition.", "IRQ resets the entire program counter, while NMI only pauses the ALU."],
-            correct: "NMI is a high priority interrupt serviced regardless of the interrupt mask."
+            topic: "Logic Circuits",
+            question: "Which statement best describes the electrical characteristics of a typical digital data bus line in a practical aircraft installation?",
+            options: ["It carries high-current signals to drive servo motors regulating fuel flow to the engine.", "It requires exact voltage levels as any minor deviation will cause significant data errors.", "It utilizes thick, heavily constructed power lines to conduct pulses over long distances."],
+            correct: "It uses small gauge wiring with voltages between 2 and 5 V representing a binary 1 logic level."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "During the Fetch Phase of a microprocessor program, which action occurs immediately after the Program Counter contents are transferred to the Address Register?",
-            options: ["The ALU performs an addition operation.", "The instruction is decoded by the decoder.", "Data is moved from the data register to the accumulator."],
-            correct: "The Program Counter is incremented by one."
+            topic: "Logic Circuits",
+            question: "When using a 1-line to 8-line demultiplexer, what determines which output channel will carry the data present at the single input line?",
+            options: ["The frequency of the carrier wave modulated by the input signal.", "The voltage amplitude of the clock pulse arriving at the data buffer.", "The number of bits stored in the parallel shift register at that moment."],
+            correct: "The digital code applied to the SELECT inputs of the internal AND gate array."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "When executing the WAI (Wait for Interrupt) instruction in a Motorola 6808, what is the final step before the CPU suspends program execution?",
-            options: ["The accumulator is cleared to zero.", "The program counter is reset to the starting address.", "The ALU performs a comparison on the condition code register."],
-            correct: "Relevant registers are pushed into the memory stack."
+            topic: "Logic Circuits",
+            question: "Why is tri-state logic utilized when multiple devices are connected to a single microcomputer data bus?",
+            options: ["To increase the bit rate of the serial transmission from 12.5 kb/s to 100 kb/s.", "To convert the 8-bit parallel bus signals into a 20-bit serial data word format.", "To ensure that all connected devices can transmit data simultaneously without delay."],
+            correct: "To prevent short circuits by allowing only one device to be active while others are in Hi-Z."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "Which phase of microprocessor operation involves interpreting the op-code and remains consistent in duration across different instructions?",
-            options: ["Execute Phase", "Arithmetic Phase", "Store Phase"],
-            correct: "Fetch Phase"
+            topic: "Logic Circuits",
+            question: "What is the result when the enable (E) input of a 74LS125 tri-state buffer is set to logic level 1?",
+            options: ["The digital value on the input is passed directly to the output channel.", "The device enters a low-impedance state and functions as a standard inverter.", "The output is forced to logic 0 regardless of the signal present at the input."],
+            correct: "The device enters a high-impedance (Hi-Z) state, effectively isolating the output."
             };
         },
             () => {
         return {
-            topic: "Microprocessors",
-            question: "Which user-accessible register is used to store the results of ALU operations and typically serves as one operand for math instructions?",
-            options: ["Index Register", "Program Counter", "Stack Pointer"],
-            correct: "Accumulator"
-            };
-        },
-            () => {
-        return {
-            topic: "Microprocessors",
-            question: "What is the specific purpose of the Condition Code Register in a microprocessor architecture?",
-            options: ["To point to the address of the next instruction code in memory.", "To interface the CPU to the bidirectional data bus lines.", "To store the 8-bit opcode while the control unit is decoding it."],
-            correct: "To hold bits representing operation results like Negative, Zero, and Carry."
-            };
-        },
-            () => {
-        return {
-            topic: "Microprocessors",
-            question: "What is the function of the Address Buffer in a non-user-accessible register section?",
-            options: ["It holds the binary data currently being operated on by the ALU.", "It temporarily stores the result of an addition or logic shift.", "It converts parallel data from the internal bus to serial for external ports."],
-            correct: "It interfaces the CPU to the address bus for accessing memory locations."
-            };
-        },
-            () => {
-        return {
-            topic: "Microprocessors",
-            question: "In the context of microprocessor registers, what does a Stack Pointer (SP) specifically manage?",
-            options: ["It stores bits indicating if a mathematical overflow occurred.", "It holds a 16-bit address for the indexed mode of addressing data.", "It sequences the control pulses for the internal instruction decoder."],
-            correct: "It stores the next available location in an external LIFO memory area."
+            topic: "Logic Circuits",
+            question: "How does a two-input multiplexer behave when the SELECT (S) input is at logic level 0?",
+            options: ["The output Z is identical to data input I1 because the top AND gate is enabled.", "The output Z is forced to a high-impedance state to prevent data bus collisions.", "The output Z becomes the sum of both I0 and I1 through the internal OR gate."],
+            correct: "The output Z is identical to data input I0 because the bottom AND gate is enabled."
             };
         },
             () => {
         return {
             topic: "Data Conversion",
-            question: "How many comparators are typically required for an 8-bit Flash ADC circuit?",
-            options: ["8", "64", "128"],
-            correct: "255"
+            question: "When multiplexing analog signals in a modern aircraft system, which sequence of operations is mandatory for successful data distribution?",
+            options: ["Signals are modulated onto separate carrier waves and then passed through an X-coupler.", "Signals are amplified by a summing op-amp before being passed directly to the demultiplexer.", "Signals are fed through a tri-state buffer to convert them into a 32-bit parallel data word."],
+            correct: "Signals are converted to digital, transmitted via the multiplexer, and then converted back to analog."
             };
         },
             () => {
         return {
             topic: "Data Conversion",
-            question: "In a digital-ramp ADC, what signal is used to indicate that the conversion process is complete?",
-            options: ["START pulse.", "CLOCK transition.", "MSB pulse."],
-            correct: "Active-LO End of Conversion (EOC) signal."
+            question: "In an aircraft multiplex system, which component is responsible for receiving multiple inputs and distributing processed data to specific indicators?",
+            options: ["The Remote Terminal (RT)", "The Tri-State Buffer", "The Logic AND Gate"],
+            correct: "The Bus Controller (BC)"
             };
         },
             () => {
         return {
             topic: "Data Conversion",
-            question: "What component in a Flash ADC allows it to produce a custom, nonlinear response to an analogue input signal?",
-            options: ["Priority Encoder.", "Exclusive-OR gates.", "Zener diode output."],
-            correct: "Unequal-value resistors in the reference voltage divider network."
-            };
-        },
-            () => {
-        return {
-            topic: "Data Conversion",
-            question: "Which type of ADC is considered the most efficient in terms of speed but is the most component-intensive?",
-            options: ["Digital-ramp ADC.", "Counter-type ADC.", "Successive-approximation ADC."],
-            correct: "Flash ADC."
-            };
-        },
-            () => {
-        return {
-            topic: "Data Conversion",
-            question: "Which statement accurately describes the difference between analogue and digital data in terms of measurement?",
-            options: ["Analogue data uses sampling to identify every nuance while digital data is continuous.", "Digital data aims to identify every nuance while analogue data is filtered.", "Analogue data is discrete numerical values while digital is continuously changing."],
-            correct: "Analogue data is continuous and nuance-focused, whereas digital data uses sampling."
-            };
-        },
-            () => {
-        return {
-            topic: "Data Conversion",
-            question: "Why is the design of accurate analogue circuitry generally more difficult than digital circuitry?",
-            options: ["Analogue signals travel slower than the speed of light.", "Analogue circuits require more binary registers.", "Digital systems require exact voltage values to be maintained."],
-            correct: "Analogue voltage values carry significant information and are affected by noise and temperature."
-            };
-        },
-            () => {
-        return {
-            topic: "Data Conversion",
-            question: "How does an R/2R ladder DAC overcome the accuracy issues associated with temperature variations?",
-            options: ["By using higher precision capacitors.", "By incorporating a cooling fan on the PCB.", "By using only high-wattage power resistors."],
-            correct: "By using only two resistance values that maintain consistent ratios."
-            };
-        },
-            () => {
-        return {
-            topic: "Data Conversion",
-            question: "In a 4-bit R/2R Ladder DAC with a 5V input, what is the output voltage for a binary input of 1000?",
-            options: ["1.25 V", "2.5 V", "3.75 V"],
-            correct: "5 V"
-            };
-        },
-            () => {
-        return {
-            topic: "Data Conversion",
-            question: "In a binary weighted resistor DAC, what is the relative weight assigned to the Most Significant Bit (MSB) in a 4-bit BCD format?",
-            options: ["1", "2", "4"],
-            correct: "8"
-            };
-        },
-            () => {
-        return {
-            topic: "Data Conversion",
-            question: "What is the primary practical limitation of a 12-bit binary weighted resistor DAC?",
-            options: ["It requires dual polarity power supplies.", "The output signal is naturally non-inverted.", "The sampling rate is limited by the Op-Amp slew rate."],
-            correct: "Large differences in resistor values cannot maintain correct ratios with temperature variations."
-            };
-        },
-            () => {
-        return {
-            topic: "Operational Amplifiers",
-            question: "How is the closed-loop gain determined in a non-inverting amplifier configuration?",
-            options: ["By the rail voltage levels.", "By the internal slew rate of the chip.", "By the input bias current."],
-            correct: "By the ratio of the feedback resistors Rf and Ri."
-            };
-        },
-            () => {
-        return {
-            topic: "Operational Amplifiers",
-            question: "In an open-loop configuration, what is the primary function of an operational amplifier (Op-Amp)?",
-            options: ["To provide constant voltage regulation.", "To act as a digital-to-analogue converter.", "To filter high-frequency noise signals."],
-            correct: "To compare the amplitude of one voltage with another."
-            };
-        },
-            () => {
-        return {
-            topic: "Operational Amplifiers",
-            question: "What characteristic of an Op-Amp causes it to reach saturation with only a very small difference between its two inputs?",
-            options: ["Low input impedance.", "High output impedance.", "The use of a split supply voltage."],
-            correct: "High open-loop voltage gain."
-            };
-        },
-            () => {
-        return {
-            topic: "Operational Amplifiers",
-            question: "What is the specific application of a zero-level detector circuit?",
-            options: ["To generate an analogue sine wave.", "To act as a high-gain buffer for data buses.", "To measure the input impedance of a transducer."],
-            correct: "To produce a square wave from a sine wave by detecting the zero crossing."
-            };
-        },
-            () => {
-        return {
-            topic: "Operational Amplifiers",
-            question: "What is the typical voltage gain of a modern Integrated Circuit version of an Op-Amp like the 741?",
-            options: ["Exactly 10,000.", "Approximately 500.", "Between 10 and 100."],
-            correct: "On the order of a million."
+            question: "Which method is used in a demultiplexer to return the high-speed 'highway' data rate back to the individual channel operating speeds?",
+            options: ["Applying a master clock multiplier to the CPU internal data bus.", "Using a voltage divider to reduce the amplitude of the incoming square waves.", "Utilizing an X-coupler to split the signal into redundant single-mode fibres."],
+            correct: "Using synchronized gates at the receiving end to sample the sequential time intervals."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "Under which condition will the 747 Scavenge Pump run for 2 hours or until low pressure is sensed for 5 minutes?",
-            options: ["During all takeoff phases", "Only during ground testing", "When the landing gear is retracted"],
-            correct: "Respective O/J pump not developing pressure in air"
+            question: "Which type of digital integrated circuit is characterized by containing between 12 and 99 equivalent logic gates on a single substrate?",
+            options: ["Small-scale integration (SSI)", "Large-scale integration (LSI)", "Very large-scale integration (VLSI)"],
+            correct: "Medium-scale integration (MSI)"
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "What unique operation occurs in a J-K Flip-Flop when both J and K inputs are held high (1,1) during a clock pulse?",
-            options: ["Invalid state", "No change", "The output resets to 0"],
-            correct: "The output toggles to its opposite state"
+            question: "What is the primary operational characteristic of a standard digital decoder circuit?",
+            options: ["It converts a single active input into a specific multi-bit binary code.", "It combines multiple data streams into a single common transmission medium.", "It translates alphanumeric keyboard inputs into representing binary numbers."],
+            correct: "It activates only the specific output that corresponds to a set of binary inputs."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "In a NAND gate S-R Flip-Flop, what is the 'No change' state for the S and R inputs?",
-            options: ["S=0, R=0", "S=0, R=1", "S=1, R=0"],
-            correct: "S=1, R=1"
+            question: "In a BCD to seven-segment decoder/driver circuit, which segments must be activated to display the decimal digit 5?",
+            options: ["Segments a, b, c, d, and g", "Segments a, c, d, e, and f", "Segments b, c, f, g, and d"],
+            correct: "Segments a, f, g, c, and d"
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "What is defined as the time interval immediately preceding the active clock transition during which the control input must be stable?",
-            options: ["Hold time", "Propagation delay", "Fall time"],
-            correct: "Setup time"
+            question: "What specific logic function does an encoder perform in a digital system?",
+            options: ["It accepts a binary number and activates a single corresponding output line.", "It distributes a single input source selectively to one of several output channels.", "It uses a set of select inputs to route a specific data input to a single output."],
+            correct: "It produces an N-bit output code based on which of its multiple input lines is active."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "What occurs if the clock signal transition times (rise and fall) are too long for a flip-flop?",
-            options: ["Propagation delay decreases", "The voltage level drops", "Current consumption increases"],
-            correct: "Erratic triggering or failure to trigger"
+            question: "How does a priority encoder resolve a situation where multiple input lines are activated simultaneously?",
+            options: ["It produces an invalid state output until only one input remains active.", "It alternates the output code between all active inputs based on the clock frequency.", "It generates an output code that represents the sum of all currently active inputs."],
+            correct: "It ensures the output code corresponds only to the highest-numbered active input."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "What is the primary characteristic of a master/slave flip-flop during a clock cycle?",
-            options: ["Master and slave trigger together", "Master clears the slave", "Slave controls the master"],
-            correct: "Slave stores the bit while master accepts a new one"
+            question: "In the logic circuit of an 8-to-3 line encoder, why is the  $A\_0$  input often not connected to any internal logic gates?",
+            options: ["The  $A\_0$  input is reserved for parity bit generation in serial transfers.", "The  $A\_0$  input is an asynchronous override that ignores the select inputs.", "The  $A\_0$  input acts as an enable signal for the entire encoder integrated circuit."],
+            correct: "The outputs normally default to 000 when no other input lines ( $A\_1$  to  $A\_7$ ) are low."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "Which flip-flop inputs are considered 'override' inputs that act independently of the clock signal?",
-            options: ["J and K", "S and R", "Data (D)"],
-            correct: "Preset and Clear"
+            question: "What is the result of applying a BCD input of 1111 (decimal 15) to a standard 7446/47 decoder/driver?",
+            options: ["The display shows a hexadecimal 'F'.", "The display shows a lower-case 't'.", "The display shows an 'E' to indicate an error."],
+            correct: "The display blanks out all segments."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "How is a negative-edge-triggered (NGT) clock input identified on a logic symbol?",
-            options: ["A plain triangle", "A small square", "A horizontal bar"],
-            correct: "A bubble and a triangle"
+            question: "When using a 74147 Decimal-to-BCD priority encoder, what are the output states when all nine active-LOW inputs are in their inactive HIGH state?",
+            options: ["0000", "1001", "0110"],
+            correct: "1111"
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "Which two gates are considered universal gates because they can be used to construct any other logic function?",
-            options: ["AND and OR", "XOR and XNOR", "OR and NOT"],
-            correct: "NAND and NOR"
+            question: "In a digital calculator application, what happens if an operator depresses multiple keys simultaneously on a 74LS147 switch encoder?",
+            options: ["The calculator enters a 'Wait' state until only one key is depressed.", "The calculator produces the BCD code for the lower-numbered key.", "The calculator produces an error code (1111) to the storage registers."],
+            correct: "The calculator produces the BCD code for the higher-numbered key."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "In an Exclusive-OR (XOR) gate, what is the output if both inputs are logic 1?",
-            options: ["Logic 1", "High impedance", "Undefined"],
-            correct: "Logic 0"
+            question: "Which encoding scheme represents a decimal digit by adding 0011 to its standard Binary Coded Decimal value?",
+            options: ["Gray encoding", "ASCII encoding", "Two's complement"],
+            correct: "Excess-3 encoding"
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "What is the Boolean expression for an OR gate followed by an Inverter (NOR operation)?",
-            options: ["X = A + B", "X = A * B", "X = NOT A + B"],
-            correct: "X = NOT (A + B)"
+            question: "What is the defining characteristic of the Gray encoding system used in components like non-servo altimeters?",
+            options: ["Each successive value adds a constant bias of three to the binary count.", "It uses 8 bits to represent alphanumeric characters for computer keyboards.", "It doubles the number of bits for every increase in decimal magnitude."],
+            correct: "Two successive numerical values differ by only a single binary digit."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "What is the relationship between the number of input combinations and the total entries in a truth table for N inputs?",
-            options: ["N + 2", "N^2", "2 * N"],
-            correct: "2^N"
+            question: "Why was Gray encoding historically utilized for the glass disc pick-offs in non-servo aircraft altimeters?",
+            options: ["It allowed the bellows to generate higher torque for electromechanical displays.", "It simplified the conversion of light signals into 32-bit ARINC 429 data words.", "It provided a self-complementary system that prevented thermal expansion errors."],
+            correct: "It prevented spurious or incorrect outputs from electromechanical switches."
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "Which logic gate's output is logic 1 only when all inputs are at the logic 1 level?",
-            options: ["OR gate", "NOR gate", "NAND gate"],
-            correct: "AND gate"
+            question: "In the context of integrated circuit scaling, which category represents a chip containing one million or more equivalent logic gates?",
+            options: ["Very large-scale integration (VLSI)", "Ultra large-scale integration (ULSI)", "Large-scale integration (LSI)"],
+            correct: "Giga-scale integration (GSI)"
             };
         },
             () => {
         return {
             topic: "Logic Circuits",
-            question: "What is the primary function of a basic flip-flop or latch circuit in digital electronics?",
-            options: ["To perform addition", "To invert a signal", "To count pulses"],
-            correct: "To store a single bit of binary data"
+            question: "How are the inverted BCD outputs of a 74147 priority encoder typically converted back to normal BCD for storage in a register?",
+            options: ["By routing the signals through a 3-line to 8-line decoder.", "By adding a bias value of 0011 to the inverted output.", "By passing the signals through a set of AND-OR gate combinations."],
+            correct: "By passing each output through an individual inverter."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "What is the standard bit rate for a high-speed ARINC 429 data bus?",
-            options: ["1 Mbps", "2 Mbps", "12.5 kbps"],
-            correct: "100 kbps"
+            topic: "Logic Circuits",
+            question: "Which scale of integration was typically used for computer CPU and RAM chips during the 1980s?",
+            options: ["Medium-scale integration (MSI)", "Ultra large-scale integration (ULSI)", "Small-scale integration (SSI)"],
+            correct: "Very large-scale integration (VLSI)"
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "In an ARINC 429 32-bit word, which bit range is typically reserved for the 'Label' field?",
-            options: ["Bits 29 through 11", "Bits 32 through 31", "Bits 10 through 9"],
-            correct: "Bits 1 through 8"
+            topic: "Fiber Optic Principles",
+            question: "How does the structure of a graded-index multimode fiber reduce the effects of modal dispersion?",
+            options: ["By using a small core diameter to allow only one mode of light propagation.", "By increasing the core density to slow down high-order modes at the edges.", "By using high-purity glass to eliminate scattering losses in the core center."],
+            correct: "By increasing the propagation velocity of light waves away from the center axis."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "What does the 'SDI' field (bits 10 and 9) represent in an ARINC 429 data word?",
-            options: ["Sign/Status Matrix", "Sequence Data Information", "Standard Digital Identifier"],
-            correct: "Source/Destination Identifier"
+            topic: "Fiber Optic Principles",
+            question: "What defines the light-gathering ability of an optical fiber?",
+            options: ["The thickness of the protective buffer coating.", "The length of the fiber pigtail attached to the LED.", "The attenuation coefficient measured in  $dB/km$ ."],
+            correct: "The numerical aperture (NA) of the fiber."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "Which field in an ARINC 429 word provides information on hardware condition or data validity?",
-            options: ["Label", "SDI", "Parity"],
-            correct: "SSM (Sign/Status Matrix)"
+            topic: "Fiber Optic Principles",
+            question: "What is the primary operational consequence of a high Numerical Aperture (NA) in an optical fiber core?",
+            options: ["It increases the bandwidth by limiting the number of propagation modes.", "It reduces the attenuation of the light signal over long distances.", "It prevents the refraction of light waves entering at shallow angles."],
+            correct: "It gathers more light into the fiber but increases modal dispersion."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "Which ARINC 629 timer begins immediately when an individual terminal starts its transmission?",
-            options: ["Synchronization Gap (SG) timer", "Terminal Gap (TG) timer", "Post-Sync Timer (PST)"],
-            correct: "Transmit Interval (TI) timer"
+            topic: "Fiber Optic Principles",
+            question: "Why is it necessary to convert a signal from analogue to digital before transmission via an aircraft's fiber optic multiplexer?",
+            options: ["Because light waves cannot be modulated using analogue current variations.", "Because analogue signals are immune to the effects of modal dispersion.", "Because digital signals prevent any light from leaking into the cladding."],
+            correct: "Because the system requires binary pulses to switch lasers at high speeds."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "What is the maximum number of data words that can follow a single label word in an ARINC 629 word string?",
-            options: ["20 data words", "32 data words", "128 data words"],
-            correct: "256 data words"
+            topic: "Signal Losses and Attenuation",
+            question: "What is 'absorption' in the context of fiber optic signal loss?",
+            options: ["Light rays reflecting off density fluctuations within the fiber core.", "High-order modes radiating out of the fiber during a sharp turn.", "The reduction of numerical aperture due to core diameter mismatch."],
+            correct: "The conversion of optical power into another form, such as heat."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "In ARINC 629 timing, which gap must occur immediately after the SG is complete and the bus is quiet?",
-            options: ["Synchronization Gap (SG)", "Transmit Interval (TI)", "Inter-word Gap"],
-            correct: "Terminal Gap (TG)"
+            topic: "Signal Losses and Attenuation",
+            question: "What is the primary cause of 'upset' failures in fiber optic data links?",
+            options: ["Total internal reflection causing light to bounce at too steep an angle.", "A complete break in the glass fiber substrate due to excessive vibration.", "The conversion of optical power into heat through the aquadag coating."],
+            correct: "The inability of the receiver to distinguish pulses due to dispersion spreading."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "How are Line Replaceable Units (LRUs) connected to the main ARINC 629 data bus cable?",
-            options: ["Via direct voltage connection", "Via transformer coupling only", "Via optical fiber splices"],
-            correct: "Via current-mode couplers"
+            topic: "Signal Losses and Attenuation",
+            question: "What specific phenomenon occurs when an optical fiber is routed with a bend radius smaller than several centimeters?",
+            options: ["Microbend loss occurs due to microscopic dents in the cladding layer.", "Absorption loss increases as light energy converts into ultraviolet radiation.", "Frequency dispersion occurs as the light wavelength shifts toward the blue spectrum."],
+            correct: "Macrobend loss occurs as high-order modes are converted and radiated out."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "What is the maximum number of users supported on a single ARINC 629 data bus?",
-            options: ["20 users", "31 users", "64 users"],
-            correct: "120 users"
+            topic: "Signal Losses and Attenuation",
+            question: "Why is 'scattering' considered a source of attenuation in optical fibers?",
+            options: ["It causes the light beam to expand beyond the lens of the receiver.", "It results from the core and cladding diameters being misaligned.", "It occurs when a fiber is subjected to microscopic axis bends."],
+            correct: "Light interacts with density fluctuations and is directed in all directions."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "In a MIL-STD-1553 data word structure, how many bits are allocated to the sync field and where are they located?",
-            options: ["The last 3 bits of the word.", "The first 5 bits of the word.", "The center 3 bits of the word."],
-            correct: "The first 3 bits of the word."
+            topic: "Fiber Optic Components",
+            question: "In an expanded-beam connector, which alignment factor is more critical compared to a standard butt-jointed connector?",
+            options: ["Lateral misalignment of the fiber core.", "Longitudinal separation between the fiber ends.", "Mismatch in the core and cladding diameters."],
+            correct: "Angular misalignment of the optical fiber axes."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "What type of parity is utilized for all word types in the MIL-STD-1553 protocol?",
-            options: ["Even parity", "Check-sum parity", "No parity is used"],
-            correct: "Odd parity"
+            topic: "Fiber Optic Components",
+            question: "What happens in a fusion splice during the fiber termination process?",
+            options: ["Epoxy resin is used to bond the fiber inside a metal ferrule.", "A V-groove substrate holds two fibers in temporary alignment.", "Lenses are positioned to refocus the light from the core."],
+            correct: "Localised heat melts the ends of two fibers together."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "How many distinct word types are defined under the MIL-STD-1553 standard?",
-            options: ["Two: Command and Data", "Four: Sync, Command, Data, and Parity", "Five: Mode, Address, Word, Data, and Check"],
-            correct: "Three: Command, Data, and Status"
+            topic: "Fiber Optic Components",
+            question: "What is a 'fiber pigtail' as supplied by component manufacturers?",
+            options: ["A precision hole drilled into a ceramic ferrule for fiber alignment.", "A protective metal cap used to shield unplugged connectors from dirt.", "A spring-loaded mechanism used to ensure physical contact in connectors."],
+            correct: "A short length of fiber permanently fixed to a source or detector."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "What is the total length of a MIL-STD-1553 word including the sync and parity bits?",
-            options: ["32 bits", "16 bits", "24 bits"],
-            correct: "20 bits"
+            topic: "Fiber Optic Components",
+            question: "What is the functional difference between an active fiber optic coupler and a passive Y-coupler?",
+            options: ["Passive couplers increase signal bandwidth while active ones reduce it.", "Passive couplers use lasers while active couplers rely solely on LEDs.", "Active couplers are unidirectional while passive Y-couplers are bidirectional."],
+            correct: "Active couplers perform optical-to-electrical conversion during redistribution."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "In a Remote Terminal to Remote Terminal (RT-RT) transfer, what happens after the Bus Controller issues the two command words?",
-            options: ["The BC transmits the data words.", "The receiving RT issues a status word.", "The transmitting RT waits for a sync pulse."],
-            correct: "The transmitting RT issues its status word."
+            topic: "Fiber Optic Components",
+            question: "What is the purpose of the 'cladding' in the basic structure of an optical fiber?",
+            options: ["To provide mechanical strength and prevent surface contaminants.", "To act as the primary medium through which the light signal travels.", "To increase the numerical aperture by having a higher refractive index."],
+            correct: "To reduce scattering loss and provide total internal reflection."
             };
         },
             () => {
         return {
-            topic: "Data Buses",
-            question: "Which of the following data bus systems is defined as a unidirectional (simplex) protocol?",
-            options: ["MIL-STD-1553", "ARINC 629", "AFDX Ethernet"],
-            correct: "ARINC 429"
+            topic: "Fiber Optic Components",
+            question: "Which active component in a fiber optic receiver generates an electrical current proportional to incident optical radiation?",
+            options: ["A LED transmitter pigtail.", "A high-impedance preamplifier.", "A vertical-cavity surface-emitting laser."],
+            correct: "A semiconductor photodiode."
+            };
+        },
+            () => {
+        return {
+            topic: "Fiber Optic Components",
+            question: "Which component is specifically used to split optical power from one input fiber to more than two output fibers uniformly?",
+            options: ["A bidirectional T-coupler.", "An optical tap.", "A fusion-spliced pigtail."],
+            correct: "A tree coupler."
+            };
+        },
+            () => {
+        return {
+            topic: "Aircraft Applications",
+            question: "How does a Fiber Optic Gyroscope (FOG) detect aircraft rotation or motion?",
+            options: ["By using a glass disc etched with transparent sectors to count light pulses.", "By measuring the current generated when a bellows drives an optical sensor.", "By calculating the radiance change in a single-mode fiber pigtail."],
+            correct: "By monitoring the phase difference between two beams in opposite directions."
+            };
+        },
+            () => {
+        return {
+            topic: "Aircraft Applications",
+            question: "In the 'Fly by Light' demonstration on an F/A-18, what was the role of the passive optical sensors?",
+            options: ["To generate binary codes for the landing gear steering computer.", "To provide high-voltage power to the Ram Air Turbine controls.", "To directly drive the servo motors that regulate fuel flow."],
+            correct: "To provide feedback signals for closing flight control loops."
+            };
+        },
+            () => {
+        return {
+            topic: "Aircraft Applications",
+            question: "What is a major advantage of the Boeing 787's fiber optic backbone compared to traditional coaxial cable installations?",
+            options: ["It uses ARINC 429 protocol to increase the number of bus controllers.", "It eliminates the need for data concentrators and common computing resources.", "It reduces the power required for the primary flight control servo actuators."],
+            correct: "It provides immunity to electromagnetic interference and reduces cable weight."
+            };
+        },
+            () => {
+        return {
+            topic: "Aircraft Applications",
+            question: "What is the primary function of an 'AIMS' on the Boeing 777 in relation to fiber optics?",
+            options: ["It acts as the primary power source for the RAM air turbine.", "It converts all digital signals back into analogue for HUD processing.", "It manages the manual extension of the emergency generator."],
+            correct: "It routes data from aircraft systems through an optical fiber data bus."
+            };
+        },
+            () => {
+        return {
+            topic: "Aircraft Applications",
+            question: "Why was fiber optics incorporated into newer fuel measuring systems on modern aircraft?",
+            options: ["To reduce the bandwidth requirement for the cockpit display unit.", "To increase the accuracy of the AC generator essential bus supply.", "To allow for manual defueling operations during ground tests."],
+            correct: "To eliminate the risk of sparks within the fuel tanks."
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "A technician walking across a carpet can generate a triboelectric charge of up to:",
+            options: ["3,000 V", "16,000 V", "50,000 V"],
+            correct: "35,000 V"
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "A technician is about to replace a circuit card on an aircraft. Which action should be performed first after removing aircraft power and grounding the airframe?",
+            options: ["Immediately place the removed card into a pink poly anti-static bag.", "Apply a shorting strap across the edge connector of the new circuit card.", "Clean the connector pins with an approved solvent to ensure a low resistance path."],
+            correct: "Touch the metal case of the equipment to equalise any electrostatic potentials."
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "What is the primary pedagogical reason for maintaining a 1 Mohm resistance in an ESD grounding wrist strap?",
+            options: ["To increase the rate of static decay from the technician's body.", "To prevent the generation of electromagnetic interference (EMI).", "To ensure the strap remains compliant with Class 3 device standards."],
+            correct: "To prevent the worker from conducting a dangerous electric shock."
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "At an ESD-safe workstation, what role do air ionisers play in protecting sensitive electronic components?",
+            options: ["They remove dust particles that carry triboelectric charges.", "They increase the humidity of the air to improve surface moisture.", "They create a magnetic shield around the work surface."],
+            correct: "They add charge carriers to the air to increase its electrical conductivity."
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "When installing a line-replaceable unit (LRU) on an aircraft, how should a technician ensure potential equalization before mating the connectors?",
+            options: ["By wearing two heel straps and an ESD smock during the mating process.", "By verifying the aircraft's static wicks are intact.", "By cleaning the pins with an anti-static solution."],
+            correct: "By touching the outer shell of the plug to the outer shell of the mating connector."
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "What is the recommended range for relative humidity in an ESD-safe workstation to help dissipate electrostatic charges?",
+            options: ["20% to 40%", "60% to 80%", "90% to 100%"],
+            correct: "40% to 60%"
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "Why should a technician avoid wearing synthetic clothing under an ESD-safe smock?",
+            options: ["Synthetic materials increase the weight of the smock.", "Synthetic fibers interfere with the 1 Mohm resistor in the wrist strap.", "Synthetics prevent the smock from absorbing conductive sweat."],
+            correct: "Synthetics are notorious static generators that the smock may not fully shield."
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "Which material is identified as a notorious static generator that must be purged from ESD-protected work areas?",
+            options: ["Cotton lab coats", "Ferrite rings", "Conductive foam"],
+            correct: "Styrofoam cups"
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Handling",
+            question: "What is the maximum voltage at which a component is considered \"extremely sensitive\" under Class 1 classification?",
+            options: ["500 V", "1000 V", "4000 V"],
+            correct: "2000 V"
+            };
+        },
+            () => {
+        return {
+            topic: "Device Classification",
+            question: "During a routine inspection, a component with a Human Body Model (HBM) withstand voltage of 1500 V is identified. How is this device classified in terms of ESD sensitivity?",
+            options: ["Class 1: Extremely sensitive", "Class 3: Less sensitive", "Unclassified: Robust"],
+            correct: "Class 2: Sensitive"
+            };
+        },
+            () => {
+        return {
+            topic: "Device Classification",
+            question: "Which specific device architecture is noted as being highly susceptible to ESD due to a thin film of silicon dioxide insulating the gate from the channel?",
+            options: ["Bipolar Junction Transistors (BJT)", "Schottky TTL components", "Piezoelectric crystals"],
+            correct: "Metal-Oxide-Semiconductor Field-Effect Transistors (MOSFETs)"
+            };
+        },
+            () => {
+        return {
+            topic: "Device Classification",
+            question: "A device is damaged by a static discharge of 3000 V. According to the Human Body Model standard, this device belongs to which sensitivity class?",
+            options: ["Class 1", "Class 2", "Class 4"],
+            correct: "Class 3"
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Damage Mechanisms",
+            question: "An avionics component passes all functional bench tests but fails shortly after being reinstalled in the aircraft. What type of ESD failure does this scenario most likely describe?",
+            options: ["Direct catastrophic failure", "Upset failure resulting in gate leakage", "Triboelectric discharge interference"],
+            correct: "Latent failure"
+            };
+        },
+            () => {
+        return {
+            topic: "ESD Damage Mechanisms",
+            question: "Which type of failure is characterized by gate leakage that causes intermittent software glitches and repetitive snags difficult to replicate?",
+            options: ["Latent catastrophic failure", "Direct catastrophic failure", "Dielectric breakdown failure"],
+            correct: "Upset failure"
+            };
+        },
+            () => {
+        return {
+            topic: "Packaging Materials",
+            question: "Why are metallic anti-static bags preferred over \"pink poly\" bags for Class 1 extremely sensitive devices?",
+            options: ["Pink poly bags have a shorter shelf life of only one year.", "Metallic bags provide higher moisture resistance for sensitive oxides.", "Pink poly bags generate triboelectric charges when moved."],
+            correct: "Metallic bags provide an electrostatic shield or Faraday cage effect."
+            };
+        },
+            () => {
+        return {
+            topic: "Packaging Materials",
+            question: "When dust caps are unavailable for a multi-pin connector on an ESD-sensitive \"black box\", which material is an approved substitute?",
+            options: ["Standard acetate-based cello tape", "Polyethylene pink poly wrap", "Non-conductive plastic plugs"],
+            correct: "Conductive grid tape"
+            };
+        },
+            () => {
+        return {
+            topic: "Packaging Materials",
+            question: "What is the primary function of the \"shunts\" used during the transportation of printed circuit boards (PCBs)?",
+            options: ["To provide mechanical strength to the edge connectors.", "To act as a moisture barrier for the copper traces.", "To filter electromagnetic interference during flight."],
+            correct: "To keep all pins at the same potential across edge connectors."
+            };
+        },
+            () => {
+        return {
+            topic: "Packaging Materials",
+            question: "How does an AC-type corona ioniser minimize the recombination of ions to ensure effective neutralization?",
+            options: ["By using ultra-high humidity levels.", "By increasing the voltage to 50 kV.", "By grounding the emitter point every half cycle."],
+            correct: "By utilizing fast airflow velocity."
+            };
+        },
+            () => {
+        return {
+            topic: "Induced Static Charges",
+            question: "A circuit card is placed on a Styrofoam cushion, inducing a charge. If a technician touches the board, a failure occurs even if the technician is grounded. This is an example of:",
+            options: ["Triboelectric generation", "Simple induction", "Direct catastrophic discharge"],
+            correct: "Compound induction"
+            };
+        },
+            () => {
+        return {
+            topic: "Induced Static Charges",
+            question: "What occurs when a conductor is introduced to an electrostatic field, causing free electrons to move toward a positively charged source without direct contact?",
+            options: ["Compound induction", "Triboelectric charging", "Capacitive coupling"],
+            correct: "Simple induction"
+            };
+        },
+            () => {
+        return {
+            topic: "Light-Emitting Diodes",
+            question: "In an aircraft indicator panel, an LED is connected to a  $28\text{V}$  DC power source. What component is fundamentally required to ensure the diode achieves its 100,000-hour life expectancy?",
+            options: ["A parallel shunt capacitor to smooth voltage spikes.", "A Zener diode connected in series to regulate forward bias.", "A step-down transformer to reduce the source to  $1.6\text{V}$  AC."],
+            correct: "A series resistor to limit the current through the junction."
+            };
+        },
+            () => {
+        return {
+            topic: "Light-Emitting Diodes",
+            question: "A technician identifies a flat spot on the plastic base of an LED package. To what side of the power supply should the lead exiting adjacent to this spot be connected for proper operation?",
+            options: ["The positive terminal, as it denotes the anode.", "The ground terminal, only if the LED is common-anode type.", "The positive terminal, provided the current is under  $10\text{ mA}$ ."],
+            correct: "The negative terminal, as it denotes the cathode."
+            };
+        },
+            () => {
+        return {
+            topic: "Light-Emitting Diodes",
+            question: "What factor fundamentally determines the peak wavelength, and thus the specific perceived color, of a monochromatic LED in a cockpit display?",
+            options: ["The amount of forward bias voltage applied to the leads.", "The color of the epoxy package surrounding the substrate.", "The frequency of the pulse-width modulation driving the circuit."],
+            correct: "The chemical make-up of the semiconductor substrate material."
+            };
+        },
+            () => {
+        return {
+            topic: "Light-Emitting Diodes",
+            question: "A bi-colored LED containing red and green chips is driven by an AC voltage source. Why does the aircraft technician perceive a constant yellow light instead of alternating flashes?",
+            options: ["The chips are wired in parallel-series to sum their wavelengths.", "The AC frequency matches the peak wavelength of yellow ( $585\text{ nm}$ ).", "The yellow light is emitted by a third dedicated semiconductor chip."],
+            correct: "The eye's persistence of vision blends the rapid red and green flickering."
+            };
+        },
+            () => {
+        return {
+            topic: "Light-Emitting Diodes",
+            question: "In a common-anode seven-segment LED display, which electrical condition must be met to illuminate a specific segment to form a numerical character?",
+            options: ["The specific segment's cathode must be connected to  $+5\text{V}$  DC.", "The common anode must be grounded while the segment is powered.", "Both the common anode and the specific cathode must be grounded."],
+            correct: "The specific segment's cathode must be connected to ground."
+            };
+        },
+            () => {
+        return {
+            topic: "Light-Emitting Diodes",
+            question: "When comparing a dot matrix LED display to other electronic display technologies, what is cited as its primary disadvantage in sophisticated cockpit applications?",
+            options: ["The requirement for complex high-voltage AC inverter power supplies.", "An extremely short life expectancy compared to incandescent bulbs.", "High power consumption levels exceeding those of cathode ray tubes."],
+            correct: "The possibility of a broken electrical connection causing a dead pixel."
+            };
+        },
+            () => {
+        return {
+            topic: "Liquid Crystal Displays",
+            question: "What is the primary physical reason an OLED display can be manufactured significantly thinner than a standard Backlit LCD display for use in modern avionics?",
+            options: ["OLEDs use a single layer of glass instead of a dual-plate seal.", "The conductive layer in an OLED does not require a cathode.", "OLEDs utilize liquid crystals that do not require polarizers."],
+            correct: "OLEDs emit their own light and do not require a separate backlight."
+            };
+        },
+            () => {
+        return {
+            topic: "Liquid Crystal Displays",
+            question: "During the construction of an LCD, what is the purpose of the thin polymer layer etched with channels that is applied on top of the electrodes?",
+            options: ["To act as a reflective mirror for ambient light in reflective-type units.", "To serve as a color filter for red, green, and blue sub-pixel matrices.", "To provide a high-voltage insulation barrier against the backplane."],
+            correct: "To align the twist orientation of the liquid crystal helix molecules."
+            };
+        },
+            () => {
+        return {
+            topic: "Liquid Crystal Displays",
+            question: "Why do LCD segments appear silvery and clear when no voltage is applied to the transparent electrodes?",
+            options: ["The liquid crystals block all light from reaching the rear polarizer.", "The front and rear polarizers are aligned in the same parallel plane.", "The crystals align vertically to allow unpolarized light to pass through."],
+            correct: "The crystals rotate polarized light by  $90^{\circ}$  to pass the second filter."
+            };
+        },
+            () => {
+        return {
+            topic: "Liquid Crystal Displays",
+            question: "What would be the likely result of using a standard TTL  $0.4\text{V}$  LOW-state signal to drive an LCD segment over a long period of time?",
+            options: ["The segment would remain permanently clear due to lack of alignment.", "The display would exhibit visible flicker below  $25\text{ Hz}$ .", "The liquid crystals would permanently align in the 'transmitting' state."],
+            correct: "The life of the LCD would be considerably shortened by the DC component."
+            };
+        },
+            () => {
+        return {
+            topic: "Liquid Crystal Displays",
+            question: "In an aircraft LCD driving circuit, an XOR gate receives a  $40\text{ Hz}$  square wave on one input and a HIGH control signal on the other. What effect does this have on the segment?",
+            options: ["It turns the segment OFF by creating a  $0\text{V}$  potential with the backplane.", "It turns the segment OFF by providing an in-phase signal to the segment.", "It turns the segment ON by providing a DC voltage of exactly  $+5\text{V}$ ."],
+            correct: "It turns the segment ON by providing an out-of-phase AC voltage."
+            };
+        },
+            () => {
+        return {
+            topic: "Liquid Crystal Displays",
+            question: "How does an LCD display achieve a greyscale effect with 256 levels of brightness per pixel?",
+            options: ["By varying the frequency of the square wave between  $25\text{ and }60\text{ Hz}$ .", "By alternating the polarity of the backplane at microsecond intervals.", "By using 256 individual sub-pixels for every single display character."],
+            correct: "By controlling the voltage to only partially untwist the liquid crystals."
+            };
+        },
+            () => {
+        return {
+            topic: "Cathode Ray Tubes",
+            question: "What is the primary function of the control grid in a Cathode Ray Tube as used in older radar or EFIS displays?",
+            options: ["To accelerate the electron beam toward the phosphor-coated screen.", "To deflect the beam horizontally across the scanning raster.", "To attract secondary emission electrons and remove them from the tube."],
+            correct: "To regulate the number of electrons emitted, controlling brightness."
+            };
+        },
+            () => {
+        return {
+            topic: "Cathode Ray Tubes",
+            question: "During CRT operation, why is it necessary to apply a high positive potential to the internal Aquadag coating?",
+            options: ["To focus the diverging electron beam into a tight point at the screen.", "To prevent the heater from overheating the cylindrical nickel cap.", "To provide the magnetic field required for electromagnetic deflection."],
+            correct: "To remove secondary emission electrons that would distort the image."
+            };
+        },
+            () => {
+        return {
+            topic: "Cathode Ray Tubes",
+            question: "A technician is troubleshooting a CRT display where the spot moves to the left side of the screen. What does this indicate regarding the electrostatic deflection plates?",
+            options: ["The vertical deflection plates have developed a negative potential.", "The horizontal plate H1 is positive while H2 is negative.", "Both horizontal deflection plates have been grounded simultaneously."],
+            correct: "The horizontal plate H2 is positive while H1 is negative."
+            };
+        },
+            () => {
+        return {
+            topic: "Cathode Ray Tubes",
+            question: "When comparing electrostatic and magnetic deflection in CRTs, which statement best describes the physical mechanism of magnetic deflection?",
+            options: ["It uses an electric field to attract the beam toward the neck of the tube.", "It uses two parallel metal plates inside the vacuum to bend the beam.", "It relies on the phosphor coating to pull electrons toward the triad."],
+            correct: "It uses coils around the neck to interact with the beam's magnetic field."
+            };
+        },
+            () => {
+        return {
+            topic: "Cathode Ray Tubes",
+            question: "In a color CRT, what is the specific role of the shadow mask positioned behind the phosphor screen?",
+            options: ["It filters white light into the three primary additive colors.", "It collects secondary electrons and routes them to the aquadag.", "It prevents the electron gun from overheating the focusing anode."],
+            correct: "It ensures each gun's beam only strikes the correct color phosphor dot."
+            };
+        },
+            () => {
+        return {
+            topic: "Cathode Ray Tubes",
+            question: "What is the primary pedagogical advantage of utilizing 'Interlace Scanning' in aircraft CRT displays?",
+            options: ["It increases the resolution of the screen by a factor of two.", "It eliminates the need for horizontal and vertical timebase circuits.", "It prevents the phosphorus from glowing for longer than  $50\text{ ms}$ ."],
+            correct: "It reduces the required transmission bandwidth while preventing flicker."
+            };
+        },
+            () => {
+        return {
+            topic: "Cathode Ray Tubes",
+            question: "An avionics technician is disposing of a decommissioned CRT. What is the standard safety procedure to eliminate the high vacuum before the tube is discarded?",
+            options: ["The phosphor screen must be submerged in water to neutralize toxins.", "The anode connector hole must be drilled out with a non-sparking bit.", "The entire glass envelope must be struck with a hammer inside a box."],
+            correct: "The glass vacuum seal located inside the locating pin must be crushed."
+            };
+        },
+            () => {
+        return {
+            topic: "Cathode Ray Tubes",
+            question: "While analyzing the scanning raster of a CRT, what occurs to the electron beam during the 'flyback' period?",
+            options: ["The beam intensity is doubled to reset the phosphor molecules.", "The beam is redirected to the aquadag to be discharged to ground.", "The beam maintains its focus to stabilize the vertical timebase."],
+            correct: "The electron beam is suppressed altogether and produces no trace."
             };
         },
         

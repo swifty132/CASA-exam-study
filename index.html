@@ -825,37 +825,52 @@
     }
 
     function formatMath(text) {
-    if (!text) return "";
-    return text
-        // 1. Superscripts: e.g., N^2 becomes N²
-        .replace(/\^([a-zA-Z0-9]+)/g, '<sup>$1</sup>')
+        if (!text) return "";
         
-        // 2. Subscripts: e.g., H_2O becomes H₂O or V_in becomes Vᵢₙ
-        .replace(/_([a-zA-Z0-9]+)/g, '<sub>$1</sub>')
-        
-        // 3. Plus/Minus: e.g., +/- 5V becomes ± 5V
-        .replace(/\+\/-/g, '&plusmn;')
-        
-        // 4. Ohms: e.g., 50 ohms or 50 Ohm becomes 50 Ω
-        .replace(/\bohm[s]?\b/gi, '&Omega;')
-        
-        // 5. Micro Prefix: e.g., uF, uA, uV, us becomes µF, µA, µV, µs
-        // (Using word boundaries so it doesn't accidentally change words starting with u)
-        .replace(/\bu([FVAs])\b/g, '&micro;$1')
-        
-        // 6. Degrees: e.g., 180(deg) or 180 deg becomes 180°
-        .replace(/\(deg\)/g, '&deg;')
-        
-        // 7. Multiplication: e.g., 5 * 5 becomes 5 × 5 (only applies to * with spaces around it)
-        .replace(/ \* /g, ' &times; ')
-        
-        // 8. Square Root: e.g., sqrt(144) becomes √(144)
-        .replace(/\bsqrt\(/gi, '&radic;(')
-        
-        // 9. Greek Letters (Common in avionics)
-        .replace(/\bpi\b/gi, '&pi;')
-        .replace(/\btheta\b/gi, '&theta;');
-    }   
+        // 1. UN-ESCAPE HTML ENTITIES
+        text = text.replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/&quot;/g, '"');
+
+        return text
+            // 2. SCRUB ROGUE LATEX $ DELIMITERS (Removes the $ around math)
+            .replace(/\$/g, '') 
+            
+            // 3. SCRUB \text{}, text{}, and ext{} WRAPPERS (Fixes swallowed \t tabs)
+            .replace(/(?:\\text|text|ext)\{([^}]+)\}/g, '$1')
+            
+            // 4. FIX LATEX DEGREES (Catches ^{circ}, ^\circ, or ^circ and makes it °)
+            .replace(/\^\{?\\?circ\}?/gi, '&deg;')
+            
+            // 5. SUPERSCRIPTS (Now handles AI curly braces e.g., N^{2} or N^2)
+            .replace(/\^\{?([a-zA-Z0-9\.]+)\}?/g, '<sup>$1</sup>')
+            
+            // 6. SUBSCRIPTS (Now handles AI curly braces e.g., H_{2}O or H_2O)
+            .replace(/_\{?([a-zA-Z0-9\.]+)\}?/g, '<sub>$1</sub>')
+            
+            // 7. Plus/Minus
+            .replace(/\+\/-/g, '&plusmn;')
+            
+            // 8. Ohms
+            .replace(/\bohm[s]?\b/gi, '&Omega;')
+            
+            // 9. Micro Prefix
+            .replace(/\bu([FVAs])\b/g, '&micro;$1')
+            
+            // 10. Degrees (Plain text version)
+            .replace(/\(deg\)/g, '&deg;')
+            
+            // 11. Multiplication
+            .replace(/ \* /g, ' &times; ')
+            
+            // 12. Square Root
+            .replace(/\bsqrt\(/gi, '&radic;(')
+            
+            // 13. Greek Letters
+            .replace(/\bpi\b/gi, '&pi;')
+            .replace(/\btheta\b/gi, '&theta;');
+    }
 
     // UI Toggle for the Modal Radio Buttons
     function toggleCustomTopics(show) {

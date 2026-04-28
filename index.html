@@ -1547,10 +1547,28 @@ Format: HTML (Bold, Bullet points). Keep it under 150 words.`;
         const canvas = document.getElementById('officialGraph');
         const ctx = canvas.getContext('2d');
         const dpr = window.devicePixelRatio || 1;
+        
+        const subjects = Object.keys(db);
+        const barHeight = 40; 
+        const gap = 15; 
+        let yPos = 20;
+
+        // 1. DYNAMIC HEIGHT CALCULATION
+        // Forces a minimum of 250px, but grows by 55px for every subject added
+        const requiredHeight = Math.max(250, yPos + (subjects.length * (barHeight + gap)) + 30);
+        
+        // 2. OVERRIDE THE CSS HEIGHT
+        // Tell the browser to physically stretch the canvas box on the page
+        canvas.style.height = requiredHeight + 'px';
+        
+        // 3. SET THE INTERNAL DRAWING RESOLUTION
         const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width * dpr; canvas.height = 250 * dpr;
+        canvas.width = rect.width * dpr; 
+        canvas.height = requiredHeight * dpr;
         ctx.scale(dpr, dpr);
-        const W = rect.width; const H = 250;
+        
+        const W = rect.width; 
+        const H = requiredHeight;
         ctx.clearRect(0,0,W,H);
 
         const zoneH = H - 30;
@@ -1563,10 +1581,8 @@ Format: HTML (Bold, Bullet points). Keep it under 150 words.`;
         ctx.fillText("BASIC (Retake)", W * 0.625, zoneH - 10);
         ctx.fillText("COMPLETE", W * 0.875, zoneH - 10);
 
-        const subjects = Object.keys(db);
         if(subjects.length === 0) { ctx.fillStyle = "#999"; ctx.fillText("No official results recorded yet.", W/2, H/2); return; }
 
-        const barHeight = 40; const gap = 15; let yPos = 20;
         subjects.forEach(sub => {
             const attempts = db[sub];
             const latest = attempts[attempts.length - 1];

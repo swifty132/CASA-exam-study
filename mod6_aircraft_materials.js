@@ -1,4 +1,5 @@
-    // --- BATCH GENERATED FROM CSV ---
+const aircraftMaterialGenerators = [
+        // --- BATCH GENERATED FROM CSV ---
 
     () => {
         return {
@@ -959,5 +960,48 @@
             options: ["The ends should be left open to allow residual pressure to bleed off safely.", "Cotton rags should be stuffed into the line ends to absorb any leaking fluid.", "The system should be immediately energized to check for remaining blockages."],
             correct: "Appropriate cap plugs or blanks should be fitted and lightly torqued to prevent contamination."
             };
-        },
+        }
+    ];
         
+
+
+
+
+// REGISTER MODULE 6: Aircraft Materials
+if (typeof registerModule !== 'undefined') {
+    registerModule(
+        "Module 6: Aircraft Materials",
+        60, // Standard exam length
+        function(count) {
+            // Shuffle the pool
+            const pool = [...aircraftMaterialGenerators];
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            
+            // Generate Questions
+            return pool.slice(0, count).map(gen => {
+                const data = gen();
+                
+                // Compatibility for standard format
+                let finalOptions = [...data.options, data.correct];
+                
+                // Shuffle Options safely
+                for (let i = finalOptions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [finalOptions[i], finalOptions[j]] = [finalOptions[j], finalOptions[i]];
+                }
+                
+                return {
+                    topic: data.topic || "Aircraft Materials",
+                    question: data.question,
+                    img: data.img || null,
+                    options: finalOptions,
+                    correct: data.correct
+                };
+            });
+        },
+        `${aircraftMaterialGenerators.length} Scenarios (CASA B2-06)`
+    );
+}

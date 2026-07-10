@@ -1,4 +1,5 @@
-    // --- BATCH GENERATED FROM CSV ---
+const aerodynamicsGenerators = [
+            // --- BATCH GENERATED FROM CSV ---
 
     () => {
         return {
@@ -599,5 +600,48 @@
             options: ["The gyroscopic precession of the engine propeller", "The pendulum effect of the undercarriage weight", "The shifting of the internal fuel load to the lower tanks"],
             correct: "The change in lift at the horizontal stabiliser providing a restoring moment"
             };
-        },
+        }
+    ];
         
+
+
+
+
+// REGISTER MODULE 8: Aerodynamics
+if (typeof registerModule !== 'undefined') {
+    registerModule(
+        "Module 8: Aerodynamics",
+        20, // Standard exam length
+        function(count) {
+            // Shuffle the pool
+            const pool = [...aerodynamicsGenerators];
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            
+            // Generate Questions
+            return pool.slice(0, count).map(gen => {
+                const data = gen();
+                
+                // Compatibility for standard format
+                let finalOptions = [...data.options, data.correct];
+                
+                // Shuffle Options safely
+                for (let i = finalOptions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [finalOptions[i], finalOptions[j]] = [finalOptions[j], finalOptions[i]];
+                }
+                
+                return {
+                    topic: data.topic || "Aircraft Materials",
+                    question: data.question,
+                    img: data.img || null,
+                    options: finalOptions,
+                    correct: data.correct
+                };
+            });
+        },
+        `${aerodynamicsGenerators.length} Scenarios (CASA B2-08)`
+    );
+}

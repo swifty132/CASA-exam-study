@@ -85,7 +85,7 @@ const aerodynamicsGenerators = [
         return {
             topic: "ISA Standards",
             question: "In the ISA model, what is the established temperature lapse rate in the troposphere?",
-            options: ["It decreases by exactly 1.98(deg) F per 1000 ft", "It increases by exactly 1.98(deg) C per 1000 ft", "It decreases by exactly 6.49(deg) F per 1000 m"],
+            options: ["It decreases by exactly 1.98(deg) F per 1000 ft", "It increases by exactly 1.98(deg) C per 1000 ft", "It decreases by exactly 6.49(deg) C per 1000 ft"],
             correct: "It decreases by exactly 1.98(deg) C per 1000 ft"
             };
         },

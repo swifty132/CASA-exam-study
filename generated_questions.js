@@ -2,598 +2,1117 @@
 
     () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "How does the local speed of sound change as an aircraft climbs from sea level to 36,089 feet in a standard atmosphere?",
             options: ["It increases continuously because the atmospheric density decreases with altitude.", "It remains constant because speed of sound is independent of temperature changes.", "It decreases then increases because barometric pressure drops then stabilizes."],
             correct: "It decreases continuously because the ambient absolute temperature drops with altitude."
+=======
+            topic: "Atmospheric Properties",
+            question: "If an aircraft climbs through the troposphere into the tropopause, how does the ambient temperature profile change?",
+            options: ["It increases steadily at 2(deg) C per 1000 ft", "It decreases more rapidly as the air becomes thinner", "It fluctuates wildly due to increased water vapour concentration"],
+            correct: "It ceases to decrease and remains approximately constant"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "What aerodynamic phenomenon occurs when a transonic aircraft accelerates past its Critical Mach Number (M_crit)?",
             options: ["The airflow over the wing becomes completely supersonic and boundary layer separation is entirely eliminated.", "The aircraft enters a region of zero drag because the expansion waves neutralize the normal shock waves.", "The local speed of sound increases over the wing upper surface causing a massive reduction in static pressure."],
             correct: "The airflow over the upper wing surface accelerates to Mach 1, initiating a normal shock wave."
+=======
+            topic: "Atmospheric Properties",
+            question: "What is the primary operational effect of flying in the lower stratosphere compared to the troposphere?",
+            options: ["The aircraft experiences higher parasite drag due to increased air density", "The engines produce more thrust due to higher oxygen concentration", "The airframe is subjected to rapid temperature fluctuations"],
+            correct: "The aircraft benefits from reduced drag due to lower air density"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "Why does a normal shock wave on a wing cause a massive increase in drag during transonic flight?",
             options: ["It causes the boundary layer to accelerate and separate from the lower wing surface first.", "It decreases the static pressure behind the shock wave, causing a severe nose-down pitching moment.", "It induces a sudden expansion of the air, causing the boundary layer to remain laminar and separate."],
             correct: "The severe adverse pressure gradient behind the shock wave causes boundary layer separation."
+=======
+            topic: "Air Density Effects",
+            question: "If an aircraft takes off from a runway on a day with high humidity instead of dry air at the same temperature, how is the air density affected?",
+            options: ["Air density increases because water droplets add mass to the air", "Air density remains unchanged unless the pressure altitude changes", "Air density increases due to the higher molecular weight of water"],
+            correct: "Air density decreases because water vapour is lighter than dry air"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "How does an oblique shock wave differ from a normal shock wave in supersonic flight?",
             options: ["The airflow behind an oblique shock wave is always subsonic and undergoes a drop in static temperature.", "The airflow behind an oblique shock wave accelerates to a higher supersonic Mach number than the inlet flow.", "An oblique shock wave is characterized by an expansion of the air with no loss in stagnation pressure."],
             correct: "The airflow behind an oblique shock wave remains supersonic but experiences a drop in velocity."
+=======
+            topic: "Air Density Effects",
+            question: "Why does a decrease in atmospheric pressure have a more dominant effect on air density than the corresponding decrease in temperature as altitude increases?",
+            options: ["Temperature changes only affect moisture content rather than air mass", "Pressure governs the speed of sound rather than molecular spacing", "Temperature drops counteract pressure drops completely above 10000 ft"],
+            correct: "The air expansion from pressure drop outweighs the contraction from cooling"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "What is the primary thermodynamic effect on supersonic air flowing through an expansion wave?",
             options: ["The air velocity decreases, while static temperature, density, and static pressure increase.", "The air velocity remains constant, while static pressure drops and static temperature increases.", "The air velocity decreases to subsonic speed, and static pressure and density increase suddenly."],
             correct: "The air velocity increases, while static temperature, density, and static pressure decrease."
+=======
+            topic: "Humidity Variations",
+            question: "When comparing absolute humidity to relative humidity, which scenario describes a 100% relative humidity condition?",
+            options: ["The air contains exactly 100 grams of water vapour per cubic metre", "The air has reached a temperature of exactly 100(deg) C", "The air pressure has condensed all available atmospheric nitrogen"],
+            correct: "The air is holding the maximum total water vapour it is capable of holding"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "How does sweeping a wing backward delay the onset of compressibility effects and increase M_crit?",
             options: ["It increases the physical wing area, which increases the local speed of sound over the wing root.", "It increases the chord-wise thickness-to-chord ratio, preventing normal shock wave formation.", "It forces the air to travel a shorter distance over the wing, reducing boundary layer friction."],
             correct: "It reduces the effective thickness-to-chord ratio by utilizing only the chord-wise component of airflow."
+=======
+            topic: "Humidity Variations",
+            question: "What occurs to the water vapour in a rising mass of humid air as it cools to its dew point?",
+            options: ["It sublimates directly into ice crystals causing airframe icing", "It absorbs heat from the surrounding air causing severe turbulence", "It evaporates completely leaving the air mass completely dry"],
+            correct: "It condenses into liquid droplets forming visible clouds"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "According to the Whitcomb Area Rule, how must a supersonic aircraft's fuselage be designed to minimize wave drag?",
             options: ["The fuselage cross-sectional area must be maximized at the wing attachment points to slow the flow.", "The fuselage must feature sharp, angular steps along its longitudinal length to break up shock waves.", "The fuselage must be uniformly cylindrical from nose to tail to prevent expansion wave formation."],
             correct: "The fuselage cross-sectional area must be reduced near the wings to maintain a smooth total area."
+=======
+            topic: "ISA Standards",
+            question: "How is the International Standard Atmosphere (ISA) temperature model applied to aircraft performance?",
+            options: ["It guarantees that aircraft fly in standard conditions above 36000 ft", "It dictates the maximum operational ceiling based on standard gravity", "It provides a constant pressure value for all altimeter calibrations"],
+            correct: "It provides a baseline to compare actual performance by correcting parameters"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "What physical parameter determines the ram temperature rise on the leading edge of a supersonic aircraft?",
             options: ["It depends on both the aircraft altitude and the ambient static air pressure.", "It depends on the ambient static air pressure and is independent of aircraft speed.", "It depends solely on the aircraft altitude and is independent of true airspeed."],
             correct: "It depends solely on the true airspeed of the aircraft and is independent of altitude."
+=======
+            topic: "ISA Standards",
+            question: "If the actual atmospheric pressure at mean sea level drops below 1013.25 hPa, how does this affect the indicated pressure altitude?",
+            options: ["The pressure altitude becomes a negative value regardless of true altitude", "The pressure altitude precisely matches the density altitude", "The pressure altitude will be lower than the actual true altitude"],
+            correct: "The pressure altitude will be higher than the actual true altitude"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "What is the primary function of a convergent-divergent duct in a supersonic engine inlet?",
             options: ["To accelerate the air to a high supersonic speed before it enters the compressor stage.", "To maintain a constant supersonic Mach number from the inlet face to the compressor face.", "To bypass supersonic air around the compressor to prevent high-altitude combustion flameouts."],
             correct: "To slow the incoming supersonic airflow to subsonic speed before it reaches the compressor face."
+=======
+            topic: "Air Density Effects",
+            question: "Which combination of environmental factors will result in the highest density altitude?",
+            options: ["High atmospheric pressure with low temperature and low humidity", "Low atmospheric pressure with low temperature and high humidity", "High atmospheric pressure with high temperature and low humidity"],
+            correct: "Low atmospheric pressure with high temperature and high humidity"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "Where does the normal shock wave ideally stabilize inside a supersonic engine's convergent-divergent inlet duct during normal flight?",
             options: ["It stabilizes directly at the intake lip before the convergent section.", "It stabilizes within the divergent section, maintaining supersonic flow to the compressor face.", "It stabilizes at the compressor face to maximize the temperature rise of the air."],
             correct: "It stabilizes just downstream of the throat, stepping supersonic flow down to subsonic flow."
+=======
+            topic: "Atmospheric Properties",
+            question: "Why is the tropopause height variable rather than fixed at exactly 36000 ft?",
+            options: ["It is altered by aircraft traffic condensing water vapour at high altitudes", "It is fixed at 36000 ft only over the poles and drops over the equator", "It is dictated entirely by the gravitational pull of the moon and tides"],
+            correct: "It fluctuates due to seasonal temperature changes and latitudinal position"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "What structural material is required for aircraft skin in areas experiencing stagnation temperatures above Mach 2?",
             options: ["High-strength carbon fiber composites because they do not suffer from thermal expansion.", "Standard aviation-grade aluminum alloys because they maintain their tensile strength at high temperatures.", "Reinforced fiberglass structures with neoprene protective boots to prevent aerodynamic erosion."],
             correct: "Titanium alloys or stainless steel because they maintain structural integrity at high temperatures."
+=======
+            topic: "ISA Standards",
+            question: "In the ISA model, what is the established temperature lapse rate in the troposphere?",
+            options: ["It decreases by exactly 1.98(deg) F per 1000 ft", "It increases by exactly 1.98(deg) C per 1000 ft", "It decreases by exactly 6.49(deg) F per 1000 m"],
+            correct: "It decreases by exactly 1.98(deg) C per 1000 ft"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "Why does an aircraft experience a significant nose-down pitching moment (Mach Tuck) during transonic acceleration?",
             options: ["The shock wave forms on the lower wing surface first, pulling the nose down mechanically.", "The center of gravity moves rapidly forward as fuel shifted within the wing tanks.", "The boundary layer separates from the horizontal stabilizer, causing a loss of negative lift."],
             correct: "The aerodynamic center of lift shifts aft from approximately 25% to 50% of the wing chord."
+=======
+            topic: "Humidity Variations",
+            question: "If air is blown over both a wet-bulb and a dry-bulb thermometer, how is the relative humidity determined?",
+            options: ["By adding the two temperatures and dividing by the atmospheric pressure", "By measuring the time it takes for the wet bulb to completely dry", "By calculating the exact mass of the water evaporated from the bulb"],
+            correct: "By comparing the difference in readings between the two thermometers"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "What is the physical behavior of air flowing past the throat of a supersonic convergent-divergent nozzle?",
             options: ["The air slows down below Mach 1 and its density increases suddenly.", "The air temperature increases while its static pressure drops rapidly.", "The air remains at a constant subsonic speed as it expands into the nozzle."],
             correct: "The air accelerates past Mach 1 and transitions to supersonic velocity."
+=======
+            topic: "Air Density Effects",
+            question: "If half of all air molecule mass is located below 18000 ft altitude, how does this affect aircraft performance at 30000 ft?",
+            options: ["The aircraft will experience a massive increase in parasitic drag", "The engine will generate excessive thrust due to cold temperatures", "The wings will generate lift more efficiently without any drag penalties"],
+            correct: "The engine and wings will have reduced performance due to thin air"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "What represents the speed regime known as the Transonic flight regime?",
             options: ["The flight speed where the entire airframe experiences completely subsonic flow.", "The flight speed where the entire airframe experiences completely supersonic flow.", "The flight speed where the engine inlet transitions from subsonic to supersonic flow."],
             correct: "The speed range from Mach 0.75 to 1.20 where both subsonic and supersonic flows exist."
+=======
+            topic: "Atmospheric Properties",
+            question: "How does the stratosphere isothermal layer characteristic impact flight dynamics?",
+            options: ["The sudden drop in temperature causes immediate airframe icing", "The rapidly increasing temperature reduces engine thrust significantly", "The extreme turbulence requires constant pilot control inputs"],
+            correct: "The constant temperature means density changes are purely pressure-driven"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Aerodynamic Principles",
             question: "What is the primary operational effect of a shock stall on control surface serviceability?",
             options: ["The control surfaces become locked in the neutral position due to hydraulic pressure overload.", "The control surfaces experience a complete loss of hinge moments, becoming completely loose.", "The control surfaces move in the opposite direction of the pilot control inputs automatically."],
             correct: "The control surfaces experience severe buffeting and a complete loss of control effectiveness."
+=======
+            topic: "ISA Standards",
+            question: "What is the specific gravity (g) constant defined by ISA standard conditions?",
+            options: ["9.809 ft/s^2", "32.174 m/s^2", "14.69 m/s^2"],
+            correct: "9.809 m/s^2"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "What is the primary aerodynamic purpose of a Frise-type aileron?",
             options: ["To reduce the physical effort required by the pilot to roll the aircraft at low speeds.", "To increase the lift on the down-going wing by creating a high-pressure air duct.", "To prevent high-frequency flutter by shifting the control surface center of gravity forward."],
             correct: "To reduce adverse yaw by protruding the leading edge of the up-going aileron into the wind."
+=======
+            topic: "Airflow Characteristics",
+            question: "How does the boundary layer velocity profile change from the surface of the aerofoil to the outer edge of the layer?",
+            options: ["It remains constant at zero throughout the entire boundary layer", "It is highest at the surface and decreases to zero at the outer edge", "It fluctuates randomly depending on the angle of attack"],
+            correct: "It varies from zero at the surface to free stream velocity at the outer edge"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "How does a differential aileron control system function to counteract adverse yaw?",
             options: ["The down-going aileron moves through a larger deflection angle than the up-going aileron.", "The ailerons move in the same direction but at different deflection speeds depending on airspeed.", "The ailerons deflect only when the rudder is moved in the opposite direction of the roll."],
             correct: "The up-going aileron deflects to a greater angle than the down-going aileron."
+=======
+            topic: "Airflow Characteristics",
+            question: "What is the primary aerodynamic consequence if the transition point on an aerofoil moves significantly forward?",
+            options: ["The boundary layer remains laminar and drag is significantly reduced", "The stagnation point shifts to the trailing edge causing a stall", "The wake behind the aerofoil disappears completely"],
+            correct: "The boundary layer becomes turbulent earlier causing increased skin friction"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "Under what flight conditions are the outboard ailerons on a transport-category aircraft typically locked out?",
             options: ["During low-speed, high-angle-of-attack flight to maximize roll control authority.", "During landing and takeoff to ensure that roll spoilers are the primary roll controls.", "When the aircraft is parked on the ground to prevent wind gusts from damaging actuators."],
             correct: "During high-speed cruise flight to prevent excessive wing twisting and structural loads."
+=======
+            topic: "Generation of Lift",
+            question: "According to Bernoulli principle, how is the lift force generated on an asymmetric aerofoil?",
+            options: ["By increasing both the potential and kinetic energy simultaneously", "By accelerating air under the wing to decrease the dynamic pressure", "By increasing the pressure on the upper surface to push the wing down"],
+            correct: "By increasing air velocity over the top surface to decrease its pressure"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "What is the operational purpose of a spring tab on a primary flight control surface?",
             options: ["To lock the control surface in the neutral position when hydraulic pressure is lost.", "To act as a trim tab that maintains a set pitch attitude without pilot input.", "To increase the pilot's control feel at low airspeeds by adding resistance."],
             correct: "To assist the pilot in moving the control surface at high airspeeds by deflecting proportionally."
+=======
+            topic: "Generation of Lift",
+            question: "How do wing tip vortices influence the airflow pattern surrounding an aircraft?",
+            options: ["They create an upwash that pushes the aircraft forward and increases thrust", "They form a high-pressure zone directly above the fuselage", "They completely eliminate the boundary layer on the outer wing sections"],
+            correct: "They cause a downward flow that modifies the lift and increases induced drag"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "How does a servo tab operate in relation to the primary flight control surface it is attached to?",
             options: ["It is moved directly by the pilot, deflecting in the same direction as the primary surface.", "It moves automatically in the opposite direction of the primary surface to lock it.", "It is moved by hydraulic actuators to increase the aerodynamic drag of the control surface."],
             correct: "It is moved directly by the pilot, deflecting in the opposite direction to aerodynamically move the primary surface."
+=======
+            topic: "Aerofoil Terminology",
+            question: "If an aerofoil has a double convex curvature with identical upper and lower cambers, how is it classified?",
+            options: ["It is classified as a high-lift aerofoil section", "It is classified as a general-purpose aerofoil section", "It is classified as an inverted asymmetric aerofoil section"],
+            correct: "It is classified as a symmetrical aerofoil section"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "Why are lead weights added to a primary flight control surface forward of the hinge line?",
             options: ["To increase the pilot's control column force requirements during high-speed maneuvers.", "To assist the hydraulic actuators by reducing the overall static weight of the surface.", "To ensure that the control surface always deflects downward when hydraulic pressure is lost."],
             correct: "To prevent high-frequency aerodynamic flutter by moving the center of gravity forward of the hinge."
+=======
+            topic: "Aerofoil Terminology",
+            question: "How is the fineness ratio of an aerofoil section calculated?",
+            options: ["By dividing the maximum camber by the mean aerodynamic chord", "By multiplying the wingspan by the mean chord length", "By dividing the wingspan squared by the wing area"],
+            correct: "By dividing the chord length by the maximum thickness"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "What is the primary aerodynamic mechanism of a Fowler flap?",
             options: ["It hinges downward from the trailing edge lower surface, creating a high-pressure drag pocket.", "It opens a slot at the leading edge to optimize upper surface boundary layer flow.", "It moves upward and backward to reduce both wing area and drag for high-speed cruise."],
             correct: "It slides backward on tracks to increase wing area, then deflects downward to increase camber."
+=======
+            topic: "Airflow Characteristics",
+            question: "What happens to the free stream airflow as an object presents greater resistance to it?",
+            options: ["The free stream airflow conforms perfectly to the object surface", "The boundary layer thickness decreases to zero", "The streamlines compress and increase in density"],
+            correct: "The turbulence increases and the free stream airflow is pushed further away"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "How do slats delay the onset of a wing stall at high angles of attack?",
             options: ["They completely block airflow over the upper surface, creating a stable low-pressure void.", "They decrease the wing camber, which decreases the total lift and drag of the wing.", "They increase the physical wing sweep angle, which increases the critical Mach number."],
             correct: "They open a gap that channels high-energy air over the upper surface, energizing the boundary layer."
+=======
+            topic: "Aerofoil Terminology",
+            question: "Which aerodynamic characteristic dictates the selection of a very low thickness-to-chord ratio (7%) for an aerofoil?",
+            options: ["The need for a very high coefficient of lift at low speeds", "The requirement for maximum internal fuel storage capacity", "The necessity to increase the wing tip vortex circulation"],
+            correct: "The overriding requirement for low drag at high speeds"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "What is the specific aerodynamic purpose of a wing fence on a swept-wing aircraft?",
             options: ["To direct the boundary layer airflow outward to increase lift at the wing tips.", "To increase the wing's structural rigidity and prevent high-frequency flutter.", "To act as a vortex generator that delays boundary layer separation at the wing root."],
             correct: "To block spanwise boundary layer airflow, preventing premature wing tip stalling."
+=======
+            topic: "Generation of Lift",
+            question: "What physical phenomenon causes the upwash effect ahead of a lift-producing aerofoil?",
+            options: ["The high-pressure air below the wing leaking around the wing tips", "The friction between the boundary layer and the free stream airflow", "The rapid acceleration of air leaving the trailing edge"],
+            correct: "The tendency of air to flow towards the low-pressure area above the wing"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "How do stall strips installed on the inner leading edge of a wing improve safety?",
             options: ["They prevent the wing root from stalling, ensuring the aircraft stalls at the tips first.", "They generate powerful vortices that eliminate the boundary layer across the entire wing.", "They reduce the overall drag of the wing during high-speed cruise flight."],
             correct: "They force the wing root to stall first, preserving aileron effectiveness at the wing tips."
+=======
+            topic: "Aerofoil Terminology",
+            question: "How does increasing the aspect ratio of a wing affect its aerodynamic efficiency?",
+            options: ["It increases the physical thickness of the boundary layer", "It increases the maximum lift coefficient drastically", "It causes the transition point to move forward to the leading edge"],
+            correct: "It reduces the size of wing-tip vortices and lowers induced drag"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "What occurs when the aileron roll spoilers deploy on the wing during a rolling maneuver?",
             options: ["They deploy on both wings simultaneously to increase the overall lift of the aircraft.", "They deploy only on the wing with the down-going aileron to increase its aerodynamic lift.", "They deploy to decrease the drag on the wing with the up-going aileron, balancing adverse yaw."],
             correct: "They deploy on the wing with the up-going aileron, dumping lift and increasing drag on that wing."
+=======
+            topic: "Generation of Lift",
+            question: "What causes the central core of a trailing vortex to become visible under certain atmospheric conditions?",
+            options: ["The friction heating the air to the boiling point of water", "The exhaust gases mixing with the high-pressure air", "The rapid increase in ambient pressure squeezing the air molecules"],
+            correct: "The condensation of moisture due to decreased pressure and temperature"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "How does a hydraulic follow-up actuator function to control a flight control surface?",
             options: ["The pilot directly moves the actuator piston, which mechanically forces hydraulic fluid to move the surface.", "The actuator body remains static, while the piston moves and electrically signals the computer.", "The pilot signals a computer that controls an electric motor, bypassing hydraulic valves entirely."],
             correct: "The pilot moves a spool valve, porting fluid to move the actuator body, which mechanically closes the valve."
+=======
+            topic: "Airflow Characteristics",
+            question: "What defines the stagnation point on the leading edge of an aerofoil?",
+            options: ["The point where the boundary layer changes from laminar to turbulent", "The point where the airflow separates completely from the upper surface", "The point where the trailing vortices meet and cancel each other out"],
+            correct: "The point where the relative airflow first contacts the surface and divides"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "Why is an artificial feel system necessary in an aircraft with fully hydraulic flight controls?",
             options: ["To assist the hydraulic actuators in overcoming the aerodynamic loads on the control surfaces.", "To prevent the control surfaces from deflecting when the aircraft is parked on the ground.", "To ensure that the cockpit controls always move in the opposite direction of the control surfaces."],
             correct: "To provide the pilot with control force resistance that increases proportionally with airspeed."
+=======
+            topic: "Aerofoil Terminology",
+            question: "Why is the Mean Aerodynamic Chord (MAC) used instead of the average chord for calculating weight-and-balance on tapered wings?",
+            options: ["Because the average chord is always twice the length of the root chord", "Because the MAC is physically drawn on the wing surface for reference", "Because the MAC changes based on the angle of attack during flight"],
+            correct: "Because the MAC accurately represents the aerodynamic center of the tapered area"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "How does a dynamic (q) feel system vary the control force resistance on the pilot's control column?",
             options: ["It uses a mechanical spring that provides a constant resistance regardless of airspeed.", "It uses an electric motor that increases resistance when the landing gear is extended.", "It uses static pressure bellows that decrease the resistance as altitude increases."],
             correct: "It uses dynamic pressure bellows to regulate metered hydraulic pressure acting on a centering piston."
+=======
+            topic: "Airflow Characteristics",
+            question: "What is the primary cause of the boundary layer forming on an aircraft surface?",
+            options: ["The sudden drop in atmospheric pressure over the wing", "The expansion of air molecules as they heat up", "The Coanda effect pulling the air downwards"],
+            correct: "The viscosity of the air sticking to the surface"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Flight Control Systems",
             question: "What is the primary function of a rudder travel limiter system at high airspeeds?",
             options: ["To lock the rudder in the neutral position to prevent any yawing maneuvers.", "To increase the mechanical gear ratio so that the pilot can deflect the rudder further.", "To bypass hydraulic pressure around the rudder actuators, allowing the rudder to trail freely."],
             correct: "To restrict the maximum deflection angle of the rudder to prevent structural overstress."
+=======
+            topic: "Aerofoil Terminology",
+            question: "Which wing planform design offers the highest aerodynamic efficiency but is generally more complex to manufacture?",
+            options: ["The rectangular wing planform", "The heavily tapered wing planform", "The highly sweptback wing planform"],
+            correct: "The elliptical wing planform"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "Why must the relative velocity of the advancing blade and the retreating blade be aerodynamically balanced?",
             options: ["To prevent the helicopter from spinning out of control about its vertical axis.", "To ensure that the coning angle remains at zero degrees during high-speed forward flight.", "To prevent the engine from overspeeding when the collective pitch is increased."],
             correct: "To prevent dissymmetry of lift, which would cause the helicopter to roll over."
+=======
+            topic: "Flight Forces & Angles",
+            question: "How does the Centre of Pressure (CP) move on an asymmetrical aerofoil as the angle of attack is increased toward the stall point?",
+            options: ["It remains completely stationary at the 25% chord position", "It moves rapidly backward toward the trailing edge", "It moves perpendicularly away from the chord line"],
+            correct: "It moves progressively forward toward the leading edge"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "How does blade flapping resolve the problem of dissymmetry of lift in forward flight?",
             options: ["The retreating blade flaps upward to increase lift, while the advancing blade flaps downward.", "Both blades flap upward simultaneously to increase the overall coning angle of the rotor.", "The blades flap horizontally to increase the effective sweep angle of the advancing blade."],
             correct: "The advancing blade flaps upward, reducing its angle of attack, while the retreating blade flaps downward."
+=======
+            topic: "Flight Forces & Angles",
+            question: "What distinguishes the angle of incidence from the angle of attack?",
+            options: ["The angle of incidence changes based on the relative airflow", "The angle of incidence is measured between the chord line and the horizon", "The angle of incidence is adjusted by the pilot during flight"],
+            correct: "The angle of incidence is fixed during manufacture and does not change"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "What is the primary aerodynamic cause of retreating blade stall in high-speed helicopter flight?",
             options: ["The advancing blade reaches supersonic speeds, generating a normal shock wave that stalls the rotor.", "The coning angle becomes too large, causing the centrifugal force to collapse the rotor blades.", "The tail rotor fails to provide sufficient anti-torque thrust, stalling the main rotor."],
             correct: "The retreating blade operates at an excessively high angle of attack to compensate for low relative velocity."
+=======
+            topic: "Drag Characteristics",
+            question: "As an aircraft accelerates to higher speeds, how does the relationship between induced drag and parasite drag change?",
+            options: ["Both induced drag and parasite drag decrease simultaneously", "Induced drag increases rapidly while parasite drag decreases", "Both induced drag and parasite drag increase proportionally"],
+            correct: "Induced drag decreases while parasite drag increases exponentially"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "How does gyroscopic precession affect the design of helicopter cyclic pitch controls?",
             options: ["The control input must be applied in the same direction as the desired rotor disc tilt.", "The control input must be applied 180(deg) opposite to the desired direction of travel.", "The control input must be applied directly over the nose to tilt the rotor disc laterally."],
             correct: "The control input must be applied 90(deg) ahead of the desired aerodynamic reaction."
+=======
+            topic: "Lift & Stalling",
+            question: "What happens to the Coefficient of Lift (C_L) when an aircraft reaches its critical angle of attack?",
+            options: ["It continues to increase exponentially with airspeed", "It becomes perfectly equal to the Coefficient of Drag", "It stabilizes and remains constant regardless of airspeed"],
+            correct: "It reaches its maximum value and then rapidly drops to zero"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "What is the vector equilibrium that establishes the coning angle of a helicopter rotor blade?",
             options: ["The equilibrium between aerodynamic drag and engine torque.", "The equilibrium between the rotor blade mass and its physical length.", "The equilibrium between the tail rotor thrust and main rotor torque."],
             correct: "The equilibrium between aerodynamic lift and centrifugal force."
+=======
+            topic: "Flight Forces & Angles",
+            question: "If the upper surface of a wing provides 80% of the total lift, what does this indicate about the pressure distribution?",
+            options: ["The pressure increase on the lower surface is greater than the decrease on top", "The pressure on both surfaces is evenly distributed along the chord line", "The highest pressure point is located exactly at the trailing edge"],
+            correct: "The decrease in pressure on the upper surface is significantly larger"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "Why is geometric washout (twist) incorporated into helicopter rotor blades?",
             options: ["To increase the blade's structural stiffness and prevent high-frequency chordwise vibration.", "To ensure that the blade tip has a higher angle of attack than the blade root.", "To allow the blade to fold backward easily when the helicopter is parked."],
             correct: "To distribute aerodynamic lift more evenly along the span of the blade."
+=======
+            topic: "Icing & Contamination",
+            question: "How does frost accumulation on the wing surface primarily degrade aircraft performance?",
+            options: ["It decreases the parasite drag by smoothing microscopic surface imperfections", "It increases the kinetic energy of the boundary layer air", "It lowers the weight of the aircraft by displacing dense air"],
+            correct: "It alters the aerofoil shape and reduces lift while increasing stall speed"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "How does the collective pitch control change the aerodynamic state of the helicopter?",
             options: ["It varies the pitch angle of each blade cyclicly, tilting the rotor disc in a specific direction.", "It changes the rotational speed of the engine, which increases or decreases total lift.", "It varies the pitch of the tail rotor blades to control the directional yaw of the helicopter."],
             correct: "It varies the pitch angle of all main rotor blades simultaneously and equally."
+=======
+            topic: "Drag Characteristics",
+            question: "Which specific type of drag is generated when the varied air currents over the wing and fuselage meet and interact?",
+            options: ["Form drag", "Induced drag", "Skin friction drag"],
+            correct: "Interference drag"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "What is the primary purpose of the rotating swashplate in a helicopter rotor system?",
             options: ["To transmit the engine's torque directly to the rotor mast without using a gearbox.", "To control the pitch of the tail rotor blades through mechanical pushrods.", "To prevent the rotor blades from coning during high-speed forward flight."],
             correct: "To transfer control inputs from the non-rotating fuselage to the rotating rotor blades."
+=======
+            topic: "Drag Characteristics",
+            question: "According to the drag equation, how does doubling the airspeed affect the total aerodynamic drag?",
+            options: ["The drag increases by a factor of two", "The drag remains constant if altitude is unchanged", "The drag increases by a factor of eight"],
+            correct: "The drag increases by a factor of four"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "How does a NOTAR (No Tail Rotor) helicopter system control yaw torque?",
             options: ["It uses dual main rotors rotating in the same direction with differential pitch control.", "It uses an electric motor inside the main gearbox to counter the engine torque.", "It uses a conventional tail rotor shrouded within a protective duct in the vertical fin."],
             correct: "It uses low-pressure air blown through slots in the tail boom to exploit the Coanda effect."
+=======
+            topic: "Flight Forces & Angles",
+            question: "What is the primary purpose of designing a wing with washout (a smaller angle of incidence at the tip than at the root)?",
+            options: ["To reduce the overall wingspan and save structural weight", "To increase the maximum coefficient of lift for short takeoffs", "To prevent the propeller torque from rolling the aircraft"],
+            correct: "To ensure the wing root stalls before the wing tip for better control"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "Why is the placement of critical avionics racks on vibration nodes important in helicopter design?",
             options: ["Nodes are points of maximum vibration amplitude, which ensures maximum sensor cooling.", "Nodes are points of high magnetic flux, which improves signal propagation.", "Nodes are points of zero pressure, preventing static port calibration errors."],
             correct: "Nodes are points of zero vibration amplitude, minimizing mechanical fatigue on components."
+=======
+            topic: "Lift & Stalling",
+            question: "At higher subsonic speeds, why does the rate of lift increase begin to fall below the predicted V^2 law?",
+            options: ["The air density increases exponentially at high velocities", "The boundary layer becomes completely laminar reducing skin friction", "The angle of attack automatically decreases due to structural bending"],
+            correct: "The compressible nature of the air alters the airflow characteristics"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "What is the primary mechanical function of the stationary swashplate in a helicopter flight control system?",
             options: ["To rotate directly with the rotor mast and transmit mechanical loads to the tail rotor.", "To act as a bearing that prevents the rotor blades from flapping during high-speed maneuvers.", "To absorb all rotor vibration and prevent them from entering the pilot's control sticks."],
             correct: "To accept mechanical inputs from cockpit control linkages and tilt or slide vertically on the mast."
+=======
+            topic: "Flight Forces & Angles",
+            question: "What is defined as the Polar Curve in aerodynamic analysis?",
+            options: ["A graph showing the relationship between altitude and air density", "A mathematical model predicting the transition point movement", "A diagram illustrating the pressure distribution over the chord line"],
+            correct: "A mathematical representation of lift versus drag and angle of attack"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "How does a Fenestron tail rotor configuration differ aerodynamically from a conventional tail rotor?",
             options: ["It utilizes high-pressure engine bleed air instead of a physical rotating blade to control yaw.", "It uses multiple small rotors mounted along the fuselage to balance the gyroscopic precession.", "It rotates at a variable speed controlled by an electric motor powered by the main battery."],
             correct: "It features a multi-blade fan shrouded within the vertical tail fin to reduce tip vortex losses."
+=======
+            topic: "Lift & Stalling",
+            question: "Which two primary factors determine the Coefficient of Lift (C_L) for a given aerofoil?",
+            options: ["Velocity and air density", "Wing area and total thrust", "Angle of incidence and flight path"],
+            correct: "Aerofoil shape and angle of attack"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "What structural vibration characteristic describes an 'anti-node' in a helicopter fuselage?",
             options: ["It is a localized area that experiences zero structural deflection during harmonic oscillations.", "It is a location where the magnetic fields of the generators cancel each other out completely.", "It is the point where the rotor mast is attached to the main transmission housing."],
             correct: "It is a localized area that experiences maximum vibration amplitude during harmonic oscillations."
+=======
+            topic: "Drag Characteristics",
+            question: "Why is an aircraft with a high aspect ratio more efficient at low cruising speeds?",
+            options: ["It reduces the form drag caused by the fuselage", "It eliminates the need for trailing edge flaps", "It decreases the skin friction over the entire airframe"],
+            correct: "It significantly reduces the dimensions of wing-tip vortices and induced drag"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "What is the aerodynamic consequence of helicopter rotor blades coning excessively under heavy loads?",
             options: ["The blades experience a severe drop in centrifugal force, causing them to lock horizontally.", "The relative airflow shifts outward, increasing the effective speed of sound at the tips.", "The rotor disc area is expanded, which reduces the engine power required to hover."],
             correct: "The effective rotor disc area is reduced, resulting in a loss of total vertical lift."
+=======
+            topic: "Lift & Stalling",
+            question: "If an aircraft is flying straight and level at a constant speed, what is the exact relationship between the four aerodynamic forces?",
+            options: ["Lift equals thrust and weight equals drag", "Lift is greater than weight and thrust equals drag", "Lift equals weight and thrust is greater than drag"],
+            correct: "Lift equals weight and thrust equals drag"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Rotary Wing Dynamics",
             question: "How does the lead-lag hinge on a fully articulated rotor head prevent structural damage to the blades?",
             options: ["It allows the blades to flex vertically to relieve the bending stress from high coning loads.", "It allows the blades to rotate about their longitudinal axis to change their pitch angle.", "It locks the blades at a fixed 90(deg) angle relative to the rotor mast under high torque."],
             correct: "It allows the blades to move forward or backward in-plane to relieve Coriolis force stresses."
+=======
+            topic: "Flight Forces & Angles",
+            question: "How does the resultant aerodynamic force relate to the relative airflow?",
+            options: ["It acts perfectly parallel to the relative airflow", "It is composed entirely of the lift vector", "It acts completely perpendicular to the relative airflow"],
+            correct: "It is the net force containing both perpendicular lift and parallel drag components"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "What is the primary architectural difference between a conventional flight control system and a Fly-by-Wire system?",
             options: ["FBW uses hydraulic power to move surfaces, whereas conventional systems use electric motors.", "FBW uses analog electronic circuits to physically push the mechanical control cables.", "FBW uses pneumatic pressure lines to transmit control column commands to actuators."],
             correct: "FBW replaces mechanical linkages with electrical paths transmitting digital commands."
+=======
+            topic: "Flight Dynamics",
+            question: "During a steady climb, how must the pilot balance the aircraft aerodynamic forces?",
+            options: ["Thrust must equal drag and lift must equal weight", "Thrust must equal drag while lift must exceed weight", "Thrust must balance only the drag force component"],
+            correct: "Thrust must balance the drag plus a portion of the aircraft weight"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "On the Airbus A320, which flight control computers are primarily responsible for elevator and aileron control?",
             options: ["The SECs (Spoiler Elevator Computers).", "The FACs (Flight Augmentation Computers).", "The FMGCs (Flight Management Guidance Computers)."],
             correct: "The ELACs (Elevator Aileron Computers)."
+=======
+            topic: "Flight Dynamics",
+            question: "What determines the best glide distance an aircraft can achieve in a steady descent with no thrust?",
+            options: ["Minimizing the rate of descent to maximize total flight time", "Gliding at a speed significantly lower than the best glide speed", "Flying at the absolute minimum controllable airspeed"],
+            correct: "Maintaining the angle of attack that produces the maximum lift-to-drag ratio"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "What is the primary role of the Flight Augmentation Computer (FAC) on the Airbus A320?",
             options: ["To control the secondary spoilers and provide emergency pitch backup control.", "To control primary roll and pitch through the elevators and ailerons.", "To manage the autopilot flight director commands and navigation displays."],
             correct: "To manage rudder travel limitation, yaw damping, and rudder trim."
+=======
+            topic: "Turning Theory",
+            question: "When an aircraft banks to initiate a turn, which specific force causes the aircraft flight path to curve?",
+            options: ["The increased vertical component of lift opposing weight", "The centrifugal force pulling the aircraft outwards", "The increased thrust applied by the pilot"],
+            correct: "The horizontal component of lift acting as a centripetal force"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "How is the dual-channel (Control and Monitoring) self-monitoring architecture of an ELAC computer configured to prevent common-mode failures?",
             options: ["Both channels use identical microprocessors and the exact same software compiler code.", "The control channel uses analog circuits, while the monitoring channel uses digital microprocessors.", "The monitoring channel is located in a different compartment and operates at a different voltage."],
             correct: "The two channels use different microprocessors and are programmed using different software compilers."
+=======
+            topic: "Turning Theory",
+            question: "If an aircraft initiates a turn with an insufficient bank angle for its speed, what physical sensation will the pilot experience?",
+            options: ["A feeling of being pushed down heavily into the seat", "A feeling of the airflow coming from the inside of the turn", "A feeling of weightlessness due to negative load factor"],
+            correct: "A feeling of sliding outwards due to excessive centrifugal force"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "What happens if an Airbus A320 ELAC computer detects a mismatch between its Control and Monitoring channels?",
             options: ["The computer attempts to reboot itself three times before triggering a cockpit master warning.", "The monitoring channel overrides the control channel and forces the surfaces to the neutral position.", "The computer alerts the pilot via the MCDU, who must manually switch to the backup SEC computer."],
             correct: "The computer immediately de-energizes its output relays and transfers control to a backup computer."
+=======
+            topic: "Aircraft Loading",
+            question: "How is the wing loading of an aircraft mathematically calculated?",
+            options: ["By multiplying the wingspan by the mean aerodynamic chord", "By dividing the wing area by the total aircraft weight", "By multiplying the aircraft weight by the load factor"],
+            correct: "By dividing the total aircraft weight by the wing area"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "How is the A320 Electronic Flight Control System (EFCS) powered in the event of a total electrical generation failure?",
             options: ["It is powered by 115V AC from the static inverter directly connected to the APU battery.", "It is powered by dedicated pneumatic generators driven by engine bleed air.", "It is powered by high-voltage DC generators installed on each landing gear strut."],
             correct: "It is powered by the RAT-pressurized Blue hydraulic system driving the Emergency Generator."
+=======
+            topic: "Aircraft Loading",
+            question: "What occurs to an aircraft stall speed if it enters a steep coordinated turn resulting in a load factor of 4g?",
+            options: ["The stall speed remains unchanged as weight is constant", "The stall speed increases by a factor of four", "The stall speed decreases by half to maintain lift"],
+            correct: "The stall speed doubles due to the square root relationship"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "What condition will cause the Slat Flap Control Computers (SFCC) to apply the Wing Tip Brakes (WTB)?",
             options: ["When the aircraft airspeed exceeds 250 kt with the slats fully retracted.", "When the landing gear is retracted while the flaps are still at position 3.", "When hydraulic pressure in both the Green and Yellow systems is lost simultaneously."],
             correct: "When the computers detect asymmetry, runaway, overspeed, or uncommanded motion."
+=======
+            topic: "Flight Dynamics",
+            question: "If an aircraft is loaded so that the Centre of Gravity (CG) is too far aft, what is a primary aerodynamic consequence?",
+            options: ["The aircraft will experience an increased tendency to dive", "The pilot will have difficulty raising the nose during landing", "The aircraft will become excessively longitudinally stable"],
+            correct: "The aircraft will develop poor stability and dangerous spin characteristics"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "How are the Wing Tip Brakes (WTB) reset after being applied by the SFCCs during flight?",
             options: ["The pilot can reset them in flight by cycling the flap lever to position 0 and back.", "They reset automatically once the aerodynamic loads on the flaps drop below a set threshold.", "They can be reset in flight by cycling the Flight Control primary computer circuit breakers."],
             correct: "They cannot be reset in flight; they must be physically reset on the ground by maintenance."
+=======
+            topic: "Lift Augmentation",
+            question: "How do leading-edge slots increase the critical angle of attack and delay a stall?",
+            options: ["By extending the physical chord line of the aerofoil", "By reducing the total wing area and decreasing wing loading", "By creating a downward force on the tail to raise the nose"],
+            correct: "By directing high-velocity air over the upper surface to energize the boundary layer"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "On the Airbus A320, what is the hierarchical backup path for elevator pitch control if both ELACs fail?",
             options: ["Control is transferred directly to the FACs for emergency dynamic trim control.", "Control is transferred to the autopilot servo motors, which bypass the FCCs entirely.", "The system enters mechanical backup, requiring the pilot to use the rudder pedals for pitch."],
             correct: "Control is transferred automatically to SEC 1, then to SEC 2, and finally to SEC 3."
+=======
+            topic: "Lift Augmentation",
+            question: "What is the operational advantage of deploying full trailing-edge flaps during a landing approach?",
+            options: ["It increases the stall speed ensuring a firmer touchdown", "It completely eliminates induced drag improving the glide ratio", "It shifts the centre of gravity forward for better stability"],
+            correct: "It allows a steeper descent angle at a reduced speed without gaining airspeed"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "What is the primary function of the Blue hydraulic system in the Airbus A320 flight control architecture?",
             options: ["It is the primary hydraulic source for extending and retracting the main landing gear.", "It operates all primary trailing edge flaps and slats during normal takeoff and landing.", "It is dedicated entirely to braking systems and nose wheel steering during ground operations."],
             correct: "It acts as the independent backup hydraulic supply for primary flight controls and spoilers."
+=======
+            topic: "Flight Dynamics",
+            question: "In a steady, powered descent, what is the relationship between the aerodynamic forces?",
+            options: ["Lift is greater than weight and drag equals thrust", "Lift equals weight and thrust equals drag", "Lift is less than weight and thrust is zero"],
+            correct: "Lift is less than weight and drag is balanced by reduced thrust and a part of weight"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "How does the A320 flight control system operate in Normal Law during a pilot-commanded rolling maneuver?",
             options: ["The side-stick deflection commands a direct surface deflection proportional to stick angle.", "The side-stick deflection commands an engine thrust differential to assist in the turn.", "The side-stick deflection commands a yaw rate, with the autopilot automatically managing the bank."],
             correct: "The side-stick deflection commands a roll rate that is automatically limited by the computers."
+=======
+            topic: "Turning Theory",
+            question: "Why must a pilot increase back pressure on the elevator during a level coordinated turn?",
+            options: ["To counteract the excessive adverse yaw produced by the ailerons", "To increase the horizontal component of lift for a tighter radius", "To decrease the angle of attack and reduce parasitic drag"],
+            correct: "To increase overall lift so the vertical component remains equal to weight"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "What flight control law state is entered on the A320 if multiple dual-channel computer failures occur?",
             options: ["The system remains in Normal Law but disables autopilot and automatic trim functions.", "The system enters Emergency Law, where only the spoilers are available for roll control.", "The system enters Alternate Law with full flight envelope protections active."],
             correct: "The system enters Direct Law, where control surface deflection is directly proportional to stick input."
+=======
+            topic: "Aircraft Loading",
+            question: "What is the structural definition of Load Factor (g) in aviation?",
+            options: ["The ratio of lift produced to the parasitic drag generated", "The physical weight of the payload divided by the fuel weight", "The ratio of the aircraft empty weight to its maximum takeoff weight"],
+            correct: "The ratio of the load imposed on the structure to the weight of the structure itself"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "How are the aileron actuators on the Airbus A320 signaled and controlled under Fly-by-Wire control?",
             options: ["Signaled mechanically via cables, controlled hydraulically by mechanical servo valves.", "Signaled electrically, controlled electrically by high-voltage brushless DC motors.", "Signaled pneumatically, controlled hydraulically by digital pressure-to-fluid converters."],
             correct: "Signaled electrically from the ELACs, controlled hydraulically by electro-hydraulic servovalves."
+=======
+            topic: "Flight Dynamics",
+            question: "What force opposes the centripetal force during a coordinated level turn?",
+            options: ["The total lift resultant force", "The vertical component of lift", "The longitudinal drag force"],
+            correct: "The centrifugal force acting outwards"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "What is the primary function of the Yaw Damper system in high-speed transport-category aircraft?",
             options: ["To assist the pilot in making high-rate rolling maneuvers at transonic cruise airspeeds.", "To lock the rudder in position during landing to prevent crosswind drift.", "To automatically adjust the engine fuel flow to prevent symmetric engine surges."],
             correct: "To automatically suppress Dutch Roll oscillations without pilot rudder pedal inputs."
+=======
+            topic: "Lift Augmentation",
+            question: "What distinguishes a leading-edge slat from a leading-edge slot?",
+            options: ["A slat is located on the trailing edge while a slot is on the leading edge", "A slat only reduces parasite drag while a slot increases lift", "A slat is a fixed duct while a slot is mechanically deployed"],
+            correct: "A slat is a movable surface that extends to form a slot duct"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fly-By-Wire Architecture",
             question: "What specific cockpit indication occurs when an Airbus A320 ELAC computer is switched OFF?",
             options: ["The corresponding pushbutton switch illuminates in green showing standard standby mode.", "The MASTER WARN light flashes red, accompanied by a continuous high-low warning chime.", "The ECAM display automatically turns off to prevent displaying invalid computer data."],
             correct: "The OFF light on the flight control overhead panel illuminates in white."
+=======
+            topic: "Aircraft Loading",
+            question: "Why do transport category aircraft generally have a minimum positive load factor certification limit of +2.5 g?",
+            options: ["To allow the aircraft to perform unlimited aerobatic maneuvers", "To guarantee the aircraft stalls before structural damage occurs in all conditions", "To ensure the engines can produce 2.5 times the required takeoff thrust"],
+            correct: "To ensure the airframe is strong enough to withstand expected operational stresses"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What is the structural load-carrying characteristics of a true monocoque fuselage design?",
             options: ["The bending and torsional loads are carried entirely by internal longitudinal longerons.", "The aircraft skin is non-structural, and all flight loads are absorbed by a Pratt truss framework.", "The primary tensile stresses are carried by internal tie rods and diagonal tension wires."],
             correct: "The thin outer skin carries all flight loads, while frames and formers maintain the shape."
+=======
+            topic: "Aircraft Stability",
+            question: "How is positive static stability defined in aerodynamic terms?",
+            options: ["The tendency for oscillations to increase in magnitude over time", "The tendency of an aircraft to remain in its displaced attitude", "The tendency to move farther away from the original attitude after a disturbance"],
+            correct: "The tendency of an aircraft to return to its original attitude after displacement"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "How does a semi-monocoque fuselage design improve structural strength compared to a monocoque design?",
             options: ["It eliminates the outer skin entirely, reducing parasite drag and structural weight.", "It replaces internal bulkheads with heavy transverse webs that carry compressive loads.", "It utilizes heavy structural tie rods that run diagonally to carry all torsional loads."],
             correct: "It reinforces the skin with a framework of bulkheads, stringers, and longerons to prevent buckling."
+=======
+            topic: "Aircraft Stability",
+            question: "Which control surface is primarily responsible for providing longitudinal stability in an aircraft?",
+            options: ["The ailerons on the trailing edge of the wing", "The vertical fin located at the tail", "The leading-edge slats on the main wing"],
+            correct: "The horizontal stabiliser located at the tail"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What is the difference in load-carrying capability between a Pratt truss and a Warren truss fuselage structure?",
             options: ["In a Pratt truss, diagonal members carry compression only; in a Warren truss, diagonals carry tension only.", "In a Pratt truss, vertical members carry tension only; in a Warren truss, vertical members carry compression only.", "A Pratt truss is non-rigid and relies on the outer skin, whereas a Warren truss is fully rigid without skin."],
             correct: "In a Pratt truss, vertical struts carry compression only; in a Warren truss, diagonals carry both loads."
+=======
+            topic: "Aircraft Stability",
+            question: "If an aircraft suffers from Dutch roll, which two rotational motions are coupled together in an unstable oscillation?",
+            options: ["Pitching and rolling", "Pitching and yawing", "Heaving and surging"],
+            correct: "Rolling and yawing"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "Why is the semi-monocoque fuselage design (specifically the reinforced shell) preferred for modern transport aircraft?",
             options: ["Because it relies solely on the outer skin to absorb landing loads, allowing large windows.", "Because it uses high-density steel truss tubing that is completely impervious to fatigue cracking.", "Because it eliminates the need for pressurization sealing by using flexible fabric skins."],
             correct: "Because it distributes stresses across multiple redundant members, providing high strength-to-weight."
+=======
+            topic: "Aircraft Stability",
+            question: "How does a sweptback wing configuration aid in maintaining directional stability during a yaw?",
+            options: ["The trailing wing produces a higher coefficient of lift causing a restoring roll", "The swept geometry moves the centre of gravity aft to restore balance", "The wing into the wind stalls earlier bringing the nose back to centre"],
+            correct: "The wing farther ahead experiences more drag which pulls it back into alignment"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What is the specific structural function of stringers in a semi-monocoque wing or fuselage?",
             options: ["To act as heavy structural hinges that allow the wing tip to flex vertically during turbulence.", "To seal the cabin pressure boundary by acting as interlocking physical joints.", "To carry the entire shear load from the landing gear trunnions to the fuselage center section."],
             correct: "To stiffen the thin outer skin and prevent it from buckling under bending and compressive loads."
+=======
+            topic: "Aircraft Stability",
+            question: "What defines the phenomenon of spiral instability in an aircraft handling characteristics?",
+            options: ["The aircraft responds to a roll by pitching up until it stalls violently", "The aircraft oscillates rapidly in pitch when passing the critical Mach number", "The aircraft remains perfectly level but drifts laterally off course"],
+            correct: "The aircraft responds to a dropped wing by yawing and rolling into a diving spiral"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What is the structural difference between a flat forward pressure bulkhead and a dome-shaped aft pressure bulkhead?",
             options: ["The flat bulkhead is designed to carry hoop stress, while the dome bulkhead carries longitudinal tension.", "The flat bulkhead is constructed of composite fabric, while the dome bulkhead is solid cast aluminum.", "The flat bulkhead must be kept unsealed to allow drainage, while the dome bulkhead is fully sealed."],
             correct: "The dome bulkhead utilizes pie-sections and radial stiffeners to efficiently withstand pressure loads."
+=======
+            topic: "Aircraft Stability",
+            question: "What is the primary function of anhedral (negative dihedral) on a high-mounted swept wing aircraft?",
+            options: ["To maximize the ground effect cushion during landing", "To lower the centre of gravity for better ground handling", "To increase the effective aspect ratio and reduce induced drag"],
+            correct: "To counteract excessive dihedral effect and prevent Dutch roll tendencies"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What structural role does the keel beam perform in a transport-category aircraft fuselage?",
             options: ["It acts as a longitudinal firewall that separates the left and right air conditioning packs.", "It is an aerodynamic fairing that covers the nose gear actuator when retracted.", "It is a transverse bulkhead that supports the cockpit flight control columns."],
             correct: "It is a heavy box structure under the fuselage center section that carries landing and gear loads."
+=======
+            topic: "Aircraft Stability",
+            question: "In relation to multi-engine aircraft, what establishes the minimum directional control speed during an engine failure?",
+            options: ["The speed where aileron authority overcomes the asymmetric lift", "The stalling speed of the aircraft multiplied by a factor of 1.2", "The speed at which the elevator can prevent a nose-down pitch"],
+            correct: "The lowest speed where maximum rudder deflection balances the asymmetric thrust"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "Why must a radome assembly be constructed using non-conductive, low-loss composite materials?",
             options: ["To prevent the radome from experiencing galvanic corrosion when in contact with the fuselage skin.", "To allow high-pressure hydraulic lines to pass through the nose without electrical interference.", "To isolate the nose landing gear from the cockpit electrical essential buses."],
             correct: "To allow weather radar radio frequency signals to propagate through the structure without attenuation."
+=======
+            topic: "Aircraft Stability",
+            question: "How does geometric dihedral provide lateral stability when an aircraft enters a sideslip?",
+            options: ["The downward wing experiences a higher parasite drag and pulls the aircraft level", "The downward wing stalls immediately causing the upper wing to drop level", "The airflow from the side pushes against the vertical fin to level the wings"],
+            correct: "The wing dropping into the airflow experiences an increased angle of attack and more lift"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "How is the radome structure protected from high-voltage lightning strikes while maintaining its non-conductive properties?",
             options: ["By enclosing the entire radome in a thick neoprene boot that acts as an electrical insulator.", "By grounding the radome structure directly to the nose landing gear shock strut.", "By installing active static discharge wicks along the forward edge of the radome assembly."],
             correct: "By installing metal lightning diverter strips on the outer surface connected to the airframe."
+=======
+            topic: "Aircraft Stability",
+            question: "What creates the pendulum effect that enhances lateral stability in high-wing aircraft?",
+            options: ["The sweptback angle of the wings increasing root drag", "The placement of the horizontal stabiliser above the wing wake", "The location of the vertical fin generating a large side force"],
+            correct: "The fuselage and centre of gravity being positioned below the centre of lift"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What type of stringer cross-section is commonly used in aircraft structures to provide a high resistance to buckling?",
             options: ["A simple flat bar stringer because it maximizes the surface contact area with the skin.", "A solid cylindrical steel rod because it has the highest tensile strength.", "A hollow square composite section filled with dense structural polyurethane foam."],
             correct: "An angle, channel, Z-section, or bulb-stiffened section which increases the moment of inertia."
+=======
+            topic: "Aircraft Stability",
+            question: "Which description best explains an aircraft with positive static stability but negative dynamic stability?",
+            options: ["The aircraft remains at the displaced attitude without any oscillations", "The aircraft returns to its original attitude immediately without overshooting", "The aircraft attempts to return to normal but the oscillations remain constant"],
+            correct: "The aircraft tries to return to its original attitude but oscillations increase in magnitude"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What structural component divides the fuselage into distinct pressurized and unpressurized zones?",
             options: ["The longitudinal fuselage longerons that run along the cabin floor.", "The aircraft floor support beams and transverse seat tracks.", "The keel beam box structure under the main landing gear wheel well."],
             correct: "The forward and aft pressure bulkheads, along with the pressure cabin skin."
+=======
+            topic: "Aircraft Stability",
+            question: "When discussing the axes of an aeroplane, motion about the lateral axis is referred to as:",
+            options: ["Yawing", "Rolling", "Sideslipping"],
+            correct: "Pitching"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "Why is a dome-shaped bulkhead used for the aft pressure boundary instead of a flat bulkhead?",
             options: ["To allow the rudder cables to pass through the boundary without using pressure seals.", "To reduce the overall parasite drag of the aircraft tail cone structure.", "To provide a mounting face for the horizontal stabilizer trim actuator."],
             correct: "To convert cabin pressure bending stresses into tension stresses, minimizing structural weight."
+=======
+            topic: "Aircraft Stability",
+            question: "What is meant by the term longitudinal dihedral in aircraft rigging?",
+            options: ["The angle of sweepback measured from the fuselage centreline", "The physical upward tilt of the wingtips relative to the root", "The anhedral angle applied to the horizontal stabiliser"],
+            correct: "The difference in setting angles between the wing chord and the horizontal stabiliser chord"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What structural design feature prevents crack propagation in a pressurized cabin skin?",
             options: ["Replacing all rivets with high-strength structural adhesives across the skin joints.", "Using thick, single-piece aluminum sheets for the entire fuselage shell.", "Installing active pneumatic shock absorbers along the cabin window frames."],
             correct: "Installing tear-straps or doubler plates at regular intervals along the frames and stringers."
+=======
+            topic: "Aircraft Stability",
+            question: "How do modern high-speed aircraft that are aerodynamically unstable maintain controllable flight?",
+            options: ["They rely exclusively on massive vertical fins and dorsal ridges", "They use highly swept wings to passively dampen all oscillations", "They require the pilot to constantly manipulate manual cable controls"],
+            correct: "They rely upon active stability control systems via digital flight computers"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "What is the primary function of fuselage frames in a semi-monocoque structure?",
             options: ["To carry the primary longitudinal tensile loads generated during takeoff.", "To act as mounting tracks for the passenger seat assemblies in the cabin.", "To seal the vertical joints between adjacent skin sheets."],
             correct: "To maintain the aerodynamic cross-sectional shape and resist radial pressure loads."
+=======
+            topic: "Aircraft Stability",
+            question: "Why does a large vertical fin (keel surface) sometimes contribute to oscillatory instability (Dutch roll)?",
+            options: ["It moves the aerodynamic centre too far forward of the CG", "It prevents the rudder from deflecting fully at high speeds", "It completely negates the stabilizing effects of wing sweepback"],
+            correct: "It produces a directional restoring force that overpowers the lateral dihedral effect"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
             () => {
         return {
+<<<<<<< HEAD
             topic: "Fuselage Construction Types",
             question: "Why are longerons used in conjunction with stringers in a reinforced shell semi-monocoque fuselage?",
             options: ["Longerons carry only transverse shear forces, leaving stringers to carry bending.", "Longerons are light and flexible, acting as backing plates for the thin skin.", "Longerons are used solely to mount the interior cabin baggage racks."],
@@ -2398,6 +2917,12 @@
             question: "What is the function of the Flight Deck Printer in the datalink system?",
             options: ["To print out passenger boarding passes and cabin baggage manifests during flight.", "To print out structural fatigue reports for the wing spar inspection crew.", "To print out high-resolution weather radar images on the ground."],
             correct: "To provide physical copies of ATC clearances, weather reports, and flight plans."
+=======
+            topic: "Aircraft Stability",
+            question: "If a stable aircraft is disturbed in pitch from its trimmed straight-and-level flight, what restores its attitude?",
+            options: ["The gyroscopic precession of the engine propeller", "The pendulum effect of the undercarriage weight", "The shifting of the internal fuel load to the lower tanks"],
+            correct: "The change in lift at the horizontal stabiliser providing a restoring moment"
+>>>>>>> 42e225d2f7e078306f1bb48facd4f37e9db55aa5
             };
         },
         

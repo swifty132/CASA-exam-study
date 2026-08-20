@@ -1,4 +1,5 @@
-    // --- BATCH GENERATED FROM CSV ---
+const aidsCancerPartA = [
+        // --- BATCH GENERATED FROM CSV ---
 
     () => {
         return {
@@ -2399,5 +2400,47 @@
             options: ["To print out passenger boarding passes and cabin baggage manifests during flight.", "To print out structural fatigue reports for the wing spar inspection crew.", "To print out high-resolution weather radar images on the ground."],
             correct: "To provide physical copies of ATC clearances, weather reports, and flight plans."
             };
+        }
+    ]
+
+
+
+
+// REGISTER MODULE 13 part a
+if (typeof registerModule !== 'undefined') {
+    registerModule(
+        "Module 13 part A",
+        80, // Standard exam length
+        function(count) {
+            // Shuffle the pool
+            const pool = [...aidsCancerPartA];
+            for (let i = pool.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [pool[i], pool[j]] = [pool[j], pool[i]];
+            }
+            
+            // Generate Questions
+            return pool.slice(0, count).map(gen => {
+                const data = gen();
+                
+                // Compatibility for standard format
+                let finalOptions = [...data.options, data.correct];
+                
+                // Shuffle Options safely
+                for (let i = finalOptions.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [finalOptions[i], finalOptions[j]] = [finalOptions[j], finalOptions[i]];
+                }
+                
+                return {
+                    topic: data.topic || "Cancer Mod 13 Part A",
+                    question: data.question,
+                    img: data.img || null,
+                    options: finalOptions,
+                    correct: data.correct
+                };
+            });
         },
-        
+        `${aidsCancerPartA.length} Scenarios (CASA B2-13 part A)`
+    );
+}
